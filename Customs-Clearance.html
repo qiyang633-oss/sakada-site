@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh">
+EN
+|
+CN
+|
+JP
+联系我们
+专业清关服务
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>自有清关 | SAKADA International</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/7.2.3/css/flag-icons.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+    body { font-family:'Inter',sans-serif; color:#1A1A1A; background:#ffffff; overflow-x:hidden; }
+    .mono { font-family:'JetBrains Mono',monospace; }
+
+    .topbar { position:fixed; top:0; left:0; width:100%; z-index:50; background:rgba(255,255,255,0.92); backdrop-filter:blur(12px); border-bottom:1px solid #e8edf5; }
+    .nav-link { font-size:13px; font-weight:500; color:#5b6b85; transition:color .2s; white-space:nowrap; }
+    .nav-link:hover, .nav-link.active { color:#2575F0; }
+    .nav-cta { background:linear-gradient(135deg,#2575F0,#6BA3FF); color:#fff; font-size:13px; font-weight:700; padding:10px 22px; border-radius:6px; transition:all .25s; }
+    .nav-cta:hover { transform:translateY(-2px); box-shadow:0 10px 20px -6px rgba(37,117,240,.5); }
+    .lang-btn { font-size:12px; font-weight:700; color:#8a97ad; padding:4px 8px; border-radius:4px; cursor:pointer; transition:all .2s; }
+    .lang-btn.active { color:#2575F0; background:rgba(37,117,240,0.08); }
+
+    .wh-hero {
+    padding:200px 0 100px;
+    background-image:url('./自有清关背景图.png');
+    background-size:cover;
+    background-position:center;
+    }
+    .eyebrow-tag { display:inline-flex; align-items:center; gap:8px; background:rgba(37,117,240,0.08); border:1px solid rgba(37,117,240,0.25); color:#2575F0; font-size:12px; font-weight:700; letter-spacing:1px; padding:6px 14px; border-radius:999px; }
+    .eyebrow-tag::before { content:''; width:6px; height:6px; border-radius:50%; background:#2575F0; }
+    .feature-pill i { width:34px; height:34px; display:flex; align-items:center; justify-content:center; border-radius:8px; background:linear-gradient(135deg,#2575F0,#6BA3FF); color:#fff; font-size:14px; }
+    .illustration-placeholder { background:linear-gradient(135deg,#dde4f0,#c8d4ea); border-radius:16px; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#7d8bab; gap:10px; min-height:360px; text-align:center; padding:20px; }
+    .illustration-placeholder i { font-size:42px; }
+
+    .stats-bar { background:#fff; border:1px solid #e8edf5; border-radius:14px; box-shadow:0 20px 45px -20px rgba(37,90,180,0.25); margin-top:-64px; position:relative; z-index:10; }
+    .stat-icon { width:42px; height:42px; border-radius:10px; background:rgba(37,117,240,0.08); color:#2575F0; display:flex; align-items:center; justify-content:center; font-size:17px; }
+
+    /* Process flow */
+    .flow-step { background:#fff; border:1px solid #e8edf5; border-radius:12px; padding:24px 16px; text-align:center; transition:all .3s; }
+    .flow-step:hover { transform:translateY(-4px); box-shadow:0 16px 30px -14px rgba(37,117,240,.3); border-color:#c7d8ff; }
+    .flow-icon { width:52px; height:52px; border-radius:12px; background:rgba(37,117,240,0.08); color:#2575F0; display:flex; align-items:center; justify-content:center; font-size:20px; margin:0 auto 14px; }
+    .flow-num { font-size:11px; font-weight:700; color:#b9c3d6; margin-bottom:6px; }
+    .flow-arrow { color:#c7d8ff; font-size:18px; }
+
+    /* Capability section */
+    .capability-photo { position:relative; border-radius:16px; overflow:hidden; }
+    .cap-badge { background:rgba(255,255,255,0.96); backdrop-filter:blur(6px); border-radius:10px; padding:12px 16px; display:flex; align-items:center; gap:10px; box-shadow:0 10px 20px -8px rgba(0,0,0,.15); }
+    .cap-badge i { width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg,#2575F0,#6BA3FF); color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; }
+    .cap-col-title { font-size:14px; font-weight:700; color:#2575F0; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+    .cap-list li { display:flex; align-items:flex-start; gap:8px; font-size:13px; color:#334155; padding:16px 0; }
+    .cap-list li i { color:#2575F0; font-size:11px; margin-top:4px; }
+
+    /* Region tabs */
+    .region-tab { font-size:14px; font-weight:600; color:#8a97ad; padding:10px 4px; border-bottom:2px solid transparent; cursor:pointer; transition:all .2s; white-space:nowrap; }
+    .region-tab.active { color:#2575F0; border-color:#2575F0; }
+    .country-list-card { background:#fff; border:1px solid #e8edf5; border-radius:12px; padding:24px; }
+    .country-list-card li { display:flex; align-items:center; gap:10px; font-size:14px; color:#334155; padding:9px 0; border-bottom:1px dashed #edf1f8; }
+    .country-list-card li:last-of-type { border-bottom:none; }
+    .country-flag { width:20px; height:14px; border-radius:2px; flex-shrink:0; background-size:cover; }
+    .map-placeholder { position:relative; background:radial-gradient(circle at 30% 30%, #eaf1ff, #dbe6fb); border-radius:14px; min-height:340px; overflow:hidden; }
+    .map-placeholder::before { content:''; position:absolute; inset:0; background-image:radial-gradient(#c3d3f5 1px, transparent 1px); background-size:22px 22px; opacity:.6; }
+    .map-pin { position:absolute; width:10px; height:10px; border-radius:50%; background:#2575F0; box-shadow:0 0 0 5px rgba(37,117,240,0.2); }
+
+    /* Certifications */
+    .gallery-scroll { display:flex; gap:16px; overflow-x:auto; scroll-behavior:smooth; scrollbar-width:none; }
+    .gallery-scroll::-webkit-scrollbar { display:none; }
+    .cert-thumb { flex:0 0 180px; }
+    .cert-thumb-img { height:190px; border-radius:10px; background:linear-gradient(135deg,#dde4f0,#c8d4ea); display:flex; align-items:center; justify-content:center; color:#7d8bab; margin-bottom:10px; }
+    .cert-thumb p { font-size:12px; font-weight:600; color:#475569; text-align:center; }
+    .scroll-arrow { width:40px; height:40px; border-radius:50%; background:#fff; border:1px solid #e8edf5; box-shadow:0 6px 16px -6px rgba(0,0,0,.15); display:flex; align-items:center; justify-content:center; cursor:pointer; color:#2575F0; transition:all .2s; flex-shrink:0; }
+    .scroll-arrow:hover { background:#2575F0; color:#fff; }
+
+    .cta-band { background:linear-gradient(135deg,#2575F0,#6BA3FF); border-radius:16px; }
+    footer { background:linear-gradient(135deg,#2575F0,#6BA3FF); }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ============ TOPBAR ============ -->
+<header class="topbar">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 h-[72px] flex items-center justify-between">
+        <a href="./index.html" class="flex items-center gap-3 text-xl font-extrabold text-slate-900 mr-8">
+            <span>SAKADA</span>
+        </a>
+        <nav class="hidden lg:flex items-center gap-8">
+            <a href="./index.html" class="nav-link" data-i18n="nav_home">Home</a>
+            <a href="./Overseas-Warehousing.html" class="nav-link" data-i18n="nav_self">Overseas Warehousing</a>
+            <a href="./Customs-Clearance.html" class="nav-link active" data-i18n="nav_customs">Customs Clearance</a>
+            <a href="./Sea-Freight.html" class="nav-link" data-i18n="nav_ocean">Sea Freight</a>
+            <a href="./Air-Freight.html" class="nav-link" data-i18n="nav_air">Air Freight</a>
+            <a href="./Dropshipping-Fulfillment.html" class="nav-link" data-i18n="nav_dropship">Dropshipping</a>
+            <a href="./Supply-Chain-Management.html" class="nav-link" data-i18n="nav_supplychain">Supply Chain</a>
+            <a href="./about.html" class="nav-link" data-i18n="nav_about">About Us</a>
+        </nav>
+        <div class="flex items-center gap-4 ml-6">
+             <div class="flex items-center gap-1 text-xs">
+                <span class="lang-btn" onclick="switchLang('en')">EN</span>
+                <span class="text-gray-300">|</span>
+                <span class="lang-btn active" onclick="switchLang('zh')">CN</span>
+                <span class="text-gray-300">|</span>
+                <span class="lang-btn" onclick="switchLang('ja')">JP</span>
+            </div>
+            <a href="./index.html#contact" class="nav-cta whitespace-nowrap" data-i18n="nav_contact">Contact Us</a>
+        </div>
+    </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="wh-hero">
+    <div class="max-w-3xl px-6 lg:px-16">
+        <div>
+            <span class="eyebrow-tag mb-5" data-i18n="hero_tag">Customs Brokerage Services</span>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mt-5 mb-3" data-i18n="hero_title">Self-Operated Customs Clearance</h1>
+            <p class="text-lg font-semibold text-slate-500 mb-5" data-i18n="hero_subtitle">Efficient &amp; Professional · Fully Compliant · Global Customs Clearance</p>
+            <p class="text-sm text-slate-500 leading-relaxed max-w-lg mb-8" data-i18n="hero_desc">
+                SAKADA has a professional customs brokerage team and its own clearance qualifications, covering all major trading countries and regions, delivering efficient, compliant and stable clearance services to help cargo pass through customs quickly and reduce trade risk.
+            </p>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-5 mb-9">
+                <div class="feature-pill flex flex-col items-start gap-2"><i class="fa-solid fa-certificate"></i><span class="text-xs font-semibold text-slate-700" data-i18n="feat_1">Own Qualification</span></div>
+                <div class="feature-pill flex flex-col items-start gap-2"><i class="fa-solid fa-people-group"></i><span class="text-xs font-semibold text-slate-700" data-i18n="feat_2">Expert Team</span></div>
+                <div class="feature-pill flex flex-col items-start gap-2"><i class="fa-solid fa-bolt"></i><span class="text-xs font-semibold text-slate-700" data-i18n="feat_3">Fast Clearance</span></div>
+                <div class="feature-pill flex flex-col items-start gap-2"><i class="fa-solid fa-shield-halved"></i><span class="text-xs font-semibold text-slate-700" data-i18n="feat_4">Compliance Assured</span></div>
+            </div>
+            <a href="./index.html#contact" class="inline-flex items-center gap-2 bg-gradient-to-br from-[#2575F0] to-[#6BA3FF] text-white text-sm font-bold px-7 py-3.5 rounded-md hover:opacity-90 transition-all">
+                <span data-i18n="btn_quote">Get a Clearance Plan</span> <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<div class="max-w-6xl mx-auto px-6 lg:px-10">
+    <div class="stats-bar grid grid-cols-2 md:grid-cols-4 gap-6 px-8 py-8">
+        <div class="flex items-center gap-4"><div class="stat-icon"><i class="fa-solid fa-file-invoice"></i></div><div><div class="text-2xl font-extrabold text-slate-900 mono">10,000+</div><div class="text-xs text-slate-500" data-i18n="stat_1_label">Avg. Monthly Clearances</div></div></div>
+        <div class="flex items-center gap-4"><div class="stat-icon"><i class="fa-solid fa-award"></i></div><div><div class="text-2xl font-extrabold text-slate-900 mono">98%</div><div class="text-xs text-slate-500" data-i18n="stat_2_label">Clearance Success Rate</div></div></div>
+        <div class="flex items-center gap-4"><div class="stat-icon"><i class="fa-solid fa-clock"></i></div><div><div class="text-2xl font-extrabold text-slate-900 mono">48h</div><div class="text-xs text-slate-500" data-i18n="stat_3_label">Avg. Clearance Time</div></div></div>
+        <div class="flex items-center gap-4"><div class="stat-icon"><i class="fa-solid fa-magnifying-glass"></i></div><div><div class="text-2xl font-extrabold text-slate-900 mono">0.3%↓</div><div class="text-xs text-slate-500" data-i18n="stat_4_label">Inspection Rate (Industry Avg. 1.5%)</div></div></div>
+    </div>
+</div>
+
+<!-- ============ PROCESS FLOW ============ -->
+<section class="py-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+            <span class="eyebrow-tag mb-4" data-i18n="flow_tag">CLEARANCE WORKFLOW</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mt-4" data-i18n="flow_title">Customs Clearance Process</h2>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-6 gap-4 items-center">
+            <div class="flow-step"><div class="flow-num">01</div><div class="flow-icon"><i class="fa-solid fa-file-lines"></i></div><h3 class="text-sm font-bold text-slate-900 mb-1" data-i18n="flow_1_title">Document Prep</h3><p class="text-xs text-slate-500" data-i18n="flow_1_desc">Document review &amp; pre-check</p></div>
+            <div class="hidden md:flex justify-center flow-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            <div class="flow-step"><div class="flow-num">02</div><div class="flow-icon"><i class="fa-solid fa-file-arrow-up"></i></div><h3 class="text-sm font-bold text-slate-900 mb-1" data-i18n="flow_2_title">Declaration</h3><p class="text-xs text-slate-500" data-i18n="flow_2_desc">Fast e-filing submission</p></div>
+            <div class="hidden md:flex justify-center flow-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            <div class="flow-step"><div class="flow-num">03</div><div class="flow-icon"><i class="fa-solid fa-calculator"></i></div><h3 class="text-sm font-bold text-slate-900 mb-1" data-i18n="flow_3_title">Duty Confirmation</h3><p class="text-xs text-slate-500" data-i18n="flow_3_desc">Duty calculation &amp; confirmation</p></div>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-6 gap-4 items-center mt-4">
+            <div class="flow-step"><div class="flow-num">04</div><div class="flow-icon"><i class="fa-solid fa-magnifying-glass"></i></div><h3 class="text-sm font-bold text-slate-900 mb-1" data-i18n="flow_4_title">Inspection (if any)</h3><p class="text-xs text-slate-500" data-i18n="flow_4_desc">Rapid customs inspection response</p></div>
+            <div class="hidden md:flex justify-center flow-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            <div class="flow-step"><div class="flow-num">05</div><div class="flow-icon"><i class="fa-solid fa-circle-check"></i></div><h3 class="text-sm font-bold text-slate-900 mb-1" data-i18n="flow_5_title">Release</h3><p class="text-xs text-slate-500" data-i18n="flow_5_desc">Customs cargo release</p></div>
+            <div class="hidden md:flex justify-center flow-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            <div class="flow-step"><div class="flow-num">06</div><div class="flow-icon"><i class="fa-solid fa-truck-fast"></i></div><h3 class="text-sm font-bold text-slate-900 mb-1" data-i18n="flow_6_title">Pickup / Delivery</h3><p class="text-xs text-slate-500" data-i18n="flow_6_desc">Arranged delivery to warehouse</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ CAPABILITIES ============ -->
+<section class="py-16 bg-[#f7f9fd]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="eyebrow-tag mb-4" data-i18n="cap_tag">OUR CAPABILITIES</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mt-4" data-i18n="cap_title">Our Customs Clearance Capabilities</h2>
+        </div>
+        <div class="grid lg:grid-cols-[1fr_1.4fr] gap-10 items-center">
+            <!-- 真实照片准备好后，把这个 illustration-placeholder 换成 <img src="./你的照片.jpg" class="w-full rounded-2xl object-cover"> -->
+            <div class="capability-photo">
+                <img src="./清关警察图.png" class="w-full rounded-2xl object-cover" alt="Customs Officer">
+                <span class="text-sm" data-i18n="cap_photo_label"></span>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="cap-col-title"><i class="fa-solid fa-list-check"></i><span data-i18n="cap_col_1_title">Service Types</span></div>
+                    <ul class="cap-list">
+                        <li><i class="fa-solid fa-circle"></i><span data-i18n="cap_col_1_item_1">General Trade Clearance</span></li>
+                        <li><i class="fa-solid fa-circle"></i><span data-i18n="cap_col_1_item_2">Cross-Border E-Commerce Clearance</span></li>
+                        <li><i class="fa-solid fa-circle"></i><span data-i18n="cap_col_1_item_3">ATA Carnet Clearance</span></li>
+                        <li><i class="fa-solid fa-circle"></i><span data-i18n="cap_col_1_item_4">Temporary Import/Export Clearance</span></li>
+                        <li><i class="fa-solid fa-circle"></i><span data-i18n="cap_col_1_item_5">Personal Effects Clearance</span></li>
+                        <li><i class="fa-solid fa-circle"></i><span data-i18n="cap_col_1_item_6">Return &amp; Repair Clearance</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="cap-col-title"><i class="fa-solid fa-star"></i><span data-i18n="cap_col_2_title">Core Strengths</span></div>
+                    <ul class="cap-list">
+                        <li><i class="fa-solid fa-circle"></i><span data-i18n="cap_col_2_item_1">Own clearance qualification, fully compliant</span></li>
+                        <li><i class="fa-solid fa-circle"></i><span data-i18n="cap_col_2_item_2">Pre-declaration + smart risk control, fast clearance</span></li>
+                        <li><i class="fa-solid fa-circle"></i><span data-i18n="cap_col_2_item_3">Direct link with customs systems, high responsiveness</span></li>
+                        <li><i class="fa-solid fa-circle"></i><span data-i18n="cap_col_2_item_4">Expert team, 7x24h service</span></li>
+                        <li><i class="fa-solid fa-circle"></i><span data-i18n="cap_col_2_item_5">Global network coverage, extensive experience</span></li>
+                        <li><i class="fa-solid fa-circle"></i><span data-i18n="cap_col_2_item_6">Low inspection rate, high clearance success rate</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="cap-col-title"><i class="fa-solid fa-anchor"></i><span data-i18n="cap_col_3_title">Supported Ports</span></div>
+                    <ul class="cap-list">
+                        <li><i class="fa-solid fa-circle"></i><span data-i18n="cap_col_3_item_1">Shenzhen Yantian</span></li>
+                        <li><i class="fa-solid fa-circle"></i><span data-i18n="cap_col_3_item_2">Guangzhou Nansha</span></li>
+                        <li><i class="fa-solid fa-circle"></i><span data-i18n="cap_col_3_item_3">Shanghai Pudong</span></li>
+                        <li><i class="fa-solid fa-circle"></i><span data-i18n="cap_col_3_item_4">Ningbo Zhoushan</span></li>
+                        <li><i class="fa-solid fa-circle"></i><span data-i18n="cap_col_3_item_5">Qingdao Port</span></li>
+                        <li><i class="fa-solid fa-circle"></i><span data-i18n="cap_col_3_item_6">More Ports...</span></li>
+                    </ul>
+                </div>
+               <div>
+                <div class="cap-col-title"><i class="fa-solid fa-globe"></i><span data-i18n="cap_col_4_title">国外出口口岸</span></div>
+                    <ul class="cap-list">
+                    <li><i class="fa-solid fa-circle"></i><span data-i18n="cap_col_4_item_1">日本</span></li>
+                    <li><i class="fa-solid fa-circle"></i><span data-i18n="cap_col_4_item_2">美国</span></li>
+                    <li><i class="fa-solid fa-circle"></i><span data-i18n="cap_col_4_item_3">加拿大</span></li>
+                    <li><i class="fa-solid fa-circle"></i><span data-i18n="cap_col_4_item_4">巴西</span></li>
+                    <li><i class="fa-solid fa-circle"></i><span data-i18n="cap_col_4_item_5">泰国</span></li>
+                    <li><i class="fa-solid fa-circle"></i><span data-i18n="cap_col_4_item_6">新加坡</span></li>
+                    <li><i class="fa-solid fa-circle"></i><span data-i18n="cap_col_4_item_7">韩国</span></li>
+                    <li><i class="fa-solid fa-circle"></i><span data-i18n="cap_col_4_item_8">更多口岸...</span></li>
+                  </ul>
+              </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- ============ CTA ============ -->
+<section class="py-20">
+    <div class="max-w-6xl mx-auto px-6 lg:px-10">
+        <div class="cta-band flex flex-col md:flex-row items-center justify-between gap-6 px-10 py-10 text-white overflow-hidden relative">
+            <div>
+                <h3 class="text-2xl font-extrabold mb-1" data-i18n="cta_title">Need Professional Customs Clearance?</h3>
+                <p class="text-sm text-white/80" data-i18n="cta_desc">Our team is ready to provide you with efficient, compliant clearance solutions</p>
+            </div>
+            <a href="./index.html#contact" class="inline-flex items-center gap-2 bg-white text-[#2575F0] text-sm font-bold px-7 py-3.5 rounded-md hover:opacity-90 transition-all shrink-0">
+                <span data-i18n="cta_btn">Consult Now</span> <i class="fa-solid fa-arrow-right text-xs" data-i18n="cta_btn_icon"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="text-white/80 py-10 text-sm">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="text-white font-extrabold">SAKADA<span class="text-pink-200">.</span></div>
+        <p data-i18n="footer_copyright">&copy;  SAKADA (Shenzhen) International Limited. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    /* ==========================================================
+       I18N / LANGUAGE SWITCHER
+       ========================================================== */
+    const i18nData = {
+        en: {
+            nav_home:"Home",nav_self:"Self-Operated Warehousing",nav_customs:"Customs Clearance",nav_ocean:"Sea Freight",nav_air:"Air Freight",nav_dropship:"Dropshipping",nav_supplychain:"Supply Chain",nav_about:"About Us",nav_contact:"Contact Us",
+            hero_tag:"Customs Brokerage Services",hero_title:"Self-Operated Customs Clearance",hero_subtitle:"Efficient &amp; Professional · Fully Compliant · Global Customs Clearance",
+            hero_desc:"SAKADA has a professional customs brokerage team and its own clearance qualifications, covering all major trading countries and regions, delivering efficient, compliant and stable clearance services to help cargo pass through customs quickly and reduce trade risk.",
+            feat_1:"Own Qualification",feat_2:"Expert Team",feat_3:"Fast Clearance",feat_4:"Compliance Assured",
+            btn_quote:"Get a Clearance Plan",hero_illustration_label:"Customs Process Illustration Placeholder<br>(Airport / Port / Customs Warehouse Scene)",
+            stat_1_label:"Avg. Monthly Clearances",stat_2_label:"Clearance Success Rate",stat_3_label:"Avg. Clearance Time",stat_4_label:"Inspection Rate (Industry Avg. 1.5%)",
+            flow_tag:"CLEARANCE WORKFLOW",flow_title:"Customs Clearance Process",
+            flow_1_title:"Document Prep",flow_1_desc:"Document review &amp; pre-check",
+            flow_2_title:"Declaration",flow_2_desc:"Fast e-filing submission",
+            flow_3_title:"Duty Confirmation",flow_3_desc:"Duty calculation &amp; confirmation",
+            flow_4_title:"Inspection (if any)",flow_4_desc:"Rapid customs inspection response",
+            flow_5_title:"Release",flow_5_desc:"Customs cargo release",
+            flow_6_title:"Pickup / Delivery",flow_6_desc:"Arranged delivery to warehouse",
+            cap_tag:"OUR CAPABILITIES",cap_title:"Our Customs Clearance Capabilities",
+            cap_col_1_title:"Service Types",
+            cap_col_1_item_1:"General Trade Clearance",cap_col_1_item_2:"Cross-Border E-Commerce Clearance",cap_col_1_item_3:"ATA Carnet Clearance",cap_col_1_item_4:"Temporary Import/Export Clearance",cap_col_1_item_5:"Personal Effects Clearance",cap_col_1_item_6:"Return &amp; Repair Clearance",
+            cap_col_2_title:"Core Strengths",
+            cap_col_2_item_1:"Own clearance qualification, fully compliant",cap_col_2_item_2:"Pre-declaration + smart risk control, fast clearance",cap_col_2_item_3:"Direct link with customs systems, high responsiveness",cap_col_2_item_4:"Expert team, 7x24h service",cap_col_2_item_5:"Global network coverage, extensive experience",cap_col_2_item_6:"Low inspection rate, high clearance success rate",
+            cap_col_3_title:"Supported Ports",
+            cap_col_3_item_1:"Shenzhen Yantian",cap_col_3_item_2:"Guangzhou Nansha",cap_col_3_item_3:"Shanghai Pudong",cap_col_3_item_4:"Ningbo Zhoushan",cap_col_3_item_5:"Qingdao Port",cap_col_3_item_6:"More Ports...",
+            cap_col_4_title:"Overseas Export Ports",
+            cap_col_4_item_1:"Japan",cap_col_4_item_2:"United States",cap_col_4_item_3:"Canada",cap_col_4_item_4:"Brazil",cap_col_4_item_5:"Thailand",cap_col_4_item_6:"Singapore",cap_col_4_item_7:"South Korea",cap_col_4_item_8:"More Ports...",
+            network_tag:"GLOBAL COVERAGE",network_title:"Global Customs Clearance Network",
+            tab_asia:"Asia",tab_namerica:"North America",tab_europe:"Europe",tab_samerica:"South America",tab_oceania:"Oceania",tab_africa:"Africa",
+            country_more:"More Regions...",
+            cert_tag:"CERTIFICATIONS",cert_title:"Qualifications &amp; Certifications",
+            cert_1:"AEO Advanced Certification",cert_2:"Customs Broker Registration",cert_3:"Customs Filing Certificate",cert_4:"Paperless Clearance Certification",cert_5:"Cross-Border E-Commerce Certification",cert_6:"ISO 9001 Quality Management",
+            cta_title:"Need Professional Customs Clearance?",cta_desc:"Our team is ready to provide you with efficient, compliant clearance solutions",cta_btn:"Consult Now",
+            footer_copyright:"&copy;  SAKADA (Shenzhen) International Limited. All rights reserved."
+        },
+        zh: {
+            nav_home:"首页",nav_self:"自营海外仓",nav_customs:"自有清关",nav_ocean:"国际海运",nav_air:"航空货运专线",nav_dropship:"一件代发履约",nav_supplychain:"供应链集成方案",nav_about:"关于我们",nav_contact:"联系我们",
+            hero_tag:"专业清关服务",hero_title:"自有清关",hero_subtitle:"专业高效 · 合规安全 · 全球通关",
+            hero_desc:"SAKADA拥有专业的清关团队和自营清关资质，覆盖全球主要贸易国家和地区，为客户提供高效、合规、稳定的清关服务，助力货物快速通关，降低贸易风险。",
+            feat_1:"自有资质",feat_2:"专业团队",feat_3:"高效通关",feat_4:"合规保障",
+            btn_quote:"获取清关方案",hero_illustration_label:"清关流程插画占位区<br>（机场 / 港口 / 海关仓库场景）",
+            stat_1_label:"月均清关单量",stat_2_label:"通关成功率",stat_3_label:"平均通关时效",stat_4_label:"查验率（行业平均1.5%）",
+            flow_tag:"清关流程",flow_title:"清关服务流程",
+            flow_1_title:"资料准备",flow_1_desc:"单证审核，资料预审",
+            flow_2_title:"申报",flow_2_desc:"电子申报，快速提交",
+            flow_3_title:"税费确认",flow_3_desc:"税费计算，费用确认",
+            flow_4_title:"查验（如需）",flow_4_desc:"海关查验，快速响应",
+            flow_5_title:"放行",flow_5_desc:"海关放行，货物通关",
+            flow_6_title:"提货/派送",flow_6_desc:"提货安排，配送到仓",
+            cap_tag:"清关能力",cap_title:"我们的清关能力",
+            cap_col_1_title:"服务类型",
+            cap_col_1_item_1:"一般贸易清关",cap_col_1_item_2:"跨境电商清关",cap_col_1_item_3:"ATA单证册清关",cap_col_1_item_4:"暂时进出口清关",cap_col_1_item_5:"私人物品清关",cap_col_1_item_6:"退运返修清关",
+            cap_col_2_title:"核心优势",
+            cap_col_2_item_1:"自有清关资质，合规可靠",cap_col_2_item_2:"预申报+智能风控，快速通关",cap_col_2_item_3:"与海关系统直连，响应高效",cap_col_2_item_4:"专业团队7×24小时服务",cap_col_2_item_5:"全球网络覆盖，经验丰富",cap_col_2_item_6:"查验率低，通关成功率高",
+            cap_col_3_title:"国内口岸",
+            cap_col_3_item_1:"深圳盐田",cap_col_3_item_2:"广州南沙",cap_col_3_item_3:"上海浦东",cap_col_3_item_4:"宁波舟山",cap_col_3_item_5:"青岛港",cap_col_3_item_6:"更多口岸...",
+            cap_col_4_title:"国外口岸",
+            cap_col_4_item_1:"日本",cap_col_4_item_2:"美国",cap_col_4_item_3:"加拿大",cap_col_4_item_4:"巴西",cap_col_4_item_5:"泰国",cap_col_4_item_6:"新加坡",cap_col_4_item_7:"韩国",cap_col_4_item_8:"更多口岸...",
+            network_tag:"全球覆盖",network_title:"全球清关网络",
+            tab_asia:"亚洲",tab_namerica:"北美",tab_europe:"欧洲",tab_samerica:"南美",tab_oceania:"大洋洲",tab_africa:"非洲",
+            country_more:"更多地区...",
+            cert_tag:"资质认证",cert_title:"资质与认证",
+            cert_1:"AEO高级认证企业",cert_2:"报关单位注册登记证书",cert_3:"海关备案证明",cert_4:"无纸化通关认证",cert_5:"跨境电商企业认证",cert_6:"ISO 9001质量管理体系",
+            cta_title:"需要专业的清关服务？",cta_desc:"我们的团队随时为您提供高效、合规的清关解决方案",cta_btn:"立即咨询",
+            footer_copyright:"&copy;  坂瑱（深圳）电商物流有限公司 版权所有"
+        },
+        ja: {
+            nav_home:"ホーム",nav_self:"自営海外倉庫",nav_customs:"自社通関",nav_ocean:"国際海上輸送",nav_air:"航空貨物専用便",nav_dropship:"ワンストップ配送代行",nav_supplychain:"サプライチェーン統合",nav_about:"会社概要",nav_contact:"お問い合わせ",
+            hero_tag:"通関ブローカーサービス",hero_title:"自社通関",hero_subtitle:"専門的で高効率 · 完全コンプライアンス · グローバル通関",
+            hero_desc:"SAKADAは専門通関チームと自社通関資格を有し、世界の主要貿易国・地域をカバーし、効率的で合規、安定した通関サービスを提供し、貨物の迅速な通関と貿易リスクの低減を実現します。",
+            feat_1:"自社資格",feat_2:"専門チーム",feat_3:"迅速通関",feat_4:"コンプライアンス保証",
+            btn_quote:"通関プランを取得",hero_illustration_label:"通関プロセスイラストプレースホルダー<br>（空港・港湾・保税倉庫シーン）",
+            stat_1_label:"月間平均通関件数",stat_2_label:"通関成功率",stat_3_label:"平均通関所要時間",stat_4_label:"検査率（業界平均1.5%）",
+            flow_tag:"通関フロー",flow_title:"通関サービスの流れ",
+            flow_1_title:"書類準備",flow_1_desc:"書類審査・事前チェック",
+            flow_2_title:"申告",flow_2_desc:"電子申告、迅速提出",
+            flow_3_title:"税額確認",flow_3_desc:"税額計算・確認",
+            flow_4_title:"検査（該当時）",flow_4_desc:"税関検査への迅速対応",
+            flow_5_title:"許可",flow_5_desc:"税関許可、貨物通関",
+            flow_6_title:"引取り/配送",flow_6_desc:"引取り手配、倉庫まで配送",
+            cap_tag:"通関対応力",cap_title:"当社の通関対応力",cap_photo_label:"税関職員 / チーム写真プレースホルダー",
+            cap_col_1_title:"サービス種類",
+            cap_col_1_item_1:"一般貿易通関",cap_col_1_item_2:"越境ECサイト通関",cap_col_1_item_3:"ATAカルネ通関",cap_col_1_item_4:"一時輸出入通関",cap_col_1_item_5:"個人用品通関",cap_col_1_item_6:"返送・修理通関",
+            cap_col_2_title:"コアの強み",
+            cap_col_2_item_1:"自社通関資格、合規で信頼性が高い",cap_col_2_item_2:"事前申告+スマートリスク管理で迅速通関",cap_col_2_item_3:"税関システムと直結、高い応答性",cap_col_2_item_4:"専門チームによる24時間365日対応",cap_col_2_item_5:"グローバルネットワーク、豊富な経験",cap_col_2_item_6:"低い検査率、高い通関成功率",
+            cap_col_3_title:"対応港湾",
+            cap_col_3_item_1:"深セン塩田港",cap_col_3_item_2:"広州南沙港",cap_col_3_item_3:"上海浦東港",cap_col_3_item_4:"寧波舟山港",cap_col_3_item_5:"青島港",cap_col_3_item_6:"その他の港湾...",
+            cap_col_4_title:"海外輸出港",
+            cap_col_4_item_1:"日本",cap_col_4_item_2:"アメリカ",cap_col_4_item_3:"カナダ",cap_col_4_item_4:"ブラジル",cap_col_4_item_5:"タイ",cap_col_4_item_6:"シンガポール",cap_col_4_item_7:"韓国",cap_col_4_item_8:"その他の港湾...",
+            network_tag:"グローバル対応",network_title:"グローバル通関ネットワーク",
+            tab_asia:"アジア",tab_namerica:"北米",tab_europe:"ヨーロッパ",tab_samerica:"南米",tab_oceania:"オセアニア",tab_africa:"アフリカ",
+            country_more:"その他の地域...",
+            cert_tag:"資格認証",cert_title:"資格と認証",
+            cert_1:"AEO上級認証企業",cert_2:"通関業者登録証明書",cert_3:"税関登録証明",cert_4:"ペーパーレス通関認証",cert_5:"越境EC企業認証",cert_6:"ISO 9001品質管理システム",
+            cta_title:"専門的な通関サービスが必要ですか？",cta_desc:"当社チームが効率的で合規性の高い通関ソリューションをご提供します",cta_btn:"今すぐ相談する",
+            footer_copyright:"&copy;  坂瑱（深圳）国際物流有限公司　著作権所有."
+        }
+    };
+
+    let currentLang = 'zh';
+    function switchLang(lang) {
+        currentLang = lang;
+        document.querySelectorAll('.lang-btn').forEach(function(btn){ btn.classList.remove('active'); });
+        document.querySelector(`[onclick="switchLang('${lang}')"]`).classList.add('active');
+        const data = i18nData[lang];
+        document.querySelectorAll('[data-i18n]').forEach(function(el){
+            const key = el.getAttribute('data-i18n');
+            if (data[key] !== undefined) el.innerHTML = data[key];
+        });
+        document.documentElement.lang = lang === 'ja' ? 'ja' : (lang === 'en' ? 'en' : 'zh');
+        renderRegion(currentRegionKey);
+    }
+
+   
+    let currentRegionKey = 'asia';
+    function switchRegion(key) {
+        currentRegionKey = key;
+        document.querySelectorAll('.region-tab').forEach(function(t){ t.classList.remove('active'); });
+        document.querySelector('.region-tab[data-region="'+key+'"]').classList.add('active');
+        renderRegion(key);
+    }
+    function renderRegion(key) {
+        const list = COUNTRY_DATA[currentLang][key] || [];
+        const moreText = i18nData[currentLang].country_more;
+        let html = list.map(function(c){
+            return '<li><span class="fi fi-'+c.flag+' country-flag"></span><span>'+c.text+'</span></li>';
+        }).join('');
+        html += '<li class="text-slate-400">'+moreText+'</li>';
+        document.getElementById('country-list').innerHTML = html;
+    }
+    switchLang('zh');
+
+    // ===== 资质证书 - 横向滚动 =====
+    function scrollCerts(dir) {
+        document.getElementById('cert-scroll').scrollBy({ left: dir * 200, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>

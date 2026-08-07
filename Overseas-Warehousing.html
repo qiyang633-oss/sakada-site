@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>自营海外仓 | SAKADA</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+    body { font-family:'Inter',sans-serif; color:#1A1A1A; background:#ffffff; overflow-x:hidden; }
+    .mono { font-family:'JetBrains Mono',monospace; }
+
+    /* ===== Topbar ===== */
+    .topbar { position:fixed; top:0; left:0; width:100%; z-index:50; background:rgba(255,255,255,0.92); backdrop-filter:blur(12px); border-bottom:1px solid #e8edf5; }
+    .nav-link { font-size:13px; font-weight:500; color:#5b6b85; transition:color .2s; white-space:nowrap; }
+    .nav-link:hover, .nav-link.active { color:#2575F0; }
+    .nav-cta { background:linear-gradient(135deg,#2575F0,#6BA3FF); color:#fff; font-size:13px; font-weight:700; padding:10px 22px; border-radius:6px; transition:all .25s; }
+    .nav-cta:hover { transform:translateY(-2px); box-shadow:0 10px 20px -6px rgba(37,117,240,.5); }
+
+    /* ===== Hero ===== */
+    .wh-hero {
+    padding:200px 0 100px;
+    background-image:url('./自营海外仓背景图.png');
+    background-size:cover;
+    background-position:center;
+   }
+    .eyebrow-tag { display:inline-flex; align-items:center; gap:8px; background:rgba(37,117,240,0.08); border:1px solid rgba(37,117,240,0.25); color:#2575F0; font-size:12px; font-weight:700; letter-spacing:1px; padding:6px 14px; border-radius:999px; }
+    .eyebrow-tag::before { content:''; width:6px; height:6px; border-radius:50%; background:#2575F0; }
+    .feature-pill i { width:34px; height:34px; display:flex; align-items:center; justify-content:center; border-radius:8px; background:linear-gradient(135deg,#2575F0,#6BA3FF); color:#fff; font-size:14px; }
+    .illustration-placeholder { background:linear-gradient(135deg,#dde4f0,#c8d4ea); border-radius:16px; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#7d8bab; gap:10px; min-height:360px; }
+    .illustration-placeholder i { font-size:42px; }
+
+    /* ===== Stats ===== */
+    .stats-bar { background:#fff; border:1px solid #e8edf5; border-radius:14px; box-shadow:0 20px 45px -20px rgba(37,90,180,0.25); margin-top:-64px; position:relative; z-index:10; }
+    .stat-icon { width:42px; height:42px; border-radius:10px; background:rgba(37,117,240,0.08); color:#2575F0; display:flex; align-items:center; justify-content:center; font-size:17px; }
+
+    /* ===== Services ===== */
+    .wh-service-card { background:#fff; border:1px solid #e8edf5; border-radius:12px; padding:26px; transition:all .35s cubic-bezier(.16,1,.3,1); }
+    .wh-service-card:hover { transform:translateY(-6px); border-color:#c7d8ff; box-shadow:0 20px 35px -15px rgba(37,117,240,.35); }
+    .wh-service-icon { width:52px; height:52px; border-radius:10px; background:linear-gradient(135deg,#2575F0,#6BA3FF); color:#fff; display:flex; align-items:center; justify-content:center; font-size:20px; margin-bottom:16px; }
+
+    /* ===== Global network tabs ===== */
+    .region-tab { font-size:14px; font-weight:600; color:#8a97ad; padding:10px 4px; border-bottom:2px solid transparent; cursor:pointer; transition:all .2s; white-space:nowrap; }
+    .region-tab.active { color:#2575F0; border-color:#2575F0; }
+    .region-info-card { background:#fff; border:1px solid #e8edf5; border-radius:12px; padding:28px; }
+    .region-info-card li { display:flex; align-items:center; gap:10px; font-size:14px; color:#334155; padding:8px 0; border-bottom:1px dashed #edf1f8; }
+    .region-info-card li:last-of-type { border-bottom:none; }
+    .map-placeholder { position:relative; background-image:url('./世界平面.png'); background-size:cover; background-position:center; border-radius:14px; min-height:360px; overflow:hidden; }
+    .map-pin { position:absolute; width:12px; height:12px; border-radius:50%; background:#FF1493; box-shadow:0 0 0 6px rgba(255,20,147,0.18); }
+    .map-pin.active { background:#2575F0; box-shadow:0 0 0 6px rgba(37,117,240,0.22); }
+
+    /* ===== Gallery ===== */
+    .gallery-scroll { display:flex; gap:16px; overflow-x:auto; scroll-behavior:smooth; scrollbar-width:none; }
+    .gallery-scroll::-webkit-scrollbar { display:none; }
+    .gallery-thumb { position:relative; flex:0 0 260px; height:190px; border-radius:10px; overflow:hidden; background:linear-gradient(135deg,#dde4f0,#c8d4ea); display:flex; align-items:center; justify-content:center; color:#7d8bab; }
+    .gallery-thumb span { position:absolute; bottom:0; left:0; right:0; background:rgba(10,20,40,0.55); color:#fff; font-size:13px; padding:8px 12px; }
+    .scroll-arrow { width:40px; height:40px; border-radius:50%; background:#fff; border:1px solid #e8edf5; box-shadow:0 6px 16px -6px rgba(0,0,0,.15); display:flex; align-items:center; justify-content:center; cursor:pointer; color:#2575F0; transition:all .2s; flex-shrink:0; }
+    .scroll-arrow:hover { background:#2575F0; color:#fff; }
+
+    /* ===== WMS ===== */
+    .wms-feature i { width:36px; height:36px; border-radius:8px; background:rgba(37,117,240,0.08); color:#2575F0; display:flex; align-items:center; justify-content:center; font-size:15px; }
+
+    /* ===== CTA ===== */
+    .cta-band { background:linear-gradient(135deg,#2575F0,#6BA3FF); border-radius:16px; }
+
+    /* ===== Footer ===== */
+    footer { background:linear-gradient(135deg,#2575F0,#6BA3FF); }
+
+    .lang-btn { font-size:12px; font-weight:700; color:#8a97ad; padding:4px 8px; border-radius:4px; cursor:pointer; transition:all .2s; }
+    .lang-btn.active { color:#2575F0; background:rgba(37,117,240,0.08); }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ============ TOPBAR ============ -->
+<header class="topbar">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 h-[72px] flex items-center justify-between">
+        <a href="./index.html" class="flex items-center gap-3 text-xl font-extrabold text-slate-900 mr-8">
+            SAKADA
+        
+        </a>
+         <nav class="hidden lg:flex items-center gap-8">
+         <a href="./index.html" 
+          class="nav-link"
+           data-i18n="nav_home">
+         首页
+         </a>
+
+         <a href="./Overseas-Warehousing.html" 
+           class="nav-link active"
+           data-i18n="nav_self">
+          自营海外仓
+         </a>
+
+         <a href="./Customs-Clearance.html" 
+           class="nav-link"
+           data-i18n="nav_customs">
+          自有清关
+         </a>
+
+         <a href="./Sea-Freight.html" 
+           class="nav-link"
+           data-i18n="nav_ocean">
+          国际海运
+         </a>
+
+         <a href="./Air-Freight.html" 
+           class="nav-link"
+           data-i18n="nav_air">
+          航空货运专线
+         </a>
+
+         <a href="./Dropshipping-Fulfillment.html" 
+           class="nav-link"
+            data-i18n="nav_dropship">
+           一件代发履约
+         </a>
+
+         <a href="./Supply-Chain-Management.html" 
+          class="nav-link"
+          data-i18n="nav_supplychain">
+           供应链集成方案
+         </a>
+
+         <a href="./about.html" 
+           class="nav-link"
+            data-i18n="nav_about">
+           关于我们
+         </a>
+     </nav>
+        <div class="flex items-center gap-4 ml-6">
+            <div class="flex items-center gap-1 text-xs">
+                <span class="lang-btn" onclick="switchLang('en')">EN</span>
+                <span class="text-gray-300">|</span>
+                <span class="lang-btn active" onclick="switchLang('zh')">CN</span>
+                <span class="text-gray-300">|</span>
+                <span class="lang-btn" onclick="switchLang('ja')">JP</span>
+            </div>
+            <a href="./index.html#contact" class="nav-cta whitespace-nowrap"
+               data-i18n="nav_contact">
+               联系我们
+             </a>
+        </div>
+    </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="wh-hero">
+    <div class="max-w-3xl px-6 lg:px-16">
+        <div>
+            <span class="eyebrow-tag mb-5" data-i18n="hero_tag">自营仓储服务</span>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mt-5 mb-3" data-i18n="hero_title">自营海外仓</h1>
+            <p class="text-lg font-semibold text-slate-500 mb-5" data-i18n="hero_subtitle">全球布局 · 智能管理 · 高效履约</p>
+            <p class="text-sm text-slate-500 leading-relaxed max-w-lg mb-8" data-i18n="hero_description">
+                SAKADA 在全球核心市场布局自营仓库，通过智能 WMS 系统，实现高效、精准、透明的仓储管理，为客户提供稳定可靠的一站式仓储配送服务。
+            </p>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-5 mb-9">
+                <div class="feature-pill flex flex-col items-start gap-2"><i class="fa-solid fa-cube"></i><span class="text-xs font-semibold text-slate-700" data-i18n="feature_1">智能仓储</span></div>
+                <div class="feature-pill flex flex-col items-start gap-2"><i class="fa-solid fa-bolt"></i><span class="text-xs font-semibold text-slate-700" data-i18n="feature_2">高效履约</span></div>
+                <div class="feature-pill flex flex-col items-start gap-2"><i class="fa-solid fa-eye"></i><span class="text-xs font-semibold text-slate-700" data-i18n="feature_3">库存透明</span></div>
+                <div class="feature-pill flex flex-col items-start gap-2"><i class="fa-solid fa-earth-asia"></i><span class="text-xs font-semibold text-slate-700" data-i18n="feature_4">本地服务</span></div>
+            </div>
+            <a href="./index.html#contact" 
+                class="inline-flex items-center gap-2 bg-gradient-to-br from-[#2575F0] to-[#6BA3FF] text-white text-sm font-bold px-7 py-3.5 rounded-md hover:opacity-90 transition-all">
+            <span data-i18n="btn_quote">
+                获取报价
+             </span>
+               <i class="fa-solid fa-arrow-right"></i>
+            </a>
+    </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<div class="max-w-6xl mx-auto px-6 lg:px-10">
+    <div class="stats-bar grid grid-cols-2 md:grid-cols-4 gap-6 px-8 py-8">
+        <div class="flex items-center gap-4"><div class="stat-icon"><i class="fa-solid fa-warehouse"></i></div><div><div class="text-2xl font-extrabold text-slate-900 mono">1300,000+</div><div class="text-xs text-slate-500" data-i18n="stat_1_label">m² 仓库总面积</div></div></div>
+        <div class="flex items-center gap-4"><div class="stat-icon"><i class="fa-solid fa-clipboard-list"></i></div><div><div class="text-2xl font-extrabold text-slate-900 mono">500,000+</div><div class="text-xs text-slate-500" data-i18n="stat_2_label">日处理订单</div></div></div>
+        <div class="flex items-center gap-4"><div class="stat-icon"><i class="fa-solid fa-award"></i></div><div><div class="text-2xl font-extrabold text-slate-900 mono">99.6%</div><div class="text-xs text-slate-500" data-i18n="stat_3_label">库存准确率</div></div></div>
+        <div class="flex items-center gap-4"><div class="stat-icon"><i class="fa-solid fa-clock"></i></div><div><div class="text-2xl font-extrabold text-slate-900 mono">24h</div><div class="text-xs text-slate-500" data-i18n="stat_4_label">订单出库时效</div></div></div>
+    </div>
+</div>
+
+<!-- ============ SERVICES ============ -->
+<section class="py-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+            <span class="eyebrow-tag mb-4" data-i18n="services_tag">SERVICE MATRIX</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mt-4" data-i18n="services_title">我们的仓储服务</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="wh-service-card"><div class="wh-service-icon"><i class="fa-solid fa-truck-fast"></i></div><h3 class="font-bold text-slate-900 mb-2" data-i18n="service_1">一件代发</h3><p class="text-sm text-slate-500 leading-relaxed" data-i18n="service_1_desc">支持多平台订单自动同步，快速分拣打包发货。</p></div>
+            <div class="wh-service-card"><div class="wh-service-icon"><i class="fa-solid fa-dolly"></i></div><h3 class="font-bold text-slate-900 mb-2" data-i18n="service_2">FBA中转</h3><p class="text-sm text-slate-500 leading-relaxed" data-i18n="service_2_desc">提供FBA退货换标、贴标、重新包装等增值服务。</p></div>
+            <div class="wh-service-card"><div class="wh-service-icon"><i class="fa-solid fa-rotate-left"></i></div><h3 class="font-bold text-slate-900 mb-2" data-i18n="service_3">退货换标</h3><p class="text-sm text-slate-500 leading-relaxed" data-i18n="service_3_desc">专业退货处理、检测、换标、重新上架一站式服务。</p></div>
+            <div class="wh-service-card"><div class="wh-service-icon"><i class="fa-solid fa-tags"></i></div><h3 class="font-bold text-slate-900 mb-2" data-i18n="service_4">贴标换标</h3><p class="text-sm text-slate-500 leading-relaxed" data-i18n="service_4_desc">支持产品标签更换，条码重贴，符合平台要求。</p></div>
+            <div class="wh-service-card"><div class="wh-service-icon"><i class="fa-solid fa-boxes-stacked"></i></div><h3 class="font-bold text-slate-900 mb-2" data-i18n="service_5">库存管理</h3><p class="text-sm text-slate-500 leading-relaxed" data-i18n="service_5_desc">实时库存监控，精准库存管理，降低缺货风险。</p></div>
+            <div class="wh-service-card"><div class="wh-service-icon"><i class="fa-solid fa-gears"></i></div><h3 class="font-bold text-slate-900 mb-2" data-i18n="service_6">增值服务</h3><p class="text-sm text-slate-500 leading-relaxed" data-i18n="service_6_desc">定制化增值服务，满足客户多样化业务需求。</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ GLOBAL NETWORK ============ -->
+<section class="py-24 bg-[#f7f9fd]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+            <span class="eyebrow-tag mb-4" data-i18n="global_network_tag">GLOBAL FOOTPRINT</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mt-4" data-i18n="global_network_title">全球仓库布局</h2>
+        </div>
+
+        <div class="flex justify-center gap-8 mb-10 border-b border-gray-200" id="region-tabs">
+            <div class="region-tab active" data-region="us"data-i18n="tab_us" onclick="switchRegion('us')">美国仓</div>
+            <div class="region-tab" data-region="ca"data-i18n="tab_ca" onclick="switchRegion('ca')">加拿大仓</div>
+            <div class="region-tab" data-region="jp" data-i18n="tab_jp" onclick="switchRegion('jp')">日本仓</div>
+            <div class="region-tab" data-region="br" data-i18n="tab_br" onclick="switchRegion('br')">巴西仓</div>
+            <div class="region-tab" data-region="th" data-i18n="tab_th" onclick="switchRegion('th')">泰国仓</div>
+        </div>
+
+        <div class="grid lg:grid-cols-[320px_1fr] gap-6">
+            <div class="region-info-card">
+                <div class="text-lg font-bold text-slate-900 mb-4" id="region-name">美国仓</div>
+                <ul id="region-list">
+                    <li><i class="fa-solid fa-location-dot text-pink-500"></i> 洛杉矶仓 (Los Angeles)</li>
+                    <li><i class="fa-solid fa-location-dot text-pink-500"></i> 纽约仓 (New York)</li>
+                    <li><i class="fa-solid fa-location-dot text-pink-500"></i> 新泽西仓 (New Jersey)</li>
+                    <li><i class="fa-solid fa-location-dot text-pink-500"></i> 芝加哥仓 (Chicago)</li>
+                    <li><i class="fa-solid fa-location-dot text-pink-500"></i> 奥克兰仓 (Oakland)</li>
+                    <li><i class="fa-solid fa-location-dot text-pink-500"></i> 亚特兰大仓 (Atlanta)</li>
+                </ul>
+                <div class="grid grid-cols-2 gap-4 mt-5 pt-5 border-t border-gray-100">
+                    <div><div class="text-xs text-slate-400 mb-1" data-i18n="region_lbl_area">总面积</div><div class="font-bold text-slate-900 mono" id="region-area">850,000+ m²</div></div>
+                    <div><div class="text-xs text-slate-400 mb-1" data-i18n="region_lbl_orders">日处理订单</div><div class="font-bold text-slate-900 mono" id="region-orders">200,000+</div></div>
+                </div>
+            </div>
+            <!-- 这里是示意性的分布图占位区，不是精确地理地图；有真实地图素材后可整体替换为图片 -->
+            <div class="map-placeholder">
+             <div class="map-pin active" style="top:36%;left:17%;" title="美国"></div>
+             <div class="map-pin" style="top:19%;left:17%;" title="加拿大"></div>
+             <div class="map-pin" style="top:34%;left:81%;" title="日本"></div>
+             <div class="map-pin" style="top:65%;left:31%;" title="巴西"></div>
+             <div class="map-pin" style="top:52%;left:72%;" title="泰国"></div>
+           </div>
+        </div>
+    </div>
+    </section>
+<!-- ============ GALLERY ============ -->
+<section class="py-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <span class="eyebrow-tag mb-4" data-i18n="gallery_tag">ON-SITE GALLERY</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mt-4" data-i18n="gallery_title">部分仓库实景展示</h2>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="scroll-arrow" onclick="scrollGallery(-1)"><i class="fa-solid fa-chevron-left"></i></div>
+            <div class="gallery-scroll" id="gallery-scroll">
+                <!-- 有真实照片后，把每个 .gallery-thumb 里的 <i> 图标删掉，改成 style="background-image:url('./你的图片.jpg');background-size:cover;background-position:center;" -->
+                <div class="gallery-thumb" style="background-image:url('./仓库.png');background-size:cover;background-position:center;" ></div>
+                <div class="gallery-thumb" style="background-image:url('./仓库1.jpg');background-size:cover;background-position:center;" ></div>
+                <div class="gallery-thumb" style="background-image:url('./仓库2.png');background-size:cover;background-position:center;" ></div>
+                <div class="gallery-thumb" style="background-image:url('./泰国2.png');background-size:cover;background-position:center;" ></div>
+                <div class="gallery-thumb" style="background-image:url('./仓库3.png');background-size:cover;background-position:center;" ></div>
+            </div>
+            <div class="scroll-arrow" onclick="scrollGallery(1)"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ WMS SYSTEM ============ -->
+<section class="py-24 bg-[#f7f9fd]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-14 items-center">
+        <img src="./仓储管理系统.png" class="rounded-2xl aspect-[4/3] object-cover order-2 lg:order-1" alt="WMS 系统界面">
+        <div class="order-1 lg:order-2">
+            <span class="eyebrow-tag mb-4" data-i18n="wms_tag">SMART SYSTEM</span>
+            <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight mt-4 mb-2" data-i18n="wms_title">智能系统支持</h2>
+            <p class="text-base font-semibold text-slate-600 mb-3" data-i18n="wms_description">SAKADA WMS 智能仓储管理系统</p>
+            <p class="text-sm text-slate-500 leading-relaxed mb-8" data-i18n="wms_content">自主研发的WMS系统，实现订单、库存、仓储、物流全流程数字化管理。</p>
+            <div class="grid grid-cols-2 gap-6">
+                <div class="wms-feature flex items-start gap-3"><i class="fa-solid fa-arrows-rotate"></i><div><div class="text-sm font-bold text-slate-900"  data-i18n="wms_feat_1_title">订单自动同步</div><div class="text-xs text-slate-500 mt-1"  data-i18n="wms_feat_1_desc">多平台订单自动对接</div></div></div>
+                <div class="wms-feature flex items-start gap-3"><i class="fa-solid fa-chart-line"></i><div><div class="text-sm font-bold text-slate-900"  data-i18n="wms_feat_2_title">库存实时监控</div><div class="text-xs text-slate-500 mt-1" data-i18n="wms_feat_2_desc">精准库存管理</div></div></div>
+                <div class="wms-feature flex items-start gap-3"><i class="fa-solid fa-scissors"></i><div><div class="text-sm font-bold text-slate-900"  data-i18n="wms_feat_3_title">智能分拣策略</div><div class="text-xs text-slate-500 mt-1"  data-i18n="wms_feat_3_desc">提高分拣效率</div></div></div>
+                <div class="wms-feature flex items-start gap-3"><i class="fa-solid fa-chart-pie"></i><div><div class="text-sm font-bold text-slate-900" data-i18n="wms_feat_4_title">数据报表分析</div><div class="text-xs text-slate-500 mt-1"  data-i18n="wms_feat_4_desc">多维度数据分析</div></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="py-20">
+    <div class="max-w-6xl mx-auto px-6 lg:px-10">
+        <div class="cta-band flex flex-col md:flex-row items-center justify-between gap-6 px-10 py-10 text-white">
+            <div>
+                <h3 class="text-2xl font-extrabold mb-1"data-i18n="cta_title">准备好体验我们的仓储服务了吗？</h3>
+                <p class="text-sm text-white/80" data-i18n="cta_description">专业团队为您提供定制化的仓储解决方案</p>
+            </div>
+            <a href="./index.html#contact" class="inline-flex items-center gap-2 bg-white text-[#2575F0] text-sm font-bold px-7 py-3.5 rounded-md hover:opacity-90 transition-all shrink-0">
+                <span data-i18n="cta_btn">立即咨询</span> <i class="fa-solid fa-arrow-right text-xs" data-i18n="cta_btn_icon"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="text-white/80 py-10 text-sm">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="text-white font-extrabold">SAKADA<span class="text-pink-200">.</span></div>
+        <p data-i18n="footer_copyright">&copy; © 坂瑱（深圳）电商物流有限公司 版权所有.</p>
+    </div>
+</footer>
+
+<script>
+
+     let currentLang = 'zh';
+     let currentRegionKey = 'us';
+    // ===== 仓库实景 - 横向滚动 =====
+    function scrollGallery(dir) {
+        document.getElementById('gallery-scroll').scrollBy({ left: dir * 280, behavior: 'smooth' });
+    }
+     /* ==========================================================
+       I18N / LANGUAGE SWITCHER
+       ========================================================== */
+    const i18nData = {
+    en: {
+        nav_home:"Home",nav_self:"Self-Operated Warehousing",nav_customs:"Customs Clearance",nav_ocean:"Sea Freight",nav_air:"Air Freight",nav_dropship:"Dropshipping",nav_supplychain:"Supply Chain",nav_about:"About Us",nav_contact:"Contact Us",
+        hero_tag:"Self-Operated Warehousing Services",hero_title:"Self-Operated Overseas Warehouses",hero_subtitle:"Global Footprint · Smart Management · Efficient Fulfillment",
+        hero_description:"SAKADA operates warehouses across core global markets, using a smart WMS system to deliver efficient, precise, and transparent warehousing management with a stable one-stop fulfillment service.",
+        feature_1:"Smart Storage",feature_2:"Efficient Fulfillment",feature_3:"Inventory Transparency",feature_4:"Local Service",
+        btn_quote:"Get a Quote",hero_illustration_label:"Warehouse Photo / Illustration Placeholder",
+        stat_1_label:"m² Total Warehouse Area",stat_2_label:"Orders Processed Daily",stat_3_label:"Inventory Accuracy",stat_4_label:"Order Dispatch Time",
+        services_tag:"SERVICE MATRIX",services_title:"Our Warehousing Services",
+        service_1:"Dropshipping",service_1_desc:"Automatic order sync across platforms with fast sorting and packing.",
+        service_2:"FBA Transit",service_2_desc:"FBA returns relabeling, repackaging, and other value-added services.",
+        service_3:"Returns Handling",service_3_desc:"Professional returns inspection, relabeling, and re-listing service.",
+        service_4:"Labeling",service_4_desc:"Product relabeling and barcode replacement to meet platform rules.",
+        service_5:"Inventory Management",service_5_desc:"Real-time inventory monitoring to reduce stockout risk.",
+        service_6:"Value-Added Services",service_6_desc:"Customized value-added services for diverse business needs.",
+        global_network_tag:"GLOBAL FOOTPRINT",global_network_title:"Global Warehouse Network",
+        tab_us:"United States",tab_ca:"Canada",tab_jp:"Japan",tab_br:"Brazil",tab_th:"Thailand",
+        region_lbl_area:"Total Area",region_lbl_orders:"Daily Orders",
+        gallery_tag:"ON-SITE GALLERY",gallery_title:"Warehouse Gallery",
+        wms_illustration_label:"WMS System Interface Illustration Placeholder",
+        wms_tag:"SMART SYSTEM",wms_title:"Smart System Support",wms_description:"SAKADA WMS Smart Warehouse Management System",
+        wms_content:"Our self-developed WMS system enables full digital management of orders, inventory, warehousing, and logistics.",
+        wms_feat_1_title:"Auto Order Sync",wms_feat_1_desc:"Automatic connection across platforms",
+        wms_feat_2_title:"Real-Time Inventory",wms_feat_2_desc:"Precise inventory management",
+        wms_feat_3_title:"Smart Sorting Strategy",wms_feat_3_desc:"Improved sorting efficiency",
+        wms_feat_4_title:"Data Reporting",wms_feat_4_desc:"Multi-dimensional data analysis",
+        cta_title:"Ready to Experience Our Warehousing Services?",cta_desc:"Our professional team offers customized warehousing solutions",cta_btn:"Get in Touch",
+        footer_copyright:"&copy; SAKADA (Shenzhen) International Limited. All rights reserved."
+    },
+    zh: {
+        nav_home:"首页",nav_self:"自营海外仓",nav_customs:"自有清关",nav_ocean:"国际海运",nav_air:"航空货运专线",nav_dropship:"一件代发履约",nav_supplychain:"供应链集成方案",nav_about:"关于我们",nav_contact:"联系我们",
+        hero_tag:"自营仓储服务",hero_title:"自营海外仓",hero_subtitle:"全球布局 · 智能管理 · 高效履约",
+        hero_description:"SAKADA 在全球核心市场布局自营仓库，通过智能 WMS 系统，实现高效、精准、透明的仓储管理，为客户提供稳定可靠的一站式仓储配送服务。",
+        feature_1:"智能仓储",feature_2:"高效履约",feature_3:"库存透明",feature_4:"本地服务",
+        btn_quote:"获取报价",hero_illustration_label:"仓库实景 / 插画占位区",
+        stat_1_label:"m² 仓库总面积",stat_2_label:"日处理订单",stat_3_label:"库存准确率",stat_4_label:"订单出库时效",
+        services_tag:"服务矩阵",services_title:"我们的仓储服务",
+        service_1:"一件代发",service_1_desc:"支持多平台订单自动同步，快速分拣打包发货。",
+        service_2:"FBA中转",service_2_desc:"提供FBA退货换标、贴标、重新包装等增值服务。",
+        service_3:"退货换标",service_3_desc:"专业退货处理、检测、换标、重新上架一站式服务。",
+        service_4:"贴标换标",service_4_desc:"支持产品标签更换，条码重贴，符合平台要求。",
+        service_5:"库存管理",service_5_desc:"实时库存监控，精准库存管理，降低缺货风险。",
+        service_6:"增值服务",service_6_desc:"定制化增值服务，满足客户多样化业务需求。",
+        global_network_tag:"全球布局",global_network_title:"全球仓库布局",
+        tab_us:"美国仓",tab_ca:"加拿大仓",tab_jp:"日本仓",tab_br:"巴西仓",tab_th:"泰国仓",
+        region_lbl_area:"总面积",region_lbl_orders:"日处理订单",
+        gallery_tag:"实拍图集",gallery_title:"仓库实景展示",
+        wms_illustration_label:"WMS 系统界面插画占位区",
+        wms_tag:"智能系统",wms_title:"智能系统支持",wms_description:"SAKADA WMS 智能仓储管理系统",
+        wms_content:"自主研发的WMS系统，实现订单、库存、仓储、物流全流程数字化管理。",
+        wms_feat_1_title:"订单自动同步",wms_feat_1_desc:"多平台订单自动对接",
+        wms_feat_2_title:"库存实时监控",wms_feat_2_desc:"精准库存管理",
+        wms_feat_3_title:"智能分拣策略",wms_feat_3_desc:"提高分拣效率",
+        wms_feat_4_title:"数据报表分析",wms_feat_4_desc:"多维度数据分析",
+        cta_title:"准备好体验我们的仓储服务了吗？",cta_desc:"专业团队为您提供定制化的仓储解决方案",cta_btn:"立即咨询",
+        footer_copyright:"&copy; 坂瑱（深圳）电商物流有限公司 版权所有"
+    },
+    ja: {
+        nav_home:"ホーム",nav_self:"自営海外倉庫",nav_customs:"自社通関",nav_ocean:"国際海上輸送",nav_air:"航空貨物専用便",nav_dropship:"ワンストップ配送代行",nav_supplychain:"サプライチェーン統合",nav_about:"会社概要",nav_contact:"お問い合わせ",
+        hero_tag:"自営倉庫サービス",hero_title:"自営海外倉庫",hero_subtitle:"グローバル展開 · スマート管理 · 高効率フルフィルメント",
+        hero_description:"SAKADAは世界の主要市場に自営倉庫を展開し、スマートWMSシステムにより効率的で正確、透明性の高い倉庫管理を実現し、安定したワンストップ倉庫配送サービスを提供します。",
+        feature_1:"スマート倉庫",feature_2:"高効率フルフィルメント",feature_3:"在庫の透明性",feature_4:"現地サービス",
+        btn_quote:"見積もりを取得",hero_illustration_label:"倉庫写真 / イラストプレースホルダー",
+        stat_1_label:"m² 総倉庫面積",stat_2_label:"1日あたりの処理件数",stat_3_label:"在庫正確率",stat_4_label:"出荷リードタイム",
+        services_tag:"サービスマトリクス",services_title:"倉庫サービス一覧",
+        service_1:"ワンストップ配送代行",service_1_desc:"複数プラットフォームの注文を自動同期し、迅速に仕分け・梱包・発送します。",
+        service_2:"FBA中継",service_2_desc:"FBA返品のラベル変更、再梱包などの付加価値サービスを提供します。",
+        service_3:"返品処理",service_3_desc:"専門的な返品検品、ラベル変更、再出品までワンストップで対応します。",
+        service_4:"ラベル変更",service_4_desc:"商品ラベルの変更、バーコードの貼り替えでプラットフォーム規定に対応します。",
+        service_5:"在庫管理",service_5_desc:"リアルタイム在庫監視により、欠品リスクを低減します。",
+        service_6:"付加価値サービス",service_6_desc:"多様な業務ニーズに応じたカスタム付加価値サービスを提供します。",
+        global_network_tag:"グローバル展開",global_network_title:"グローバル倉庫ネットワーク",
+        tab_us:"米国倉庫",tab_ca:"カナダ倉庫",tab_jp:"日本倉庫",tab_br:"巴西倉庫",tab_th:"泰国倉庫",
+        region_lbl_area:"総面積",region_lbl_orders:"1日あたりの処理件数",
+        gallery_tag:"現地写真集",gallery_title:"倉庫実景ギャラリー",
+        wms_illustration_label:"WMSシステム画面イラストプレースホルダー",
+        wms_tag:"スマートシステム",wms_title:"スマートシステムサポート",wms_description:"SAKADA WMS スマート倉庫管理システム",
+        wms_content:"自社開発のWMSシステムにより、注文・在庫・倉庫・物流の全プロセスをデジタル管理します。",
+        wms_feat_1_title:"注文自動同期",wms_feat_1_desc:"複数プラットフォームの自動連携",
+        wms_feat_2_title:"リアルタイム在庫監視",wms_feat_2_desc:"精密な在庫管理",
+        wms_feat_3_title:"スマート仕分け戦略",wms_feat_3_desc:"仕分け効率の向上",
+        wms_feat_4_title:"データレポート分析",wms_feat_4_desc:"多角的なデータ分析",
+        cta_title:"倉庫サービスを体験する準備はできましたか？",cta_desc:"専門チームがカスタマイズされた倉庫ソリューションをご提供します",cta_btn:"今すぐ相談する",
+        footer_copyright:"&copy; 坂瑱（深圳）国際物流有限公司　著作権所有."
+    }
+};
+
+function switchLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('.lang-btn').forEach(function(btn){ btn.classList.remove('active'); });
+    document.querySelector(`[onclick="switchLang('${lang}')"]`).classList.add('active');
+    const data = i18nData[lang];
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+        const key = el.getAttribute('data-i18n');
+        if (data[key] !== undefined) el.innerHTML = data[key];
+    });
+    document.documentElement.lang = lang === 'ja' ? 'ja' : (lang === 'en' ? 'en' : 'zh');
+    renderRegion(currentRegionKey);
+}
+
+/* 全球仓库布局 - 三语版地区数据 */
+const REGION_DATA = {
+    zh: {
+        us: { name:"美国仓", area:"850,000+ m²", orders:"200,000+", list:["洛杉矶仓 (Los Angeles)","纽约仓 (New York)","芝加哥仓 (Chicago)","奥克兰仓 (Oakland)","新泽西仓 (New Jersey)","亚特兰大仓 (Atlanta)","休斯顿仓 (Houston)"] },
+        ca: { name:"加拿大仓", area:"400,000+ m²", orders:"60,000+", list:["温哥华仓 (Vancouver)","多伦多仓 (Toronto)","蒙特利尔仓 (Montreal)","卡尔加里仓 (Calgary)"] },
+        jp: { name:"日本仓", area:"25,000+ m²", orders:"80,000+", list:["东京仓 (Tokyo)","大阪仓 (Osaka)"] },
+        br: { name:"巴西仓", area:"12,000+ m²", orders:"40,000+", list:["圣保罗仓 (São Paulo)"] },
+        th: { name:"泰国仓", area:"3,000+ m²", orders:"30,000+", list:["曼谷仓 (Bangkok)"] }
+    },
+    en: {
+        us: { name:"United States Warehouses", area:"850,000+ m²", orders:"200,000+", list:["Los Angeles","New York","Chicago","Oakland","New Jersey","Atlanta","Houston"] },
+        ca: { name:"Canada Warehouses", area:"400,000+ m²", orders:"60,000+", list:["Vancouver","Toronto","Montreal","Calgary"] },
+        jp: { name:"Japan Warehouses", area:"25,000+ m²", orders:"80,000+", list:["Tokyo","Osaka"] },
+        br: { name:"Brazil Warehouses", area:"12,000+ m²", orders:"40,000+", list:["São Paulo"] },
+        th: { name:"Thailand Warehouses", area:"3,000+ m²", orders:"30,000+", list:["Bangkok"] }
+    },
+    ja: {
+        us: { name:"米国倉庫", area:"850,000+ m²", orders:"200,000+", list:["ロサンゼルス","ニューヨーク","シカゴ","オークランド","ニュージャージー","アトランタ","ヒューストン"] },
+        ca: { name:"カナダ倉庫", area:"400,000+ m²", orders:"60,000+", list:["バンクーバー","トロント","モントリオール","カルガリー"] },
+        jp: { name:"日本倉庫", area:"25,000+ m²", orders:"80,000+", list:["東京","大阪"] },
+        br: { name:"ブラジル倉庫", area:"12,000+ m²", orders:"40,000+", list:["サンパウロ"] },
+        th: { name:"タイ倉庫", area:"3,000+ m²", orders:"30,000+", list:["バンコク"] }
+    }
+};
+
+function switchRegion(key) {
+    currentRegionKey = key;
+    document.querySelectorAll('.region-tab').forEach(function(t){ t.classList.remove('active'); });
+    document.querySelector('.region-tab[data-region="'+key+'"]').classList.add('active');
+    document.querySelectorAll('.map-pin').forEach(function(p){ p.classList.remove('active'); });
+    const order = ['us','ca','jp','br','th'];
+    const idx = order.indexOf(key);
+    const pins = document.querySelectorAll('.map-pin');
+    if (pins[idx]) pins[idx].classList.add('active');
+    renderRegion(key);
+}
+function renderRegion(key) {
+    const d = REGION_DATA[currentLang][key];
+    document.getElementById('region-name').textContent = d.name;
+    document.getElementById('region-area').textContent = d.area;
+    document.getElementById('region-orders').textContent = d.orders;
+    document.getElementById('region-list').innerHTML = d.list.map(function(item){
+        return '<li><i class="fa-solid fa-location-dot text-pink-500"></i> '+item+'</li>';
+    }).join('');
+}
+renderRegion('us');
+</script>
+
+</body>
+</html>

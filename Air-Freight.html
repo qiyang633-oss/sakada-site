@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>航空货运专线 | SAKADA International</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+    body { font-family:'Inter',sans-serif; color:#1A1A1A; background:#ffffff; overflow-x:hidden; }
+    .mono { font-family:'JetBrains Mono',monospace; }
+    .topbar { position:fixed; top:0; left:0; width:100%; z-index:50; background:rgba(255,255,255,0.92); backdrop-filter:blur(12px); border-bottom:1px solid #e8edf5; }
+    .nav-link { font-size:13px; font-weight:500; color:#5b6b85; transition:color .2s; white-space:nowrap; }
+    .nav-link:hover, .nav-link.active { color:#2575F0; }
+    .nav-cta { background:linear-gradient(135deg,#2575F0,#6BA3FF); color:#fff; font-size:13px; font-weight:700; padding:10px 22px; border-radius:6px; transition:all .25s; white-space:nowrap; }
+    .nav-cta:hover { transform:translateY(-2px); box-shadow:0 10px 20px -6px rgba(37,117,240,.5); }
+    .lang-btn { font-size:12px; font-weight:700; color:#8a97ad; padding:4px 8px; border-radius:4px; cursor:pointer; transition:all .2s; }
+    .lang-btn.active { color:#2575F0; background:rgba(37,117,240,0.08); }
+    .af-hero {
+    position:relative;
+    padding:190px 0 60px;
+    background-image:url('./航空货运专线背景图.png');
+    background-size:cover;
+    background-position:center;
+    }
+    .eyebrow-tag { display:inline-flex; align-items:center; gap:8px; background:rgba(37,117,240,0.08); border:1px solid rgba(37,117,240,0.25); color:#2575F0; font-size:12px; font-weight:700; letter-spacing:1px; padding:6px 14px; border-radius:999px; }
+    .eyebrow-tag::before { content:''; width:6px; height:6px; border-radius:50%; background:#2575F0; }
+    .feature-mini-lt i { width:32px; height:32px; display:flex; align-items:center; justify-content:center; border-radius:8px; background:rgba(37,117,240,0.08); color:#2575F0; font-size:13px; }
+    .stats-bar { background:#fff; border:1px solid #e8edf5; border-radius:14px; box-shadow:0 20px 45px -20px rgba(37,90,180,0.25); position:relative; z-index:10; }
+    .stat-icon { width:42px; height:42px; border-radius:10px; background:rgba(37,117,240,0.08); color:#2575F0; display:flex; align-items:center; justify-content:center; font-size:17px; }
+    .route-map-wrap-lt { position:relative; background:#f7f9fd; border:1px solid #e8edf5; border-radius:14px; min-height:380px; overflow:hidden; }
+    .route-map-wrap-lt::before { content:''; position:absolute; inset:0; background-image:radial-gradient(#d3ddf0 1px, transparent 1px); background-size:20px 20px; }
+    .route-node-lt { position:absolute; width:9px; height:9px; border-radius:50%; background:#2575F0; box-shadow:0 0 0 5px rgba(37,117,240,0.18); z-index:2; }
+    .route-node-lt.hub { width:13px; height:13px; background:#FF1493; box-shadow:0 0 0 6px rgba(255,20,147,0.18); }
+    .route-node-label-lt { position:absolute; font-size:11px; color:#334155; font-weight:700; white-space:nowrap; z-index:2; }
+    .route-node-time-lt { position:absolute; font-size:10px; color:#94a3b8; white-space:nowrap; z-index:2; }
+    .route-card-lt { background:#fff; border:1px solid #e8edf5; border-radius:14px; overflow:hidden; }
+    .route-tab-lt { flex:1; text-align:center; font-size:13px; font-weight:600; padding:16px 10px; cursor:pointer; color:#8a97ad; border-bottom:2px solid transparent; transition:all .2s; }
+    .route-tab-lt.active { color:#2575F0; border-color:#2575F0; background:#f7f9fd; }
+    .route-row-lt { display:flex; justify-content:space-between; align-items:center; padding:12px 20px; border-bottom:1px solid #f1f4fa; font-size:13px; }
+    .route-row-lt:last-child { border-bottom:none; }
+    .route-row-lt .r-from { display:flex; align-items:center; gap:6px; color:#334155; font-weight:600; }
+    .route-row-lt .r-days { color:#2575F0; font-family:'JetBrains Mono',monospace; font-weight:700; }
+    .oc-service-card { background:#fff; border:1px solid #e8edf5; border-radius:12px; padding:24px; transition:all .3s; }
+    .oc-service-card:hover { transform:translateY(-5px); border-color:#c7d8ff; box-shadow:0 18px 32px -16px rgba(37,117,240,.3); }
+    .oc-service-icon { width:44px; height:44px; border-radius:10px; background:rgba(37,117,240,0.08); color:#2575F0; display:flex; align-items:center; justify-content:center; font-size:18px; margin-bottom:14px; }
+    .oc-more-link { font-size:13px; font-weight:700; color:#2575F0; display:inline-flex; align-items:center; gap:6px; }
+    .carrier-scroll { display:flex; gap:16px; overflow-x:auto; scroll-behavior:smooth; scrollbar-width:none; }
+    .carrier-scroll::-webkit-scrollbar { display:none; }
+    .carrier-card-af { flex:0 0 190px; background:#fff; border:1px solid #e8edf5; border-radius:12px; padding:20px; text-align:center; transition:all .25s; }
+    .carrier-card-af:hover { border-color:#c7d8ff; box-shadow:0 12px 24px -12px rgba(37,117,240,.25); transform:translateY(-3px); }
+    .carrier-icon-af { width:44px; height:44px; border-radius:10px; background:linear-gradient(135deg,#2575F0,#6BA3FF); color:#fff; display:flex; align-items:center; justify-content:center; font-size:18px; margin:0 auto 10px; }
+    .scroll-arrow { width:40px; height:40px; border-radius:50%; background:#fff; border:1px solid #e8edf5; box-shadow:0 6px 16px -6px rgba(0,0,0,.15); display:flex; align-items:center; justify-content:center; cursor:pointer; color:#2575F0; transition:all .2s; flex-shrink:0; }
+    .scroll-arrow:hover { background:#2575F0; color:#fff; }
+    .why-item-af i { width:40px; height:40px; border-radius:10px; background:rgba(37,117,240,0.08); color:#2575F0; display:flex; align-items:center; justify-content:center; font-size:16px; margin:0 auto 10px; }
+    .cta-band { position:relative; border-radius:16px; overflow:hidden; background:linear-gradient(100deg, rgba(6,14,32,0.85) 0%, rgba(6,14,32,0.55) 60%, rgba(6,14,32,0.25) 100%), url('./航空货运专线背景图.png'); background-size:cover; background-position:center 40%; }
+    footer { background:linear-gradient(135deg,#2575F0,#6BA3FF); }
+</style>
+</head>
+<body class="antialiased">
+
+<header class="topbar">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 h-[72px] flex items-center justify-between">
+        <a href="./index.html" class="flex items-center gap-3 text-xl font-extrabold text-slate-900 mr-8">SAKADA</a>
+        <nav class="hidden lg:flex items-center gap-6 xl:gap-8">
+            <a href="./index.html" class="nav-link" data-i18n="nav_home">Home</a>
+            <a href="./Overseas-Warehousing.html" class="nav-link" data-i18n="nav_self">Self-Operated Warehousing</a>
+            <a href="./Customs-Clearance.html" class="nav-link" data-i18n="nav_customs">Customs Clearance</a>
+            <a href="./Sea-Freight.html" class="nav-link" data-i18n="nav_ocean">Sea Freight</a>
+            <a href="./Air-Freight.html" class="nav-link active" data-i18n="nav_air">Air Freight</a>
+            <a href="./Dropshipping-Fulfillment.html" class="nav-link" data-i18n="nav_dropship">Dropshipping</a>
+            <a href="./Supply-Chain-Management.html" class="nav-link" data-i18n="nav_supplychain">Supply Chain</a>
+            <a href="./about.html" class="nav-link" data-i18n="nav_about">About Us</a>
+        </nav>
+        <div class="flex items-center gap-4 ml-6">
+            <div class="flex items-center gap-1 text-xs">
+                <span class="lang-btn" onclick="switchLang('en')">EN</span>
+                <span class="text-gray-300">|</span>
+                <span class="lang-btn active" onclick="switchLang('zh')">CN</span>
+                <span class="text-gray-300">|</span>
+                <span class="lang-btn" onclick="switchLang('ja')">JP</span>
+            </div>
+            <a href="./index.html#contact" class="nav-cta" data-i18n="nav_contact">Contact Us</a>
+        </div>
+    </div>
+</header>
+
+<section class="af-hero">
+    <div class="max-w-7xl px-6 lg:px-16 relative">
+        <div class="max-w-xl">
+            <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 mb-1" data-i18n="hero_en_title">Air Freight</h1>
+            <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4" data-i18n="hero_title">航空货运专线</h2>
+            <p class="text-lg font-semibold text-slate-500 mb-7" data-i18n="hero_subtitle">极速 · 安全 · 全球送达</p>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-9">
+                <div class="feature-mini-lt flex flex-col items-start gap-2"><i class="fa-solid fa-plane"></i><span class="text-xs font-semibold text-slate-700" data-i18n="feat_1_title">全球航线网络</span><span class="text-[11px] text-slate-400" data-i18n="feat_1_desc">覆盖200+国家和地区</span></div>
+                <div class="feature-mini-lt flex flex-col items-start gap-2"><i class="fa-solid fa-clock"></i><span class="text-xs font-semibold text-slate-700" data-i18n="feat_2_title">快速时效</span><span class="text-[11px] text-slate-400" data-i18n="feat_2_desc">主流航线2-7天送达</span></div>
+                <div class="feature-mini-lt flex flex-col items-start gap-2"><i class="fa-solid fa-shield-halved"></i><span class="text-xs font-semibold text-slate-700" data-i18n="feat_3_title">安全保障</span><span class="text-[11px] text-slate-400" data-i18n="feat_3_desc">全程跟踪，安全可靠</span></div>
+                <div class="feature-mini-lt flex flex-col items-start gap-2"><i class="fa-solid fa-gift"></i><span class="text-xs font-semibold text-slate-700" data-i18n="feat_4_title">灵活服务</span><span class="text-[11px] text-slate-400" data-i18n="feat_4_desc">多种运输方案可选</span></div>
+            </div>
+            <a href="./index.html#contact" class="inline-flex items-center gap-2 bg-gradient-to-br from-[#2575F0] to-[#6BA3FF] text-white text-sm font-bold px-7 py-3.5 rounded-md hover:opacity-90 transition-all">
+                <span data-i18n="btn_quote">获取专属报价</span> <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<div class="max-w-7xl mx-auto px-6 lg:px-10 -mt-8 relative z-10">
+    <div class="stats-bar grid grid-cols-2 md:grid-cols-5 gap-6 px-8 py-8">
+        <div class="flex items-center gap-3"><div class="stat-icon"><i class="fa-solid fa-plane-departure"></i></div><div><div class="text-xl font-extrabold text-slate-900 mono">200+</div><div class="text-xs text-slate-500" data-i18n="stat_1_label">全球机场覆盖</div></div></div>
+        <div class="flex items-center gap-3"><div class="stat-icon"><i class="fa-solid fa-handshake"></i></div><div><div class="text-xl font-extrabold text-slate-900 mono">30+</div><div class="text-xs text-slate-500" data-i18n="stat_2_label">合作航空公司</div></div></div>
+        <div class="flex items-center gap-3"><div class="stat-icon"><i class="fa-solid fa-headset"></i></div><div><div class="text-xl font-extrabold text-slate-900 mono">24/7</div><div class="text-xs text-slate-500" data-i18n="stat_3_label">全天候服务</div></div></div>
+        <div class="flex items-center gap-3"><div class="stat-icon"><i class="fa-solid fa-award"></i></div><div><div class="text-xl font-extrabold text-slate-900 mono">99.6%</div><div class="text-xs text-slate-500" data-i18n="stat_4_label">准时送达率</div></div></div>
+        <div class="flex items-center gap-3"><div class="stat-icon"><i class="fa-solid fa-weight-hanging"></i></div><div><div class="text-xl font-extrabold text-slate-900 mono">10,000+</div><div class="text-xs text-slate-500" data-i18n="stat_5_label">月均运输吨位</div></div></div>
+    </div>
+</div>
+
+<section class="py-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="text-center mb-12">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight" data-i18n="route_title">全球航线网络</h2>
+            <div class="w-10 h-1 bg-[#2575F0] mx-auto mt-3 rounded-full"></div>
+        </div>
+        <div class="grid lg:grid-cols-[1fr_360px] gap-6">
+            <div class="route-map-wrap-lt">
+                <div class="route-node-lt hub" style="top:52%;left:78%;"></div>
+                <div class="route-node-label-lt" style="top:47%;left:81%;" data-i18n="node_cn">中国</div>
+                <div class="route-node-lt" style="top:44%;left:14%;"></div>
+                <div class="route-node-label-lt" style="top:39%;left:9%;" data-i18n="node_us">美国</div>
+                <div class="route-node-time-lt" style="top:56%;left:9%;" data-i18n="time_us">2-4天</div>
+                <div class="route-node-lt" style="top:28%;left:26%;"></div>
+                <div class="route-node-label-lt" style="top:23%;left:22%;" data-i18n="node_ca">加拿大</div>
+                <div class="route-node-time-lt" style="top:32%;left:22%;" data-i18n="time_ca">3-5天</div>
+                <div class="route-node-lt" style="top:35%;left:38%;"></div>
+                <div class="route-node-label-lt" style="top:30%;left:35%;" data-i18n="node_eu">欧洲</div>
+                <div class="route-node-time-lt" style="top:39%;left:35%;" data-i18n="time_eu">3-5天</div>
+                <div class="route-node-lt" style="top:35%;left:93%;"></div>
+                <div class="route-node-label-lt" style="top:30%;left:90%;" data-i18n="node_jp">日本</div>
+                <div class="route-node-time-lt" style="top:39%;left:90%;" data-i18n="time_jp">2-3天</div>
+                <div class="route-node-lt" style="top:60%;left:82%;"></div>
+                <div class="route-node-label-lt" style="top:64%;left:79%;" data-i18n="node_sea">东南亚</div>
+                <div class="route-node-time-lt" style="top:68%;left:79%;" data-i18n="time_sea">1-2天</div>
+                <div class="route-node-lt" style="top:70%;left:38%;"></div>
+                <div class="route-node-label-lt" style="top:74%;left:33%;" data-i18n="node_sa">南美洲</div>
+                <div class="route-node-time-lt" style="top:78%;left:33%;" data-i18n="time_sa">5-7天</div>
+                <div class="route-node-lt" style="top:78%;left:88%;"></div>
+                <div class="route-node-label-lt" style="top:82%;left:83%;" data-i18n="node_au">澳大利亚</div>
+                <div class="route-node-time-lt" style="top:86%;left:83%;" data-i18n="time_au">3-5天</div>
+                <svg style="position:absolute; inset:0; width:100%; height:100%; z-index:1;" preserveAspectRatio="none" viewBox="0 0 100 100">
+                    <path d="M 78 52 Q 45 15, 14 44" stroke="#2575F0" stroke-width="0.25" fill="none" opacity="0.4"/>
+                    <path d="M 78 52 Q 55 15, 26 28" stroke="#2575F0" stroke-width="0.25" fill="none" opacity="0.4"/>
+                    <path d="M 78 52 Q 60 30, 38 35" stroke="#2575F0" stroke-width="0.25" fill="none" opacity="0.4"/>
+                    <path d="M 78 52 Q 85 42, 93 35" stroke="#2575F0" stroke-width="0.25" fill="none" opacity="0.4"/>
+                    <path d="M 78 52 Q 80 56, 82 60" stroke="#2575F0" stroke-width="0.25" fill="none" opacity="0.4"/>
+                    <path d="M 78 52 Q 58 65, 38 70" stroke="#2575F0" stroke-width="0.25" fill="none" opacity="0.4"/>
+                    <path d="M 78 52 Q 83 68, 88 78" stroke="#2575F0" stroke-width="0.25" fill="none" opacity="0.4"/>
+                </svg>
+            </div>
+            <div class="route-card-lt">
+                <div class="flex" id="route-tabs">
+                    <div class="route-tab-lt active" onclick="switchRouteTab('hot')" data-i18n="route_tab_hot">热门航线</div>
+                    <div class="route-tab-lt" onclick="switchRouteTab('more')" data-i18n="route_tab_more">更多航线</div>
+                </div>
+                <div id="route-list"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-24 bg-[#f7f9fd]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="text-center mb-12">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight" data-i18n="services_title">我们的服务</h2>
+            <div class="w-10 h-1 bg-[#2575F0] mx-auto mt-3 rounded-full"></div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+            <div class="oc-service-card"><div class="oc-service-icon"><i class="fa-solid fa-plane"></i></div><h3 class="font-bold text-slate-900 mb-2" data-i18n="svc_1_title">普货空运</h3><p class="text-sm text-slate-500 leading-relaxed mb-4" data-i18n="svc_1_desc">适用于一般货运，经济实惠，时效稳定。</p> <i class="fa-solid fa-arrow-right text-xs"></i></a></div>
+            <div class="oc-service-card"><div class="oc-service-icon"><i class="fa-solid fa-paper-plane"></i></div><h3 class="font-bold text-slate-900 mb-2" data-i18n="svc_2_title">快件空运</h3><p class="text-sm text-slate-500 leading-relaxed mb-4" data-i18n="svc_2_desc">优先舱位保障，快速清关，紧急货物优选。</p> <i class="fa-solid fa-arrow-right text-xs"></i></a></div>
+            <div class="oc-service-card"><div class="oc-service-icon"><i class="fa-solid fa-box-open"></i></div><h3 class="font-bold text-slate-900 mb-2" data-i18n="svc_3_title">包板运输</h3><p class="text-sm text-slate-500 leading-relaxed mb-4" data-i18n="svc_3_desc">整板包机运输，舱位充足，时效更有保障。</p> <i class="fa-solid fa-arrow-right text-xs"></i></a></div>
+            <div class="oc-service-card"><div class="oc-service-icon"><i class="fa-solid fa-truck"></i></div><h3 class="font-bold text-slate-900 mb-2" data-i18n="svc_4_title">门到门服务</h3><p class="text-sm text-slate-500 leading-relaxed mb-4" data-i18n="svc_4_desc">上门提货 + 清关 + 派送，全程无忧。</p> <i class="fa-solid fa-arrow-right text-xs"></i></a></div>
+            <div class="oc-service-card"><div class="oc-service-icon"><i class="fa-solid fa-triangle-exclamation"></i></div><h3 class="font-bold text-slate-900 mb-2" data-i18n="svc_5_title">危险品空运</h3><p class="text-sm text-slate-500 leading-relaxed mb-4" data-i18n="svc_5_desc">专业危险品运输方案，合规操作，安全送达。</p> <i class="fa-solid fa-arrow-right text-xs"></i></a></div>
+        </div>
+    </div>
+</section>
+
+<section class="py-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="text-center mb-10">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight" data-i18n="carrier_title">合作航空公司</h2>
+            <div class="w-10 h-1 bg-[#2575F0] mx-auto mt-3 rounded-full"></div>
+        </div>
+        <!-- 用图标+文字代表合作航空公司，避免复刻这些公司的注册商标logo；如已获得官方logo使用授权，可把 .carrier-icon-af 换成 <img src="./xxx-logo.png" class="h-10 mx-auto mb-2"> -->
+        <div class="flex items-center gap-4">
+            <div class="scroll-arrow" onclick="scrollCarriers(-1)"><i class="fa-solid fa-chevron-left"></i></div>
+            <div class="carrier-scroll" id="carrier-scroll">
+                <div class="carrier-card-af"><div class="carrier-icon-af"><i class="fa-solid fa-plane"></i></div><div class="text-sm font-bold text-slate-900" data-i18n="carrier_1_name">中国国际货运航空</div><div class="text-[11px] text-slate-400" data-i18n="carrier_1_sub">CAI Cargo</div></div>
+                <div class="carrier-card-af"><div class="carrier-icon-af"><i class="fa-solid fa-box"></i></div><div class="text-sm font-bold text-slate-900" data-i18n="carrier_2_name">UPS Airlines</div><div class="text-[11px] text-slate-400" data-i18n="carrier_2_sub">Cargolux</div></div>
+                <div class="carrier-card-af"><div class="carrier-icon-af"><i class="fa-solid fa-globe"></i></div><div class="text-sm font-bold text-slate-900" data-i18n="carrier_3_name">日本航空</div><div class="text-[11px] text-slate-400" data-i18n="carrier_3_sub">Emirates SkyCargo</div></div>
+                <div class="carrier-card-af"><div class="carrier-icon-af"><i class="fa-solid fa-earth-asia"></i></div><div class="text-sm font-bold text-slate-900" data-i18n="carrier_4_name">国泰货运航空</div><div class="text-[11px] text-slate-400" data-i18n="carrier_4_sub">Cathay Pacific Cargo</div></div>
+                <div class="carrier-card-af"><div class="carrier-icon-af"><i class="fa-solid fa-star-and-crescent"></i></div><div class="text-sm font-bold text-slate-900" data-i18n="carrier_5_name">长荣航空</div><div class="text-[11px] text-slate-400" data-i18n="carrier_5_sub">Qatar Airways Cargo</div></div>
+                <div class="carrier-card-af"><div class="carrier-icon-af"><i class="fa-solid fa-plane-departure"></i></div><div class="text-sm font-bold text-slate-900" data-i18n="carrier_6_name">FedEx Express</div><div class="text-[11px] text-slate-400" data-i18n="carrier_6_sub">Turkish Cargo</div></div>
+            </div>
+            <div class="scroll-arrow" onclick="scrollCarriers(1)"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-20">
+    <div class="max-w-6xl mx-auto px-6 lg:px-10">
+        <div class="cta-band flex flex-col md:flex-row items-center justify-between gap-6 px-10 py-12 text-white">
+            <div>
+                <h3 class="text-2xl font-extrabold mb-1" data-i18n="cta_title">需要快速安全的空运服务？</h3>
+                <p class="text-sm text-white/80" data-i18n="cta_desc">SAKADA 为您提供高效、可靠的航空货运解决方案</p>
+            </div>
+            <a href="./index.html#contact" class="inline-flex items-center gap-2 bg-white text-[#2575F0] text-sm font-bold px-7 py-3.5 rounded-md hover:opacity-90 transition-all shrink-0">
+                <span data-i18n="cta_btn">立即咨询</span> <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer class="text-white/80 py-10 text-sm">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="text-white font-extrabold">SAKADA<span class="text-pink-200">.</span></div>
+        <p data-i18n="footer_copyright">&copy; SAKADA (Shenzhen) International Limited. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    let currentLang = 'zh';
+    let currentRouteTab = 'hot';
+
+    const i18nData = {
+        en: {
+            nav_home:"Home",nav_self:"Self-Operated Warehousing",nav_customs:"Customs Clearance",nav_ocean:"Sea Freight",nav_air:"Air Freight",nav_dropship:"Dropshipping",nav_supplychain:"Supply Chain",nav_about:"About Us",nav_contact:"Contact Us",
+            hero_en_title:"Air Freight",hero_title:"Air Freight Express",hero_subtitle:"Fast · Safe · Global Delivery",
+            feat_1_title:"Global Route Network",feat_1_desc:"Covering 200+ countries and regions",
+            feat_2_title:"Fast Transit",feat_2_desc:"2-7 days on major routes",
+            feat_3_title:"Safety Assurance",feat_3_desc:"Full tracking, reliable and secure",
+            feat_4_title:"Flexible Service",feat_4_desc:"Multiple shipping options available",
+            btn_quote:"Get an Air Freight Quote",
+            stat_1_label:"Global Airports Covered",stat_2_label:"Partner Airlines",stat_3_label:"Round-the-Clock Service",stat_4_label:"On-Time Delivery Rate",stat_5_label:"Avg. Monthly Tonnage",
+            route_title:"Global Route Network",
+            node_cn:"China",node_us:"United States",node_ca:"Canada",node_eu:"Europe",node_jp:"Japan",node_sea:"Southeast Asia",node_sa:"Brazil",node_au:"Australia",
+            time_us:"2-4 days",time_ca:"3-5 days",time_eu:"3-5 days",time_jp:"2-3 days",time_sea:"1-2 days",time_sa:"5-7 days",time_au:"3-5 days",
+            route_tab_hot:"Popular Routes",route_tab_more:"More Routes",btn_all_routes:"View All Routes",
+            services_title:"Our Services",
+            svc_1_title:"General Air Freight",svc_1_desc:"Suited for general cargo, economical and stable transit times.",
+            svc_2_title:"Express Air Freight",svc_2_desc:"Priority space guarantee and fast clearance, ideal for urgent cargo.",
+            svc_3_title:"Charter Freight",svc_3_desc:"Full-pallet chartered transport with ample space for better reliability.",
+            svc_4_title:"Door-to-Door Service",svc_4_desc:"Pickup + customs clearance + delivery, fully hassle-free.",
+            svc_5_title:"Dangerous Goods Air Freight",svc_5_desc:"Professional DG transport solutions, compliant and secure delivery.",
+            btn_more:"Learn More",
+            carrier_title:"Partner Airlines",
+            carrier_1_name:"China Air Cargo",carrier_1_sub:"CAI Cargo",
+            carrier_2_name:"UPS Airlines",carrier_2_sub:"UPS Airlines",
+            carrier_3_name:"Japan Airlines",carrier_3_sub:"Japan Airlines",
+            carrier_4_name:"Cathay Pacific Cargo",carrier_4_sub:"Cathay Pacific Cargo",
+            carrier_5_name:"EVA Air",carrier_5_sub:"EVA Air",
+            carrier_6_name:"FedEx Express",carrier_6_sub:"FedEx Express",
+            cta_title:"Need Fast &amp; Secure Air Freight?",cta_desc:"SAKADA provides efficient and reliable air freight solutions",cta_btn:"Consult Now",
+            footer_copyright:"&copy; SAKADA (Shenzhen) International Limited. All rights reserved."
+        },
+        zh: {
+            nav_home:"首页",nav_self:"自营海外仓",nav_customs:"自有清关",nav_ocean:"国际海运",nav_air:"航空货运专线",nav_dropship:"一件代发履约",nav_supplychain:"供应链集成方案",nav_about:"关于我们",nav_contact:"联系我们",
+            hero_en_title:"Air Freight",hero_title:"航空货运专线",hero_subtitle:"极速 · 安全 · 全球送达",
+            feat_1_title:"全球航线网络",feat_1_desc:"覆盖200+国家和地区",
+            feat_2_title:"快速时效",feat_2_desc:"主流航线2-7天送达",
+            feat_3_title:"安全保障",feat_3_desc:"全程跟踪，安全可靠",
+            feat_4_title:"灵活服务",feat_4_desc:"多种运输方案可选",
+            btn_quote:"获取专属报价",
+            stat_1_label:"全球机场覆盖",stat_2_label:"合作航空公司",stat_3_label:"全天候服务",stat_4_label:"准时送达率",stat_5_label:"月均运输吨位",
+            route_title:"全球航线网络",
+            node_cn:"中国",node_us:"美国",node_ca:"加拿大",node_eu:"欧洲",node_jp:"日本",node_sea:"东南亚",node_sa:"巴西",node_au:"澳大利亚",
+            time_us:"2-4天",time_ca:"3-5天",time_eu:"3-5天",time_jp:"2-3天",time_sea:"1-2天",time_sa:"5-7天",time_au:"3-5天",
+            route_tab_hot:"热门航线",route_tab_more:"更多航线",btn_all_routes:"查看所有航线",
+            services_title:"我们的服务",
+            svc_1_title:"普货空运",svc_1_desc:"适用于一般货运，经济实惠，时效稳定。",
+            svc_2_title:"快件空运",svc_2_desc:"优先舱位保障，快速清关，紧急货物优选。",
+            svc_3_title:"包板运输",svc_3_desc:"整板包机运输，舱位充足，时效更有保障。",
+            svc_4_title:"门到门服务",svc_4_desc:"上门提货 + 清关 + 派送，全程无忧。",
+            svc_5_title:"危险品空运",svc_5_desc:"专业危险品运输方案，合规操作，安全送达。",
+            btn_more:"了解更多",
+            carrier_title:"合作航空公司",
+            carrier_1_name:"中国国际货运航空",carrier_1_sub:"CAI Cargo",
+            carrier_2_name:"UPS Airlines",carrier_2_sub:"UPS Airlines",
+            carrier_3_name:"日本航空",carrier_3_sub:"Japan Airlines",
+            carrier_4_name:"国泰货运航空",carrier_4_sub:"Cathay Pacific Cargo",
+            carrier_5_name:"长荣航空",carrier_5_sub:"EVA Air",
+            carrier_6_name:"FedEx Express",carrier_6_sub:"FedEx Express",
+            cta_title:"需要快速安全的空运服务？",cta_desc:"SAKADA 为您提供高效、可靠的航空货运解决方案",cta_btn:"立即咨询",
+            footer_copyright:"&copy; 坂瑱（深圳）电商物流有限公司 版权所有"
+        },
+        ja: {
+            nav_home:"ホーム",nav_self:"自営海外倉庫",nav_customs:"自社通関",nav_ocean:"国際海上輸送",nav_air:"航空貨物専用便",nav_dropship:"ワンストップ配送代行",nav_supplychain:"サプライチェーン統合",nav_about:"会社概要",nav_contact:"お問い合わせ",
+            hero_en_title:"Air Freight",hero_title:"航空貨物専用便",hero_subtitle:"迅速 · 安全 · 世界へお届け",
+            feat_1_title:"グローバル航路網",feat_1_desc:"200カ国以上をカバー",
+            feat_2_title:"迅速な輸送",feat_2_desc:"主要路線は2〜7日で到着",
+            feat_3_title:"安全保証",feat_3_desc:"全行程追跡、安心・確実",
+            feat_4_title:"柔軟なサービス",feat_4_desc:"複数の輸送プランから選択可能",
+            btn_quote:"専用見積もりを取得",
+            stat_1_label:"対応空港数",stat_2_label:"提携航空会社",stat_3_label:"24時間365日対応",stat_4_label:"定時配送率",stat_5_label:"月間平均輸送トン数",
+            route_title:"グローバル航路網",
+            node_cn:"中国",node_us:"米国",node_ca:"カナダ",node_eu:"ヨーロッパ",node_jp:"日本",node_sea:"東南アジア",node_sa:"ブラジル",node_au:"オーストラリア",
+            time_us:"2-4日",time_ca:"3-5日",time_eu:"3-5日",time_jp:"2-3日",time_sea:"1-2日",time_sa:"5-7日",time_au:"3-5日",
+            route_tab_hot:"人気路線",route_tab_more:"その他の路線",btn_all_routes:"すべての路線を見る",
+            services_title:"サービス内容",
+            svc_1_title:"一般航空貨物",svc_1_desc:"一般貨物に対応、経済的で安定した輸送時間。",
+            svc_2_title:"エクスプレス航空便",svc_2_desc:"優先スペース確保と迅速な通関、緊急貨物に最適。",
+            svc_3_title:"チャーター輸送",svc_3_desc:"パレット単位のチャーター輸送、十分なスペースで信頼性を確保。",
+            svc_4_title:"ドア・ツー・ドアサービス",svc_4_desc:"集荷＋通関＋配送まで、すべてお任せください。",
+            svc_5_title:"危険物航空輸送",svc_5_desc:"専門的な危険物輸送ソリューション、法令遵守で安全にお届け。",
+            btn_more:"詳しく見る",
+            carrier_title:"提携航空会社",
+            carrier_1_name:"中国国際貨物航空",carrier_1_sub:"CAI Cargo",
+            carrier_2_name:"UPS Airlines",carrier_2_sub:"UPS Airlines",
+            carrier_3_name:"日本航空",carrier_3_sub:"Japan Airlines",
+            carrier_4_name:"キャセイパシフィック貨物",carrier_4_sub:"Cathay Pacific Cargo",
+            carrier_5_name:"長榮航空",carrier_5_sub:"EVA Air",
+            carrier_6_name:"FedEx Express",carrier_6_sub:"FedEx Express",
+            cta_title:"迅速で安全な航空輸送サービスが必要ですか？",cta_desc:"SAKADAが効率的で信頼性の高い航空貨物ソリューションをご提供します",cta_btn:"今すぐ相談する",
+            footer_copyright:"&copy; SAKADA (Shenzhen) International Limited. All rights reserved."
+        }
+    };
+
+    function switchLang(lang) {
+        currentLang = lang;
+        document.querySelectorAll('.lang-btn').forEach(function(btn){ btn.classList.remove('active'); });
+        document.querySelector(`[onclick="switchLang('${lang}')"]`).classList.add('active');
+        const data = i18nData[lang];
+        document.querySelectorAll('[data-i18n]').forEach(function(el){
+            const key = el.getAttribute('data-i18n');
+            if (data[key] !== undefined) el.innerHTML = data[key];
+        });
+        document.documentElement.lang = lang === 'ja' ? 'ja' : (lang === 'en' ? 'en' : 'zh');
+        renderRouteList(currentRouteTab);
+    }
+
+    const ROUTE_DATA = {
+        zh: {
+            hot: [
+                {from:"中国 → 日本", days:"2-3 天"},
+                {from:"中国 → 美国", days:"2-4 天"},
+                {from:"中国 → 加拿大", days:"3-5 天"},
+                {from:"中国 → 东南亚", days:"1-2 天"},
+                {from:"中国 → 巴西", days:"4-6 天"},
+            ],
+            more: [
+                {from:"中国 → 南美洲", days:"5-7 天"},
+                {from:"中国 → 中东", days:"2-4 天"},
+                {from:"中国 → 韩国", days:"1-2 天"},
+                {from:"中国 → 欧洲", days:"3-5 天"},
+                {from:"中国 → 澳洲", days:"3-5 天"},
+            ]
+        },
+        en: {
+            hot: [
+                {from:"China → Japan", days:"2-3 days"},
+                {from:"China → United States", days:"2-4 days"},
+                {from:"China → Canada", days:"3-5 days"},
+                {from:"China → Southeast Asia", days:"1-2 days"},
+                {from:"China → Brazil", days:"4-6 days"},
+            ],
+            more: [
+                {from:"China → Middle East", days:"2-4 days"},
+                {from:"China → South Korea", days:"1-2 days"},
+                {from:"China → Europe", days:"3-5 days"},
+                {from:"China → Australia", days:"3-5 days"}
+            ]
+        },
+        ja: {
+            hot: [
+                {from:"中国 → 日本", days:"2-3日"},
+                {from:"中国 → 米国", days:"2-4日"},
+                {from:"中国 → カナダ", days:"3-5日"},                
+                {from:"中国 → 東南アジア", days:"1-2日"},
+                {from:"中国 → ブラジル", days:"4-6日"},
+            ],
+            more: [
+                {from:"中国 → 中東", days:"2-4日"},
+                {from:"中国 → 韓国", days:"1-2日"},
+                {from:"中国 → ヨーロッパ", days:"3-5日"},
+                {from:"中国 → オーストラリア", days:"3-5日"},
+            ]
+        }
+    };
+
+    function switchRouteTab(tab) {
+        currentRouteTab = tab;
+        document.querySelectorAll('.route-tab-lt').forEach(function(t){ t.classList.remove('active'); });
+        event.currentTarget.classList.add('active');
+        renderRouteList(tab);
+    }
+    function renderRouteList(tab) {
+        const list = ROUTE_DATA[currentLang][tab] || [];
+        document.getElementById('route-list').innerHTML = list.map(function(r){
+            return '<div class="route-row-lt"><span class="r-from"><i class="fa-solid fa-plane text-[#2575F0] text-[10px]"></i> '+r.from+'</span><span class="r-days">'+r.days+'</span></div>';
+        }).join('');
+    }
+
+    function scrollCarriers(dir) {
+        document.getElementById('carrier-scroll').scrollBy({ left: dir * 210, behavior: 'smooth' });
+    }
+
+    renderRouteList('hot');
+    switchLang('zh');
+</script>
+
+</body>
+</html>

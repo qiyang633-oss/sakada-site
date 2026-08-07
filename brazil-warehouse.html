@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圣保罗拉美枢纽网点 | SAKADA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Inter',sans-serif; background:#f8f9fc; color:#1a1a2e; }
+
+        .topbar {
+            background:#fff; border-bottom:1px solid #eee; padding:0 40px; height:60px;
+            display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:100;
+        }
+        .topbar-logo { font-size:20px; font-weight:900; color:#2575F0; letter-spacing:1px; }
+        .topbar-logo span { color:#FF1493; }
+        .topbar-right { display:flex; align-items:center; gap:16px; }
+        .lang-switcher { display:flex; align-items:center; gap:4px; font-size:12px; font-family:'JetBrains Mono',monospace; }
+        .lang-btn {
+            padding:4px 10px; border:1px solid transparent; border-radius:3px; cursor:pointer;
+            background:none; color:#888; font-size:12px; font-family:'JetBrains Mono',monospace;
+            transition:all 0.2s;
+        }
+        .lang-btn.active { color:#2575F0; border-color:#2575F0; font-weight:700; }
+        .lang-btn:hover { color:#2575F0; }
+        .lang-sep { color:#ddd; }
+        .topbar-back {
+            display:inline-flex; align-items:center; gap:8px; color:#2575F0; font-size:13px;
+            font-weight:600; text-decoration:none; padding:8px 16px; border:1px solid #2575F0;
+            border-radius:4px; transition:all 0.2s;
+        }
+        .topbar-back:hover { background:#2575F0; color:#fff; }
+        .topbar-nav { display:flex; align-items:center; justify-content:space-evenly; flex:1; margin:0 40px; gap:10px; }
+        .topbar-nav a {
+        display:inline-flex; align-items:center; font-size:13px; font-weight:600;
+        color:#2575F0; text-decoration:none; white-space:nowrap;
+        padding:8px 16px; border:1px solid #d8e3f7; border-radius:4px;
+        transition:all 0.2s;  
+        }
+        .topbar-nav a:hover { background:#2575F0; color:#fff; border-color:#2575F0; }
+      @media(max-width:1200px){
+        .topbar-nav { display:none; }
+        }
+
+        .hero {
+           background:linear-gradient(135deg, rgba(10,20,40,0.55) 0%, rgba(20,37,74,0.5) 60%, rgba(26,58,110,0.55) 100%), url('./巴西海外仓背景图.png');
+           background-size:cover;
+           background-position:center;
+           padding: 100px 0 160px;
+        }
+        .hero::before {
+            content:''; position:absolute; inset:0;
+            background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .hero-inner { max-width:1100px; margin:0 auto; position:relative; }
+        .hero-tag {
+            display:inline-flex; align-items:center; gap:8px;
+            background:rgba(255,20,147,0.15); border:1px solid rgba(255,20,147,0.4);
+            color:#ffb8e6; font-size:11px; font-family:'JetBrains Mono',monospace;
+            letter-spacing:3px; padding:5px 16px; border-radius:999px; margin-bottom:20px; text-transform:uppercase;
+        }
+        .hero-tag::before { content:''; width:6px; height:6px; border-radius:50%; background:#FF1493; animation:pulse 1.5s infinite; }
+        @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+        .hero h1 { font-size:clamp(2rem,4vw,3.2rem); font-weight:900; color:#fff; line-height:1.1; margin-bottom:16px; letter-spacing:-1px; }
+        .hero h1 span { color:#6BA3FF; }
+        .hero-subtitle { color:rgba(255,255,255,0.65); font-size:1rem; margin-bottom:36px; max-width:600px; line-height:1.7; }
+        .hero-stats { display:flex; gap:48px; flex-wrap:wrap; }
+        .hero-stat-num { font-size:2rem; font-weight:900; color:#fff; font-family:'JetBrains Mono',monospace; line-height:1; }
+        .hero-stat-num span { color:#FF1493; font-size:1.2rem; }
+        .hero-stat-label { font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:2px; margin-top:6px; font-family:'JetBrains Mono',monospace; }
+
+        .main { max-width:1100px; margin:0 auto; padding:48px 40px; }
+        .section-label { font-size:11px; font-family:'JetBrains Mono',monospace; letter-spacing:3px; text-transform:uppercase; color:#FF1493; margin-bottom:12px; }
+        .section-title { font-size:1.6rem; font-weight:800; color:#0a1428; margin-bottom:24px; }
+
+        .gallery-grid { display:grid; grid-template-columns:2fr 1fr; grid-template-rows:240px 240px; gap:12px; border-radius:8px; overflow:hidden; margin-bottom:56px; }
+        .gallery-img { width:100%; height:100%; object-fit:cover; display:block; }
+        .gallery-img.main-img { grid-row:1/3; }
+        .gallery-placeholder { width:100%; height:100%; background:linear-gradient(135deg,#dde4f0,#c8d4ea); display:flex; flex-direction:column; align-items:center; justify-content:center; color:#8899bb; font-size:13px; gap:8px; }
+        .gallery-placeholder i { font-size:28px; }
+        .gallery-slider-wrap { position:relative; width:100%; height:560px; border-radius:8px; overflow:hidden; margin-bottom:56px; }
+        .gallery-slide { position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; transition:opacity 1s ease-in-out; }
+        .gallery-slide.active { opacity:1; z-index:1; }
+        .gallery-arrow { position:absolute; top:50%; transform:translateY(-50%); z-index:10; background:rgba(10,20,40,0.45); border:1px solid rgba(255,255,255,0.3); color:#fff; font-size:18px; width:42px; height:42px; border-radius:50%; cursor:pointer; transition:all 0.3s; backdrop-filter:blur(4px); }
+        .gallery-arrow:hover { background:#2575F0; }
+        .gallery-arrow-left { left:16px; }
+        .gallery-arrow-right { right:16px; }
+        .gallery-dots { position:absolute; bottom:16px; left:50%; transform:translateX(-50%); z-index:10; display:flex; gap:10px; }
+        .gallery-dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.5); border:none; padding:0; cursor:pointer; transition:all 0.3s; }
+        .gallery-dot.active { background:#FF1493; transform:scale(1.4); }
+
+        .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:56px; }
+        .info-card { background:#fff; border:1px solid #e8edf5; border-radius:8px; padding:28px; }
+        .info-card-label { font-size:11px; font-family:'JetBrains Mono',monospace; letter-spacing:2px; text-transform:uppercase; color:#8899bb; margin-bottom:8px; }
+        .info-card-value { font-size:1.1rem; font-weight:700; color:#0a1428; line-height:1.4; }
+        .info-card-value.mono { font-family:'JetBrains Mono',monospace; color:#2575F0; }
+        .status-dot { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:#16a34a; }
+        .status-dot::before { content:''; width:8px; height:8px; border-radius:50%; background:#16a34a; box-shadow:0 0 6px rgba(22,163,74,0.5); }
+
+        .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:56px; }
+        .service-card { background:#fff; border:1px solid #e8edf5; border-radius:8px; padding:24px; transition:all 0.3s; }
+        .service-card:hover { border-color:#2575F0; box-shadow:0 4px 20px rgba(37,117,240,0.1); transform:translateY(-2px); }
+        .service-icon { width:44px; height:44px; background:linear-gradient(135deg,#2575F0,#6BA3FF); border-radius:8px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:18px; margin-bottom:16px; }
+        .service-name { font-size:15px; font-weight:700; color:#0a1428; margin-bottom:8px; }
+        .service-desc { font-size:13px; color:#6b7280; line-height:1.6; }
+
+        .cta-section { background:linear-gradient(135deg,#2575F0,#1a5fb0); border-radius:12px; padding:48px 40px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; }
+        .cta-text h3 { font-size:1.5rem; font-weight:800; color:#fff; margin-bottom:8px; }
+        .cta-text p { color:rgba(255,255,255,0.75); font-size:14px; }
+        .cta-btn { display:inline-block; background:#FF1493; color:#fff; font-weight:700; font-size:14px; padding:14px 36px; border-radius:4px; text-decoration:none; letter-spacing:1px; text-transform:uppercase; transition:all 0.3s; white-space:nowrap; }
+        .cta-btn:hover { background:#e60680; transform:translateY(-2px); }
+
+        @media(max-width:768px){
+            .hero,.main { padding:32px 20px; }
+            .gallery-grid { grid-template-columns:1fr; grid-template-rows:240px 180px 180px; }
+            .gallery-img.main-img { grid-row:auto; }
+            .info-grid,.services-grid { grid-template-columns:1fr; }
+            .hero-stats { gap:28px; }
+            .topbar { padding:0 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="topbar">
+    <div class="topbar-logo">SAKADA<span>.</span></div>
+    <nav class="topbar-nav">
+    <a href="./japan-warehouse.html" data-i18n="nav_japan">日本海外仓</a>
+    <a href="./american-warehouse.html" data-i18n="nav_usa">美国海外仓</a>
+    <a href="./canada-warehouse.html" data-i18n="nav_canada">加拿大海外仓</a>
+    <a href="./thailand-warehouse.html" data-i18n="nav_thailand">泰国海外仓</a>
+   </nav>
+    <div class="topbar-right">
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="switchLang('zh')">CN</button>
+            <span class="lang-sep">|</span>
+            <button class="lang-btn" onclick="switchLang('en')">EN</button>
+            <span class="lang-sep">|</span>
+            <button class="lang-btn" onclick="switchLang('ja')">JP</button>
+        </div>
+        <a href="./index.html" class="topbar-back"><i class="fa-solid fa-arrow-left"></i> <span data-i18n="back">返回首页</span></a>
+    </div>
+</div>
+
+<div class="hero">
+    <div class="hero-inner">
+        <div class="hero-tag" data-i18n="hero_tag">巴西海外仓</div>
+        <h1 data-i18n="hero_title">圣保罗<br><span data-i18n="hero_title2">自营核心仓</span></h1>
+        <p class="hero-subtitle" data-i18n="hero_subtitle">覆盖巴西及南美核心市场，提供高效稳定的跨境物流解决方案。</p>
+        <div class="hero-stats">
+            <div class="hero-stat-item">
+                <div class="hero-stat-num">12,000<span>㎡+</span></div>
+                <div class="hero-stat-label" data-i18n="stat1">实用总面积</div>
+            </div>
+            <div class="hero-stat-item">
+                <div class="hero-stat-num">3<span data-i18n="stat2_unit">处</span></div>
+                <div class="hero-stat-label" data-i18n="stat2">仓储节点</div>
+            </div>
+            <div class="hero-stat-item">
+                <div class="hero-stat-num">24<span>/7</span></div>
+                <div class="hero-stat-label" data-i18n="stat3">运营时间</div>
+            </div>
+            <div class="hero-stat-item">
+                <div class="hero-stat-num">98<span>%+</span></div>
+                <div class="hero-stat-label" data-i18n="stat4">准时履约率</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main">
+
+    <div class="gallery-section">
+    <div class="section-label" data-i18n="gallery_label">实拍图集</div>
+    <div class="section-title" data-i18n="gallery_title">仓库实景</div>
+    <div class="gallery-slider-wrap">
+    <div class="gallery-slide active" style="background-image:url('./圣保罗.png');"></div>
+    <div class="gallery-slide" style="background-image:url('./圣保罗1.jpg');"></div>
+    <button class="gallery-arrow gallery-arrow-left" onclick="prevGallerySlide()">&#10094;</button>
+    <button class="gallery-arrow gallery-arrow-right" onclick="nextGallerySlide()">&#10095;</button>
+    <div class="gallery-dots">
+        <button class="gallery-dot active" onclick="goToGallerySlide(0)"></button>
+        <button class="gallery-dot" onclick="goToGallerySlide(1)"></button>
+        <button class="gallery-dot" onclick="goToGallerySlide(2)"></button>
+    </div>
+</div>
+</div>
+
+    <div style="margin-bottom:32px;">
+        <div class="section-label" data-i18n="info_label">基本信息</div>
+        <div class="section-title" data-i18n="info_title">仓库详细数据</div>
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-card-label" data-i18n="lbl_address">仓库地址</div>
+                <div class="info-card-value" data-i18n="val_address">圣保罗</div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-label" data-i18n="lbl_area">实用总面积</div>
+                <div class="info-card-value mono">12,000㎡+</div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-label" data-i18n="lbl_team">运营团队</div>
+                <div class="info-card-value" data-i18n="val_team">本土巴西专业运营团队</div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-label" data-i18n="lbl_status">当前状态</div>
+                <div class="info-card-value"><span class="status-dot" data-i18n="val_status">正常高效运转</span></div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-label" data-i18n="lbl_courier">对接快递</div>
+                <div class="info-card-value" data-i18n="val_courier">巴邮，极兔</div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-label" data-i18n="lbl_category">适配品类</div>
+                <div class="info-card-value" data-i18n="val_category">日用百货、家具用品、电动/光电/文具/设备/摩配/工具、超大件机器</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-bottom:56px;">
+        <div class="section-label" data-i18n="srv_label">服务能力</div>
+        <div class="section-title" data-i18n="srv_title">核心服务项目</div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+                <div class="service-name" data-i18n="srv1_name">FBA代发</div>
+                <div class="service-desc" data-i18n="srv1_desc">支持亚马逊FBA标签预备、入仓及长短期仓储，全程操作合规。</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                <div class="service-name" data-i18n="srv2_name">全境运输</div>
+                <div class="service-desc" data-i18n="srv2_desc">巴西本土专业团队持械运输，与本地主流物流商深度合作。</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-file-invoice"></i></div>
+                <div class="service-name" data-i18n="srv3_name">清关服务</div>
+                <div class="service-desc" data-i18n="srv3_desc">专业清关团队，熟悉巴西进出口法规，快速高效通关。</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-rotate-left"></i></div>
+                <div class="service-name" data-i18n="srv4_name">退货处理</div>
+                <div class="service-desc" data-i18n="srv4_desc">完善的退货检验、重新包装及二次上架流程，降低损耗。</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-tag"></i></div>
+                <div class="service-name" data-i18n="srv5_name">贴标换标</div>
+                <div class="service-desc" data-i18n="srv5_desc">支持产品重新贴标、换包装、套装组合等增值服务。</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <div class="service-name" data-i18n="srv6_name">库存管理</div>
+                <div class="service-desc" data-i18n="srv6_desc">实时库存数据监控，系统化管理，库存透明可查。</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <div class="cta-text">
+            <h3 data-i18n="cta_title">对此仓库有兴趣？</h3>
+            <p data-i18n="cta_subtitle">联系我们获取详细报价方案，专属顾问1对1服务</p>
+        </div>
+        <a href="./index.html#contact" class="cta-btn" data-i18n="cta_btn">立即询价</a>
+    </div>
+
+</div>
+
+<script>
+const i18n = {
+    zh: {
+        nav_japan:'日本海外仓', nav_usa:'美国海外仓', nav_canada:'加拿大海外仓', nav_thailand:'泰国海外仓',
+        back:'返回首页', hero_tag:'巴西海外仓',
+        hero_title:'圣保罗', hero_title2:'自营核心仓',
+        hero_subtitle:'覆盖巴西及南美核心市场，提供高效稳定的跨境物流解决方案',
+        stat1:'实用总面积', stat2:'仓储节点', stat2_unit:'处', stat3:'运营时间', stat4:'准时履约率',
+        gallery_label:'实拍图集', gallery_title:'仓库实景',
+        img1_placeholder:'仓库外景图', img2_placeholder:'货架内景', img3_placeholder:'作业区实景',
+        info_label:'基本信息', info_title:'仓库详细数据',
+        lbl_address:'仓库地址', val_address:'圣保罗',
+        lbl_area:'实用总面积', lbl_team:'运营团队', val_team:'本土巴西专业运营团队',
+        lbl_status:'当前状态', val_status:'正常高效运转',
+        lbl_courier:'对接快递', val_courier:'巴邮，极兔',
+        lbl_category:'适配品类', val_category:'日用百货、家具用品、电动/光电/文具/设备/摩配/工具、超大件机器',
+        srv_label:'服务能力', srv_title:'核心服务项目',
+        srv1_name:'FBA代发', srv1_desc:'支持亚马逊FBA标签预备、入仓及长短期仓储，全程操作合规。',
+        srv2_name:'全境运输', srv2_desc:'巴西本土专业团队持械运输，与本地主流物流商深度合作。',
+        srv3_name:'清关服务', srv3_desc:'专业清关团队，熟悉巴西进出口法规，快速高效通关。',
+        srv4_name:'退货处理', srv4_desc:'完善的退货检验、重新包装及二次上架流程，降低损耗。',
+        srv5_name:'贴标换标', srv5_desc:'支持产品重新贴标、换包装、套装组合等增值服务。',
+        srv6_name:'库存管理', srv6_desc:'实时库存数据监控，系统化管理，库存透明可查。',
+        cta_title:'对此仓库有兴趣？', cta_subtitle:'联系我们获取详细报价方案，专属顾问1对1服务', cta_btn:'立即询价'
+    },
+    en: {
+        nav_japan:'Japan Warehouse', nav_usa:'American Warehouse', nav_canada:'Canada Warehouse', nav_thailand:'Thailand Warehouse',
+        back:'Back to Home', hero_tag:'Brazil WAREHOUSE',
+        hero_title:'São Paulo', hero_title2:'Self-Operated Core Hub',
+        hero_subtitle:'covering Brazil and South America core markets, providing efficient and stable cross-border logistics solutions.',
+        stat1:'Total Floor Area', stat2:'Warehouse Nodes', stat2_unit:'', stat3:'Operating Hours', stat4:'On-Time Rate',
+        gallery_label:'PHOTO GALLERY', gallery_title:'Facility Photos',
+        img1_placeholder:'Exterior View', img2_placeholder:'Shelf Interior', img3_placeholder:'Operations Area',
+        info_label:'FACILITY INFO', info_title:'Warehouse Details',
+        lbl_address:'Address', val_address:'São Paulo',
+        lbl_area:'Total Floor Area', lbl_team:'Operations Team', val_team:'Native Brazilian Operators',
+        lbl_status:'Current Status', val_status:'Fully Operational',
+        lbl_courier:'Courier Partners', val_courier:'Brazil Post, J&T Express',
+        lbl_category:'Supported Categories', val_category:'General Cargo, Plastic Products, Textile Products, Tableware, Adult Products',
+        srv_label:'CAPABILITIES', srv_title:'Core Services',
+        srv1_name:'FBA Fulfillment', srv1_desc:'Amazon FBA label prep, inbound processing and flexible storage durations, fully compliant.',
+        srv2_name:'Full-Country Shipping', srv2_desc:'Equipped with specialized local teams for secure armed transportation in Brazil, we maintain deep strategic partnerships with major local logistics carriers.',
+        srv3_name:'Customs Clearance', srv3_desc:'Expert customs team with deep knowledge of Brazil import/export regulations.',
+        srv4_name:'Returns Handling', srv4_desc:'Full returns inspection, repackaging and restocking workflow to minimize loss.',
+        srv5_name:'Relabeling', srv5_desc:'Product relabeling, repackaging and bundle assembly value-added services.',
+        srv6_name:'Inventory Management', srv6_desc:'Real-time inventory monitoring with full system transparency and reporting.',
+        cta_title:'Interested in this facility?', cta_subtitle:'Contact us for a tailored quote. Dedicated advisor assigned 1-on-1.', cta_btn:'Get a Quote'
+    },
+    ja: {
+        nav_japan:'日本海外倉庫', nav_usa:'アメリカ海外倉庫', nav_canada:'カナダ海外倉庫', nav_thailand:'タイ海外倉庫',
+        back:'ホームへ戻る', hero_tag:'ブラジル海外倉庫',
+        hero_title:'サンパウロ', hero_title2:'自営コア倉庫',
+        hero_subtitle:'ブラジル及び南米の主要市場をカバーし、効率的で安定した越境物流ソリューションを提供します。',
+        stat1:'総床面積', stat2:'倉庫拠点', stat2_unit:'拠点', stat3:'稼働時間', stat4:'時間厳守率',
+        gallery_label:'施設写真', gallery_title:'倉庫の実際の様子',
+        img1_placeholder:'外観', img2_placeholder:'棚内部', img3_placeholder:'作業エリア',
+        info_label:'基本情報', info_title:'倉庫詳細データ',
+        lbl_address:'所在地', val_address:'サンパウロ',
+        lbl_area:'総床面積', lbl_team:'運営チーム', val_team:'現地ブラジルの専門運営チーム',
+        lbl_status:'現在のステータス', val_status:'正常稼働中',
+        lbl_courier:'提携宅配', val_courier:'ブラジル郵便、極兔',
+        lbl_category:'対応カテゴリ', val_category:'日用品、家具、電動/光学/文具/機器/自動車部品/工具、大型機械',
+        srv_label:'サービス能力', srv_title:'主要サービス',
+        srv1_name:'FBA代行', srv1_desc:'AmazonFBAラベル貼付・入庫・短中長期保管に対応、完全コンプライアンス。',
+        srv2_name:'全境運送', srv2_desc:'ブラジル現地の専門チームによる武装輸送、主要物流業者との深い戦略的パートナーシップ。',
+        srv3_name:'通関サービス', srv3_desc:'ブラジルの輸出入規制に精通した専門チームによる迅速な通関処理。',
+        srv4_name:'返品処理', srv4_desc:'返品検品・再梱包・再入荷の完全ワークフローで損失を最小化。',
+        srv5_name:'ラベル貼替', srv5_desc:'製品のラベル貼替・再梱包・セット組みなどの付加価値サービス。',
+        srv6_name:'在庫管理', srv6_desc:'リアルタイム在庫監視、システム管理で在庫状況を完全可視化。',
+        cta_title:'この倉庫に興味がありますか？', cta_subtitle:'お見積もりはお気軽にお問い合わせください。専任アドバイザーが対応します。', cta_btn:'今すぐ見積もり'
+    }
+};
+
+let currentLang = 'zh';
+
+function switchLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelector(`[onclick="switchLang('${lang}')"]`).classList.add('active');
+    const data = i18n[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (data[key] !== undefined) el.innerHTML = data[key];
+    });
+    document.documentElement.lang = lang === 'ja' ? 'ja' : lang === 'en' ? 'en' : 'zh';
+}
+
+switchLang('zh');
+var _gSlides = document.querySelectorAll('.gallery-slide');
+var _gDots = document.querySelectorAll('.gallery-dot');
+var _gCur = 0;
+var _gTimer;
+function goToGallerySlide(n) {
+    _gSlides[_gCur].classList.remove('active');
+    _gDots[_gCur].classList.remove('active');
+    _gCur = (n + _gSlides.length) % _gSlides.length;
+    _gSlides[_gCur].classList.add('active');
+    _gDots[_gCur].classList.add('active');
+    clearInterval(_gTimer);
+    _gTimer = setInterval(function(){ goToGallerySlide(_gCur+1); }, 5000);
+}
+function nextGallerySlide(){ goToGallerySlide(_gCur+1); }
+function prevGallerySlide(){ goToGallerySlide(_gCur-1); }
+_gTimer = setInterval(function(){ goToGallerySlide(_gCur+1); }, 5000);
+
+</script>
+</body>
+</html>

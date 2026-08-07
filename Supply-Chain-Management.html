@@ -1,0 +1,1986 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>供应链集成方案 | SAKADA International</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+    body { font-family:'Inter',sans-serif; color:#1A1A1A; background:#ffffff; overflow-x:hidden; }
+    .mono { font-family:'JetBrains Mono',monospace; }
+    .topbar { position:fixed; top:0; left:0; width:100%; z-index:50; background:rgba(255,255,255,0.92); backdrop-filter:blur(12px); border-bottom:1px solid #e8edf5; }
+    .nav-link { font-size:13px; font-weight:500; color:#5b6b85; transition:color .2s; white-space:nowrap; }
+    .nav-link:hover, .nav-link.active { color:#2575F0; }
+    .nav-cta { background:linear-gradient(135deg,#2575F0,#6BA3FF); color:#fff; font-size:13px; font-weight:700; padding:10px 22px; border-radius:6px; transition:all .25s; white-space:nowrap; }
+    .nav-cta:hover { transform:translateY(-2px); box-shadow:0 10px 20px -6px rgba(37,117,240,.5); }
+    .lang-btn { font-size:12px; font-weight:700; color:#8a97ad; padding:4px 8px; border-radius:4px; cursor:pointer; transition:all .2s; }
+    .lang-btn.active { color:#2575F0; background:rgba(37,117,240,0.08); }
+
+    /* ===== Hero ===== */
+.sc-hero{
+    position:relative;
+    overflow:hidden;
+    padding:95px 0 60px;
+    background:
+        radial-gradient(circle at 78% 28%, rgba(37,117,240,.08), transparent 32%),
+        radial-gradient(circle at 15% 10%, rgba(107,163,255,.08), transparent 38%),
+        linear-gradient(180deg,#F5F9FF 0%,#FFFFFF 100%);
+}
+/* =========================
+   Layout
+========================= */
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:40% 60%;
+    gap:30px;
+    align-items:center;
+}
+
+@media(max-width:992px){
+
+.hero-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+}
+
+/* =========================
+   Left
+========================= */
+
+.hero-left{
+
+    position:relative;
+    z-index:5;
+
+}
+
+.eyebrow-tag{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:8px 18px;
+
+    border-radius:999px;
+
+    background:#EEF5FF;
+
+    color:#2575F0;
+
+    border:1px solid rgba(37,117,240,.18);
+
+    font-size:12px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+}
+
+.eyebrow-tag::before{
+
+    content:"";
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:#2575F0;
+
+}
+
+.hero-title{
+
+    margin-top:26px;
+
+    font-size:56px;
+
+    line-height:1.15;
+
+    font-weight:800;
+
+    color:#0F172A;
+
+}
+
+.hero-subtitle{
+
+    margin-top:20px;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:#2575F0;
+
+}
+
+.hero-desc{
+
+    margin-top:26px;
+
+    max-width:560px;
+
+    color:#64748B;
+
+    line-height:2;
+
+    font-size:17px;
+
+}
+
+/* =========================
+   Feature List
+========================= */
+
+.hero-feature{
+
+    margin-top:42px;
+
+    display:grid;
+
+    grid-template-columns:repeat(2,minmax(0,1fr));
+
+    gap:20px 26px;
+
+}
+
+.feature-mini{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+}
+
+.feature-mini i{
+
+    width:48px;
+
+    height:48px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:14px;
+
+    background:#FFFFFF;
+
+    color:#2575F0;
+
+    font-size:18px;
+
+    box-shadow:0 10px 24px rgba(37,117,240,.08);
+
+    flex-shrink:0;
+
+}
+
+.feature-mini h4{
+
+    font-size:16px;
+
+    font-weight:700;
+
+    color:#0F172A;
+
+    margin-bottom:4px;
+
+}
+
+.feature-mini span{
+
+    font-size:13px;
+
+    color:#64748B;
+
+}
+
+/* =========================
+   Button
+========================= */
+
+.hero-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-top:48px;
+
+    padding:16px 34px;
+
+    background:#2575F0;
+
+    color:#fff;
+
+    border-radius:14px;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    text-decoration:none;
+
+    transition:.25s;
+
+}
+
+.hero-btn:hover{
+
+    background:#1E63D6;
+
+}
+
+/* =========================
+   Right Image
+========================= */
+
+.hero-image{
+    position:relative;
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    min-height:500px;
+    overflow:visible;
+}
+
+.hero-image::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:1050px;
+
+    height:1050px;
+
+    right:-260px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(circle,
+
+        rgba(37,117,240,.10) 0%,
+
+        rgba(37,117,240,.06) 35%,
+
+        rgba(37,117,240,.025) 60%,
+
+        transparent 82%);
+
+    filter:blur(45px);
+
+    z-index:1;
+
+}
+.hero-image img{
+    width:155%;
+    max-width:none;
+    position:relative;
+    right:-170px;
+    display:block;
+    object-fit:contain;
+    filter:drop-shadow(0 40px 80px rgba(37,117,240,.10));
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%),
+                     linear-gradient(to bottom, transparent 0%, black 6%, black 94%, transparent 100%);
+     mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%),
+            linear-gradient(to bottom, transparent 0%, black 6%, black 94%, transparent 100%);
+    mask-composite: intersect;
+}
+/* =========================
+   Statistics
+========================= */
+
+.hero-stats{
+
+    margin-top:55px;
+
+    background:#FFFFFF;
+
+    border-radius:22px;
+
+    border:1px solid #E8EEF7;
+
+    display:grid;
+
+    grid-template-columns:repeat(5,1fr);
+
+    overflow:hidden;
+
+    box-shadow:0 20px 45px rgba(15,23,42,.06);
+
+}
+
+.hero-stat{
+
+    padding:36px 20px;
+
+    text-align:center;
+
+    position:relative;
+
+}
+
+.hero-stat:not(:last-child)::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:0;
+
+    top:28%;
+
+    width:1px;
+
+    height:44%;
+
+    background:#E2E8F0;
+
+}
+
+.hero-stat h3{
+
+    font-size:34px;
+
+    font-weight:800;
+
+    color:#2575F0;
+
+    line-height:1;
+
+}
+
+.hero-stat p{
+
+    margin-top:12px;
+
+    font-size:14px;
+
+    color:#64748B;
+
+    line-height:1.7;
+
+}
+
+/* =========================
+   Desktop Optimization
+========================= */
+
+@media(min-width:1200px){
+
+.hero-left{
+    position:relative;
+    z-index:5;
+
+    padding-right:80px;
+
+    margin-left:-60px;
+}
+.hero-image{
+
+    margin-right:-50px;
+
+}
+
+.hero-image img{
+    width:145%;
+    max-width:none;
+    display:block;
+    position:relative;
+    right:-150px;
+    top:0;
+    object-fit:contain;
+    filter:drop-shadow(0 35px 70px rgba(37,117,240,.10));
+}
+
+}
+
+/* =========================
+   Tablet
+========================= */
+
+@media(max-width:1199px){
+
+.hero-title{
+
+    font-size:48px;
+
+}
+
+.hero-image{
+
+    min-height:520px;
+
+}
+
+.hero-image img{
+
+    width:108%;
+
+}
+
+}
+
+/* =========================
+   Mobile
+========================= */
+
+@media(max-width:992px){
+
+.sc-hero{
+
+    padding:140px 0 70px;
+
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:40% 60%;
+    gap:10px;
+    align-items:center;
+    padding-top:20px;
+}
+
+.hero-left{
+    position:relative;
+    z-index:5;
+    margin-left:-30px;
+}
+
+.hero-image{
+
+    order:2;
+
+    min-height:auto;
+
+    justify-content:center;
+
+}
+
+.hero-image::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:900px;
+    height:900px;
+
+    right:-160px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(37,117,240,.14) 0%,
+            rgba(37,117,240,.08) 25%,
+            rgba(37,117,240,.04) 48%,
+            rgba(37,117,240,.015) 65%,
+            transparent 82%);
+
+    filter:blur(35px);
+
+    z-index:0;
+
+}
+.hero-image img{
+
+    width:100%;
+
+    max-width:680px;
+
+}
+
+.hero-feature{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+.hero-stats{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+.hero-stat:nth-child(2)::after,
+
+.hero-stat:nth-child(4)::after{
+
+    display:none;
+
+}
+
+}
+
+/* =========================
+   Small Mobile
+========================= */
+
+@media(max-width:640px){
+
+.sc-hero{
+
+    padding:180px 0 110px;
+
+}
+
+.hero-title{
+
+    font-size:38px;
+
+    line-height:1.2;
+
+}
+
+.hero-subtitle{
+
+    font-size:20px;
+
+}
+
+.hero-desc{
+
+    font-size:15px;
+
+    line-height:1.9;
+
+}
+
+.hero-feature{
+
+    grid-template-columns:1fr;
+
+    gap:18px;
+
+}
+
+.feature-mini{
+
+    gap:14px;
+
+}
+
+.feature-mini i{
+
+    width:44px;
+
+    height:44px;
+
+    font-size:16px;
+
+}
+
+.hero-btn{
+
+    width:100%;
+
+    justify-content:center;
+
+}
+
+.hero-stats{
+
+    grid-template-columns:1fr;
+
+    margin-top:40px;
+
+}
+
+.hero-stat{
+
+    padding:28px 18px;
+
+}
+
+.hero-stat::after{
+
+    display:none !important;
+
+}
+
+.hero-stat h3{
+
+    font-size:30px;
+
+}
+
+.hero-stat p{
+
+    font-size:13px;
+
+}
+
+}
+
+/* =========================
+   Global
+========================= */
+
+.hero-image img{
+
+    user-select:none;
+
+    -webkit-user-drag:none;
+
+}
+
+.hero-btn i{
+
+    font-size:14px;
+
+}
+
+.feature-mini div{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+}
+    /* ===== Stats ===== */
+    .stats-bar { background:#fff; border:1px solid #e8edf5; border-radius:14px; box-shadow:0 20px 45px -20px rgba(37,90,180,0.25); position:relative; z-index:10; }
+    .stat-icon { width:42px; height:42px; border-radius:10px; background:rgba(37,117,240,0.08); color:#2575F0; display:flex; align-items:center; justify-content:center; font-size:17px; }
+
+    /* ===== Process flow ===== */
+    .flow-step { background:#fff; border:1px solid #e8edf5; border-radius:14px; padding:32px 20px; text-align:center; transition:all .3s; }
+    .flow-icon { width:60px; height:60px; border-radius:14px; background:rgba(37,117,240,0.08); color:#2575F0; display:flex; align-items:center; justify-content:center; font-size:24px; margin:0 auto 16px; }
+    .flow-icon { width:48px; height:48px; border-radius:12px; background:rgba(37,117,240,0.08); color:#2575F0; display:flex; align-items:center; justify-content:center; font-size:19px; margin:0 auto 12px; }
+    .flow-num { font-size:11px; font-weight:700; color:#b9c3d6; margin-bottom:6px; }
+    .flow-arrow { color:#c7d8ff; font-size:16px; }
+    .flow-card{
+
+    background:#fff;
+
+    border:1px solid #E8EEF7;
+
+    border-radius:24px;
+
+    padding:38px;
+
+    transition:.35s;
+
+    min-height:260px;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.flow-card::before{
+
+    content:'';
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+
+    height:5px;
+
+    background:linear-gradient(
+        90deg,
+        #2575F0,
+        #6BA3FF
+    );
+
+    transform:scaleX(0);
+
+    transition:.35s;
+}
+
+.flow-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:#2575F0;
+
+    box-shadow:0 20px 50px rgba(37,117,240,.12);
+}
+
+.flow-card:hover::before{
+
+    transform:scaleX(1);
+}
+
+.flow-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:28px;
+}
+
+.flow-num{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:#CBD5E1;
+}
+
+.flow-icon{
+
+    width:72px;
+
+    height:72px;
+
+    border-radius:20px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#fff;
+
+    font-size:30px;
+
+    background:linear-gradient(
+        135deg,
+        #2575F0,
+        #6BA3FF
+    );
+}
+
+.flow-title{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    margin-bottom:16px;
+
+    color:#0f172a;
+}
+
+.flow-desc{
+
+    font-size:15px;
+
+    line-height:1.9;
+
+    color:#64748b;
+}
+
+    /* ===== Capability photo cards ===== */
+    .cap-photo-card { position:relative; border-radius:12px; overflow:hidden; aspect-ratio:4/3; }
+    .cap-photo-card .cap-bg { position:absolute; inset:0; background:linear-gradient(135deg,#dde4f0,#c8d4ea); display:flex; align-items:center; justify-content:center; color:#7d8bab; }
+    .cap-photo-card .cap-photo { position:absolute; inset:0; }   /* ← 新加这一行 */
+    .cap-photo-card .cap-overlay { position:absolute; inset:0; background:linear-gradient(180deg, transparent 40%, rgba(6,14,32,0.85) 100%); display:flex; flex-direction:column; justify-content:flex-end; padding:16px; }
+    .cap-photo-card h4 { color:#fff; font-weight:700; font-size:14px; margin-bottom:4px; }
+    .cap-photo-card p { color:rgba(255,255,255,0.75); font-size:11px; line-height:1.5; }
+
+    /* ===== SCMS control tower ===== */
+    .scms-panel { background:linear-gradient(135deg,#0a1428,#122448); border-radius:16px; padding:32px; }
+    .sm-model-card { background:#fff; border:1px solid #e8edf5; border-radius:14px; padding:28px; transition:all .3s; }
+    .sm-model-card:hover { transform:translateY(-4px); box-shadow:0 20px 35px -18px rgba(37,117,240,.3); border-color:#c7d8ff; }
+    .sm-model-icon { width:52px; height:52px; border-radius:12px; background:linear-gradient(135deg,#2575F0,#6BA3FF); color:#fff; display:flex; align-items:center; justify-content:center; font-size:20px; margin-bottom:16px; }
+    .sm-model-list { font-size:13px; color:#334155; }
+    .sm-model-list li { display:flex; align-items:flex-start; gap:8px; padding:6px 0; }
+    .sm-model-list li::before { content:'\f00c'; font-family:'Font Awesome 6 Free'; font-weight:900; color:#2575F0; font-size:10px; margin-top:3px; }
+    .tl-step { background:#fff; border:1px solid #e8edf5; border-radius:14px; padding:26px 16px; text-align:center; }
+    .tl-icon { width:52px; height:52px; border-radius:12px; background:rgba(37,117,240,0.08); color:#2575F0; display:flex; align-items:center; justify-content:center; font-size:20px; margin:0 auto 14px; }
+    .tl-time { font-size:11px; color:#94a3b8; font-family:'JetBrains Mono',monospace; margin-top:4px; }
+    .va-item { text-align:center; background:#fff; border:1px solid #e8edf5; border-radius:14px; padding:24px 16px; transition:all .3s; }
+    .va-item:hover { transform:translateY(-4px); box-shadow:0 16px 28px -14px rgba(37,117,240,.25); border-color:#c7d8ff; }
+    .va-icon { width:56px; height:56px; border-radius:14px; background:rgba(37,117,240,0.08); color:#2575F0; display:flex; align-items:center; justify-content:center; font-size:22px; margin:0 auto 14px; }
+    .scms-device-mockup { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:14px; padding:24px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; min-height:260px; color:rgba(255,255,255,0.4); }
+    .scms-row { display:flex; align-items:center; gap:10px; padding:10px 14px; border-radius:10px; margin-bottom:8px; }
+    .scms-row-label { font-size:11px; font-weight:700; color:#fff; width:56px; flex-shrink:0; }
+    .scms-pill { font-size:10px; color:rgba(255,255,255,0.75); background:rgba(255,255,255,0.08); padding:4px 10px; border-radius:999px; white-space:nowrap; }
+    .scms-feature i { color:#6BA3FF; width:16px; }
+
+    /* ===== Success cases ===== */
+    .case-card { background:#fff; border:1px solid #e8edf5; border-radius:12px; overflow:hidden; transition:all .3s; }
+    .case-card:hover { transform:translateY(-5px); box-shadow:0 18px 32px -16px rgba(37,117,240,.3); border-color:#c7d8ff; }
+    .case-photo { aspect-ratio:16/10; background:linear-gradient(135deg,#dde4f0,#c8d4ea); display:flex; align-items:center; justify-content:center; color:#7d8bab; position:relative; }
+    .case-photo > i { position:absolute; inset:0; }   /* ← 新加这一行 */
+    .case-tag { position:absolute; top:10px; left:10px; background:rgba(37,117,240,0.9); color:#fff; font-size:10px; font-weight:700; padding:4px 10px; border-radius:999px; }
+    .case-stat-num { font-size:15px; font-weight:800; color:#2575F0; font-family:'JetBrains Mono',monospace; }
+    .case-stat-label { font-size:10px; color:#94a3b8; }
+
+    /* ===== Partners ===== */
+    .partner-scroll { display:flex; gap:16px; overflow-x:auto; scroll-behavior:smooth; scrollbar-width:none; }
+    .partner-scroll::-webkit-scrollbar { display:none; }
+    .partner-card { flex:0 0 150px; height:80px; background:#fff; border:1px solid #e8edf5; border-radius:10px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; color:#334155; padding:14px; text-align:center; transition:all .25s; }
+    .partner-card:hover { border-color:#c7d8ff; box-shadow:0 10px 20px -10px rgba(37,117,240,.25); }
+    .scroll-arrow { width:40px; height:40px; border-radius:50%; background:#fff; border:1px solid #e8edf5; box-shadow:0 6px 16px -6px rgba(0,0,0,.15); display:flex; align-items:center; justify-content:center; cursor:pointer; color:#2575F0; transition:all .2s; flex-shrink:0; }
+    .scroll-arrow:hover { background:#2575F0; color:#fff; }
+
+    /* ===== CTA ===== */
+    .cta-band-dark { position:relative; border-radius:16px; overflow:hidden; background:linear-gradient(135deg,#0a1428,#153a7a); }
+    .cta-band-dark::before { content:''; position:absolute; inset:0; background-image:radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px); background-size:22px 22px; }
+
+    footer { background:linear-gradient(135deg,#2575F0,#6BA3FF); }
+    /* ===========================
+       Logistics Route
+       =========================== */
+
+     .route-process{
+       position:relative;
+       display:flex;
+       justify-content:space-between;
+       align-items:flex-start;
+       padding-top:40px;
+      gap:10px;
+     }
+
+     .route-line-gray{
+      position:absolute;
+      left:6%;
+      right:6%;
+      top:22px;
+      height:2px;
+      background:#dbe4ef;
+      z-index:0;
+     }
+
+     .route-line-blue{
+      position:absolute;
+      left:37%;
+      width:26%;
+      top:22px;
+      height:2px;
+      background:#2575F0;
+      z-index:1;
+     }
+
+     .route-item{
+      position:relative;
+      z-index:2;
+      width:170px;
+      text-align:center;
+     }
+
+     .route-item i{
+       width:46px;
+       height:46px;
+       display:flex;
+       align-items:center;
+       justify-content:center;
+       margin:0 auto;
+       font-size:20px;
+       color:#0f172a;
+       background:#fff;
+       transition:.3s;
+     }
+
+     .route-item:hover i{
+       color:#2575F0;
+       transform:translateY(-4px);
+     }
+
+     .route-air i{
+      color:#2575F0;
+     }
+
+.route-time{
+    display:block;
+    margin-top:18px;
+    font-size:18px;
+    font-weight:700;
+    color:#111827;
+}
+
+.route-item h3{
+    margin-top:10px;
+    font-size:16px;
+    font-weight:700;
+    color:#111827;
+}
+
+.route-item p{
+    margin-top:6px;
+    font-size:13px;
+    color:#94a3b8;
+}
+
+@media(max-width:1024px){
+
+.route-process{
+    flex-wrap:wrap;
+    justify-content:center;
+    row-gap:60px;
+}
+
+.route-line-gray,
+.route-line-blue{
+    display:none;
+}
+
+.route-item{
+    width:220px;
+}
+
+}
+
+@media(max-width:768px){
+
+.route-process{
+    flex-direction:column;
+    align-items:center;
+}
+
+.route-item{
+    width:100%;
+    max-width:280px;
+}
+
+}
+/*==============================
+  Value Added Service 
+==============================*/
+
+.service-photo-card{
+
+    position:relative;
+    height:430px;
+
+    overflow:hidden;
+
+    border-radius:24px;
+
+    cursor:pointer;
+
+    background:#ddd;
+
+}
+
+.service-photo-card img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:0.6s ease;
+
+}
+
+.service-mask{
+
+    position:absolute;
+    inset:0;
+
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,.72) 8%,
+        rgba(0,0,0,.38) 40%,
+        rgba(0,0,0,.05) 70%,
+        transparent 100%
+    );
+
+    transition:.45s;
+
+}
+
+.service-info{
+
+    position:absolute;
+
+    left:32px;
+    right:32px;
+    bottom:30px;
+
+    color:white;
+
+    z-index:3;
+
+}
+
+.service-icon{
+
+    width:52px;
+    height:52px;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(10px);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin-bottom:18px;
+
+    font-size:20px;
+
+}
+
+.service-info h3{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+.service-info p{
+
+    font-size:15px;
+
+    line-height:1.8;
+
+    color:rgba(255,255,255,.88);
+
+}
+
+.service-photo-card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+.service-photo-card:hover .service-mask{
+
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,.82),
+        rgba(0,0,0,.45),
+        transparent
+    );
+
+}
+
+.service-photo-card:hover{
+
+    transform:translateY(-8px);
+
+    transition:.35s;
+
+    box-shadow:0 24px 60px rgba(15,23,42,.18);
+
+}
+
+@media(max-width:768px){
+
+.service-photo-card{
+
+    height:340px;
+
+}
+
+.service-info{
+
+    left:22px;
+    right:22px;
+    bottom:22px;
+
+}
+
+.service-info h3{
+
+    font-size:20px;
+
+}
+
+.service-info p{
+
+    font-size:14px;
+
+}
+
+}
+</style>
+</head>
+<body class="antialiased">
+
+<header class="topbar">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 h-[72px] flex items-center justify-between">
+        <a href="./index.html" class="flex items-center gap-3 text-xl font-extrabold text-slate-900 mr-8">SAKADA</a>
+        <nav class="hidden lg:flex items-center gap-6 xl:gap-8">
+            <a href="./index.html" class="nav-link" data-i18n="nav_home">Home</a>
+            <a href="./Overseas-Warehousing.html" class="nav-link" data-i18n="nav_self">Self-Operated Warehousing</a>
+            <a href="./Customs-Clearance.html" class="nav-link" data-i18n="nav_customs">Customs Clearance</a>
+            <a href="./Sea-Freight.html" class="nav-link" data-i18n="nav_ocean">Sea Freight</a>
+            <a href="./Air-Freight.html" class="nav-link" data-i18n="nav_air">Air Freight</a>
+            <a href="./Dropshipping-Fulfillment.html" class="nav-link" data-i18n="nav_dropship">Dropshipping</a>
+            <a href="./Supply-Chain-Management.html" class="nav-link" data-i18n="nav_supplychain">Supply Chain</a>
+            <a href="./about.html" class="nav-link" data-i18n="nav_about">About Us</a>
+        </nav>
+        <div class="flex items-center gap-4 ml-6">
+            <div class="flex items-center gap-1 text-xs">
+                <span class="lang-btn" onclick="switchLang('en')">EN</span>
+                <span class="text-gray-300">|</span>
+                <span class="lang-btn active" onclick="switchLang('zh')">CN</span>
+                <span class="text-gray-300">|</span>
+                <span class="lang-btn" onclick="switchLang('ja')">JP</span>
+            </div>
+            <a href="./index.html#contact" class="nav-cta" data-i18n="nav_contact">Contact Us</a>
+        </div>
+    </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="sc-hero">
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+        <div class="hero-grid">
+
+            <!-- ================= 左侧 ================= -->
+
+            <div class="hero-left">
+                <h1 class="hero-title" data-i18n="hero_title">
+                    供应链集成方案
+                </h1>
+
+                <h2 class="hero-subtitle" data-i18n="hero_subtitle">
+                    定制化全流程供应链顶层设计
+                </h2>
+
+                <p class="hero-desc" data-i18n="hero_desc">
+                    整合采购、生产、国际运输、海外仓储、本地配送及数据平台，
+                    为企业打造覆盖全球的一站式供应链解决方案，实现全流程协同、
+                    可视化管理与持续优化。
+                </p>
+
+                <div class="hero-feature">
+
+                    <div class="feature-mini">
+                        <i class="fa-solid fa-compass-drafting"></i>
+                        <div>
+                            <h4 data-i18n="feature1_title">顶层规划</h4>
+                        </div>
+                    </div>
+
+                    <div class="feature-mini">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <div>
+                            <h4 data-i18n="feature2_title">数据可视</h4>
+                        </div>
+                    </div>
+
+                    <div class="feature-mini">
+                        <i class="fa-solid fa-globe"></i>
+                        <div>
+                            <h4 data-i18n="feature3_title">全球网络</h4>
+                        </div>
+                    </div>
+
+                    <div class="feature-mini">
+                        <i class="fa-solid fa-arrow-trend-down"></i>
+                        <div>
+                            <h4 data-i18n="feature4_title">降本增效</h4>
+                        </div>
+                    </div>
+
+                    <div class="feature-mini">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <div>
+                            <h4 data-i18n="feature5_title">风险管控</h4>
+                        </div>
+                    </div>
+
+                    <div class="feature-mini">
+                        <i class="fa-solid fa-gears"></i>
+                        <div>
+                            <h4 data-i18n="feature6_title">智能协同</h4>
+                        </div>
+                    </div>
+
+                </div>
+
+                <a href="#contact" class="hero-btn">
+                    <span data-i18n="btn_quote">获取定制方案</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+            <!-- ================= 右侧 ================= -->
+
+            <div class="hero-image">
+
+                <!-- 替换成你的图片 -->
+                <img src="./供应链背景图.png"
+                     alt="Supply Chain">
+
+            </div>
+
+        </div>
+
+        <!-- ================= 数据 ================= -->
+
+        <div class="hero-stats">
+
+            <div class="hero-stat">
+                <h3>150+</h3>
+                <p data-i18n="stat_1_label">
+                    行业解决方案经验
+                </p>
+            </div>
+
+            <div class="hero-stat">
+                <h3>100+</h3>
+                <p data-i18n="stat_2_label">
+                    服务覆盖国家和地区
+                </p>
+            </div>
+
+            <div class="hero-stat">
+                <h3>500+</h3>
+                <p data-i18n="stat_3_label">
+                    供应链合作伙伴
+                </p>
+            </div>
+
+            <div class="hero-stat">
+                <h3>30%+</h3>
+                <p data-i18n="stat_4_label">
+                    平均降本幅度
+                </p>
+            </div>
+
+            <div class="hero-stat">
+                <h3>99.5%</h3>
+                <p data-i18n="stat_5_label">
+                    订单履约准确率
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+        <!-- Title -->
+        <div class="text-center mb-16">
+
+            <h2 class="text-4xl font-extrabold text-slate-900"
+                data-i18n="process_title">
+                我们的供应链解决方案
+            </h2>
+        </div>
+
+        <!-- Grid -->
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+
+            <!-- 01 -->
+            <div class="flow-card">
+                <div class="flow-top">
+                    <span class="flow-num">01</span>
+                    <div class="flow-icon">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    </div>
+                </div>
+
+                <h3 class="flow-title" data-i18n="proc_1_title">
+                    需求分析
+                </h3>
+
+                <p class="flow-desc" data-i18n="proc_1_desc">
+                    深入了解业务目标和供应链现状，制定最适合的发展方向。
+                </p>
+            </div>
+
+            <!-- 02 -->
+            <div class="flow-card">
+                <div class="flow-top">
+                    <span class="flow-num">02</span>
+                    <div class="flow-icon">
+                        <i class="fa-solid fa-pen-ruler"></i>
+                    </div>
+                </div>
+
+                <h3 class="flow-title" data-i18n="proc_2_title">
+                    方案设计
+                </h3>
+
+                <p class="flow-desc" data-i18n="proc_2_desc">
+                    根据客户需求提供定制化供应链解决方案。
+                </p>
+            </div>
+
+            <!-- 03 -->
+            <div class="flow-card">
+                <div class="flow-top">
+                    <span class="flow-num">03</span>
+                    <div class="flow-icon">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                </div>
+
+                <h3 class="flow-title" data-i18n="proc_3_title">
+                    资源整合
+                </h3>
+
+                <p class="flow-desc" data-i18n="proc_3_desc">
+                    整合全球仓储、运输及渠道资源，提高整体运营效率。
+                </p>
+            </div>
+
+            <!-- 04 -->
+            <div class="flow-card">
+                <div class="flow-top">
+                    <span class="flow-num">04</span>
+                    <div class="flow-icon">
+                        <i class="fa-solid fa-plug"></i>
+                    </div>
+                </div>
+
+                <h3 class="flow-title" data-i18n="proc_4_title">
+                    系统对接
+                </h3>
+
+                <p class="flow-desc" data-i18n="proc_4_desc">
+                    ERP、OMS、WMS等系统无缝连接，实现数据互通。
+                </p>
+            </div>
+
+            <!-- 05 -->
+            <div class="flow-card">
+                <div class="flow-top">
+                    <span class="flow-num">05</span>
+                    <div class="flow-icon">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                </div>
+
+                <h3 class="flow-title" data-i18n="proc_5_title">
+                    执行落地
+                </h3>
+
+                <p class="flow-desc" data-i18n="proc_5_desc">
+                    全球仓配一体化执行，确保方案高效稳定落地。
+                </p>
+            </div>
+
+            <!-- 06 -->
+            <div class="flow-card">
+                <div class="flow-top">
+                    <span class="flow-num">06</span>
+                    <div class="flow-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                </div>
+
+                <h3 class="flow-title" data-i18n="proc_6_title">
+                    监控优化
+                </h3>
+
+                <p class="flow-desc" data-i18n="proc_6_desc">
+                    基于实时数据持续优化物流与供应链运营效率。
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+    
+</section>
+
+
+<!-- ============ FULL-CHAIN CAPABILITIES ============ -->
+<section class="py-24 bg-[#f7f9fd]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="text-center mb-14">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight" data-i18n="capability_title">全链路供应链能力</h2>
+            <div class="w-10 h-1 bg-[#2575F0] mx-auto mt-3 rounded-full"></div>
+        </div>
+        <!-- 以下6张卡片使用占位背景色代表真实场景照片，有真实素材后把 .cap-bg 里的 <i> 图标删掉，给 .cap-photo-card 加 style="background-image:url('./你的照片.jpg');background-size:cover;background-position:center;" -->
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="cap-photo-card"><div class="cap-bg"></div><div class="cap-photo" style="background-image:url('./采购与供应商管理.jpg');background-size:cover;background-position:center;" ></div><div class="cap-overlay"><h4 data-i18n="cap_1_title">客户需求诊断与方案定制</h4><p data-i18n="cap_1_desc">全球供应商开发与管理，采购策略优化</p></div></div>
+            <div class="cap-photo-card"><div class="cap-bg"></div><div class="cap-photo" style="background-image:url('./生产计划与协同.jpg');background-size:cover;background-position:center;" ></div><div class="cap-overlay"><h4 data-i18n="cap_2_title">需求预测与库存规划</h4><p data-i18n="cap_2_desc">工厂排产协同，产能弹性可视</p></div></div>
+            <div class="cap-photo-card"><div class="cap-bg"></div><div class="cap-photo" style="background-image:url('./国际运输与清关.jpg');background-size:cover;background-position:center;" ></div><div class="cap-overlay"><h4 data-i18n="cap_3_title">国际运输与清关</h4><p data-i18n="cap_3_desc">多式联运方案设计，国际物流优化</p></div></div>
+            <div class="cap-photo-card"><div class="cap-bg"></div><div class="cap-photo" style="background-image:url('./仓储与库存管理.jpg');background-size:cover;background-position:center;" ></div><div class="cap-overlay"><h4 data-i18n="cap_4_title">仓储与库存管理</h4><p data-i18n="cap_4_desc">全球仓网规划布局，安全库存优化</p></div></div>
+            <div class="cap-photo-card"><div class="cap-bg"></div><div class="cap-photo" style="background-image:url('./转运与本地配送.jpg');background-size:cover;background-position:center;" ></div><div class="cap-overlay"><h4 data-i18n="cap_5_title">转运与本地配送</h4><p data-i18n="cap_5_desc">转运方案优化，最后一公里配送</p></div></div>
+            <div class="cap-photo-card"><div class="cap-bg"></div><div class="cap-photo" style="background-image:url('./数据中台与可视化.jpg');background-size:cover;background-position:center;" ></div><div class="cap-overlay"><h4 data-i18n="cap_6_title">数据中台与可视化</h4><p data-i18n="cap_6_desc">全链路数据贯通，智能分析赋能</p></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ SERVICE MODEL ============ -->
+<section class="py-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="text-center mb-14">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight" data-i18n="sm_title">前置仓 + 海外仓服务模式</h2>
+            <div class="w-10 h-1 bg-[#2575F0] mx-auto mt-3 rounded-full"></div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 mb-16">
+            <div class="sm-model-card">
+                <div class="sm-model-icon"><i class="fa-solid fa-building-shield"></i></div>
+                <h3 class="text-lg font-bold text-slate-900 mb-2" data-i18n="sm_1_title">前置仓服务</h3>
+                <p class="text-sm text-slate-500 leading-relaxed mb-4" data-i18n="sm_1_desc">售卖订单实际产生后备货，提高资金周转效率，支持预分拣、预包装、预贴标、预扫描。</p>
+                <ul class="sm-model-list">
+                    <li data-i18n="sm_1_item_1">海运、空运、跨境陆运</li>
+                    <li data-i18n="sm_1_item_2">出口陆运整箱/吨车运输</li>
+                    <li data-i18n="sm_1_item_3">进出口报关、门到门服务</li>
+                </ul>
+            </div>
+            <div class="sm-model-card">
+                <div class="sm-model-icon"><i class="fa-solid fa-warehouse"></i></div>
+                <h3 class="text-lg font-bold text-slate-900 mb-2" data-i18n="sm_2_title">海外仓服务</h3>
+                <p class="text-sm text-slate-500 leading-relaxed mb-4" data-i18n="sm_2_desc">覆盖FBA仓、门店、私人地址等多种分拨配送场景，信息化系统全程支持。</p>
+                <ul class="sm-model-list">
+                    <li data-i18n="sm_2_item_1">海外仓DC业务、分拨配送</li>
+                    <li data-i18n="sm_2_item_2">信息管理系统、业务数据收集</li>
+                    <li data-i18n="sm_2_item_3">仓储及其他增值服务</li>
+                </ul>
+            </div>
+        </div>
+
+        <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+        <div class="text-center mb-20">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900"
+                data-i18n="tl_title">
+                物流时效流程
+            </h2>
+
+        </div>
+
+        <div class="route-process">
+
+            <!-- 灰色线路 -->
+            <div class="route-line-gray"></div>
+
+            <!-- 蓝色国际运输段 -->
+            <div class="route-line-blue"></div>
+
+            <div class="route-item">
+                <i class="fa-solid fa-store"></i>
+                <span class="route-time">4H</span>
+                <h3 data-i18n="tl_1_title">卖家下单</h3>
+                <p>Order</p>
+            </div>
+
+            <div class="route-item">
+                <i class="fa-solid fa-truck"></i>
+                <span class="route-time">2 Days</span>
+                <h3 data-i18n="tl_2_title">国内调拨</h3>
+                <p>Domestic Transfer</p>
+            </div>
+
+            <div class="route-item route-air">
+                <i class="fa-solid fa-plane"></i>
+                <span class="route-time" data-i18n="tl_3_time">Air Route</span>
+                <h3 data-i18n="tl_3_title">国际运输</h3>
+                <p>International Logistics & Transportation</p>
+            </div>
+
+            <div class="route-item">
+                <i class="fa-solid fa-building-columns"></i>
+                <span class="route-time">24-48H</span>
+                <h3 data-i18n="tl_4_title">进口清关</h3>
+                <p>Customs</p>
+            </div>
+
+            <div class="route-item">
+                <i class="fa-solid fa-warehouse"></i>
+                <span class="route-time">1 Day</span>
+                <h3 data-i18n="tl_5_title">仓储分拨</h3>
+                <p>Warehouse</p>
+            </div>
+
+            <div class="route-item">
+                <i class="fa-solid fa-house-user"></i>
+                <span class="route-time" data-i18n="tl_6_time">1-3 Days</span>
+                <h3 data-i18n="tl_6_title">本地配送</h3>
+                <p>Delivery</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+    <section class="py-24 bg-white">
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900"
+                data-i18n="va_title">
+                增值服务
+            </h2>
+
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+
+            <!-- 1 -->
+            <div class="service-photo-card">
+                <img src="inspection.jpg" alt="">
+                <div class="service-mask"></div>
+
+                <div class="service-info">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+
+                    <h3 data-i18n="va_1_title">验货质检</h3>
+
+                    <p data-i18n="va_1_desc">
+                        专业质检团队，多环节质量检查，确保产品符合出库标准。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="service-photo-card">
+                <img src="warehouse.png" alt="">
+                <div class="service-mask"></div>
+
+                <div class="service-info">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                    </div>
+
+                    <h3 data-i18n="va_2_title">仓储管理</h3>
+
+                    <p data-i18n="va_2_desc">
+                        智能库存管理，库存实时同步，高效稳定。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="service-photo-card">
+                <img src="pack.jpg" alt="">
+                <div class="service-mask"></div>
+
+                <div class="service-info">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+
+                    <h3 data-i18n="va_3_title">更换包装</h3>
+
+                    <p data-i18n="va_3_desc">
+                        根据不同市场需求进行定制包装。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="service-photo-card">
+                <img src="label.jpg" alt="">
+                <div class="service-mask"></div>
+
+                <div class="service-info">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-tags"></i>
+                    </div>
+
+                    <h3 data-i18n="va_4_title">贴标换标</h3>
+
+                    <p data-i18n="va_4_desc">
+                        满足 Amazon、TikTok Shop 等平台要求。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="service-photo-card">
+                <img src="system.jpg" alt="">
+                <div class="service-mask"></div>
+
+                <div class="service-info">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-diagram-project"></i>
+                    </div>
+
+                    <h3 data-i18n="va_5_title">多平台对接</h3>
+
+                    <p data-i18n="va_5_desc">
+                        ERP、WMS、OMS 数据实时同步。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="service-photo-card">
+                <img src="destroy.jpg" alt="">
+                <div class="service-mask"></div>
+
+                <div class="service-info">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </div>
+
+                    <h3 data-i18n="va_6_title">退货处理</h3>
+
+                    <p data-i18n="va_6_desc">
+                        合规、安全、环保的不良品处理服务。
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ============ SUCCESS CASES ============ -->
+<section class="py-24 bg-[#f7f9fd]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="text-center mb-14">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight" data-i18n="case_title">成功案例</h2>
+            <div class="w-10 h-1 bg-[#2575F0] mx-auto mt-3 rounded-full"></div>
+        </div>
+        <!-- 有真实案例图片后，把每个 .case-photo 里的 <i> 图标删掉，改成 style="background-image:url('./你的图片.jpg');background-size:cover;background-position:center;" -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="case-card">
+                <div class="case-photo"><span class="case-tag" data-i18n="case_1_tag">3C电子</span><i style="background-image:url('./全球3C电子供应链整合方案.jpg');background-size:cover;background-position:center;" ></i></div>
+                <div class="p-5">
+                    <h4 class="text-sm font-bold text-slate-900 mb-3" data-i18n="case_1_title">全球3C电子供应链整合方案</h4>
+                    <div class="grid grid-cols-3 gap-2">
+                        <div><div class="case-stat-num">28%</div><div class="case-stat-label" data-i18n="case_lbl_cost">降低成本</div></div>
+                        <div><div class="case-stat-num">35%</div><div class="case-stat-label" data-i18n="case_lbl_efficiency">提升效率</div></div>
+                        <div><div class="case-stat-num">99.2%</div><div class="case-stat-label" data-i18n="case_lbl_accuracy">交付准确率</div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="case-card">
+                <div class="case-photo"><span class="case-tag" data-i18n="case_2_tag">家居用品</span><i style="background-image:url('./家居用品全球供应链优化.jpg');background-size:cover;background-position:center;" ></i></div>
+                <div class="p-5">
+                    <h4 class="text-sm font-bold text-slate-900 mb-3" data-i18n="case_2_title">家居用品全球供应链优化</h4>
+                    <div class="grid grid-cols-3 gap-2">
+                        <div><div class="case-stat-num">32%</div><div class="case-stat-label" data-i18n="case_lbl_cost">降低成本</div></div>
+                        <div><div class="case-stat-num">45%</div><div class="case-stat-label" data-i18n="case_lbl_leadtime">流转周期提升</div></div>
+                        <div><div class="case-stat-num">40%</div><div class="case-stat-label" data-i18n="case_lbl_inventory">库存周转率</div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="case-card">
+                <div class="case-photo"><span class="case-tag" data-i18n="case_3_tag">服装鞋帽</span><i style="background-image:url('./服装鞋帽柔性供应链建设.jpg');background-size:cover;background-position:center;" ></i></div>
+                <div class="p-5">
+                    <h4 class="text-sm font-bold text-slate-900 mb-3" data-i18n="case_3_title">服装鞋帽柔性供应链建设</h4>
+                    <div class="grid grid-cols-3 gap-2">
+                        <div><div class="case-stat-num">25%</div><div class="case-stat-label" data-i18n="case_lbl_cost">降低成本</div></div>
+                        <div><div class="case-stat-num">30%</div><div class="case-stat-label" data-i18n="case_lbl_leadtime2">交付周期缩短</div></div>
+                        <div><div class="case-stat-num">98%</div><div class="case-stat-label" data-i18n="case_lbl_inventory2">库存精准率</div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="case-card">
+                <div class="case-photo"><span class="case-tag" data-i18n="case_4_tag">跨境电商</span><i style="background-image:url('./跨境电商全链路供应链方案.jpg');background-size:cover;background-position:center;" ></i></div>
+                <div class="p-5">
+                    <h4 class="text-sm font-bold text-slate-900 mb-3" data-i18n="case_4_title">跨境电商全链路供应链方案</h4>
+                    <div class="grid grid-cols-3 gap-2">
+                        <div><div class="case-stat-num">30%</div><div class="case-stat-label" data-i18n="case_lbl_cost">降低成本</div></div>
+                        <div><div class="case-stat-num">50%</div><div class="case-stat-label" data-i18n="case_lbl_orderrate">订单履约率</div></div>
+                        <div><div class="case-stat-num">96%</div><div class="case-stat-label" data-i18n="case_lbl_satisfaction">客户满意度</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ PARTNERS ============ -->
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="text-center mb-10">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight" data-i18n="partner_title">合作伙伴</h2>
+            <div class="w-10 h-1 bg-[#2575F0] mx-auto mt-3 rounded-full"></div>
+        </div>
+        <!-- 用文字代表合作伙伴，避免复刻各企业的官方商标；如已获授权，可将 .partner-card 内容换成 <img src="./xxx-logo.png" class="max-h-8"> -->
+        <div class="flex items-center gap-4">
+            <div class="scroll-arrow" onclick="scrollPartners(-1)"><i class="fa-solid fa-chevron-left"></i></div>
+            <div class="partner-scroll" id="partner-scroll">
+                <div class="partner-card">HKC</div>
+                <div class="partner-card">ANKER</div>
+                <div class="partner-card">Calbee</div>
+                <div class="partner-card">ANKAYA</div>
+                <div class="partner-card">KooRui</div>
+                <div class="partner-card">UBTECH</div>
+                <div class="partner-card">蓝深科技</div>
+            </div>
+            <div class="scroll-arrow" onclick="scrollPartners(1)"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="py-20">
+    <div class="max-w-6xl mx-auto px-6 lg:px-10">
+        <div class="cta-band-dark flex flex-col md:flex-row items-center justify-between gap-8 px-10 py-12 text-white relative">
+            <div class="relative z-10">
+                <h3 class="text-2xl font-extrabold mb-1" data-i18n="cta_title">让供应链成为您的核心竞争力</h3>
+                <p class="text-sm text-white/60" data-i18n="cta_desc">定制专属供应链集成方案，驱动业务持续增长</p>
+                <a href="./index.html#contact" class="inline-flex items-center gap-2 bg-white text-[#0a1428] text-sm font-bold px-7 py-3.5 rounded-md hover:opacity-90 transition-all mt-6">
+                    <span data-i18n="cta_btn">立即咨询</span> <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 relative z-10 shrink-0">
+                <div class="text-center"><div class="text-2xl font-extrabold mono">150+</div><div class="text-[11px] text-white/50" data-i18n="cta_stat_1">行业经验</div></div>
+                <div class="text-center"><div class="text-2xl font-extrabold mono">100+</div><div class="text-[11px] text-white/50" data-i18n="cta_stat_2">服务国家</div></div>
+                <div class="text-center"><div class="text-2xl font-extrabold mono">500+</div><div class="text-[11px] text-white/50" data-i18n="cta_stat_3">合作伙伴</div></div>
+                <div class="text-center"><div class="text-2xl font-extrabold mono">99.5%</div><div class="text-[11px] text-white/50" data-i18n="cta_stat_4">客户满意度</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="text-white/80 py-10 text-sm">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="text-white font-extrabold">SAKADA<span class="text-pink-200">.</span></div>
+        <p data-i18n="footer_copyright">&copy; SAKADA (Shenzhen) International Limited. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    let currentLang = 'zh';
+
+    const i18nData = {
+        en: {
+            nav_home:"Home",nav_self:"Self-Operated Warehousing",nav_customs:"Customs Clearance",nav_ocean:"Sea Freight",nav_air:"Air Freight",nav_dropship:"Dropshipping",nav_supplychain:"Supply Chain",nav_about:"About Us",nav_contact:"Contact Us",
+            hero_title:"Supply Chain Integration Solutions",hero_subtitle:"Customized End-to-End Supply Chain Top-Level Design",
+            hero_desc:"Integrating factory production rhythms to achieve deep digital penetration across trunk logistics, warehousing, and transshipment information.",
+            feature1_title:"Top-Level Planning",
+            feature2_title:"Data Visibility",
+            feature3_title:"Global Network",
+            feature4_title:"Cost Reduction",
+            feature5_title:"Risk Control", 
+            feature6_title:"Smart Collaboration",
+            feat_1_title:"Top-Level Design",feat_1_desc:"End-to-end planning",
+            feat_2_title:"Data Connectivity",feat_2_desc:"Granular fulfillment visibility",
+            feat_3_title:"Cost Reduction",feat_3_desc:"Optimized cost structure",
+            feat_4_title:"Agile Response",feat_4_desc:"Fast, flexible adjustments",
+            feat_5_title:"Risk Control",feat_5_desc:"Full-chain risk visibility",
+            btn_quote:"Get a Custom Plan",
+            stat_1_label:"Years of Industry Experience",stat_2_label:"Countries &amp; Regions Served",stat_3_label:"Supply Chain Partners",stat_4_label:"Avg. Cost Reduction",stat_5_label:"Order Fulfillment Accuracy",
+            process_title:"Our Supply Chain Solutions",
+            proc_1_title:"Needs Analysis",proc_1_desc:"In-depth understanding of business goals and supply chain status",
+            proc_2_title:"Solution Design",proc_2_desc:"Customized top-level supply chain design",
+            proc_3_title:"Resource Integration",proc_3_desc:"Integrating premium global resource channels",
+            proc_4_title:"System Integration",proc_4_desc:"Connecting systems and data for seamless flow",
+            proc_5_title:"Execution",proc_5_desc:"Full-chain execution and process optimization",
+            proc_6_title:"Monitoring",proc_6_desc:"Real-time monitoring and continuous optimization",
+            proc_7_title:"Value Creation",proc_7_desc:"Data-driven decisions creating ongoing value",
+            capability_title:"Full-Chain Supply Chain Capabilities",
+            cap_1_title:"Needs Analysis",cap_1_desc:"In-depth understanding of business goals and supply chain status",
+            cap_2_title:"Demand Forecasting & Inventory Planning",cap_2_desc:"Based on sales trends to predict demand and optimize inventory configuration",
+            cap_3_title:"International Transport &amp; Customs",cap_3_desc:"Multimodal transport solution design, international logistics optimization",
+            cap_4_title:"Warehousing &amp; Inventory Management",cap_4_desc:"Global warehouse network planning, safety stock optimization",
+            cap_5_title:"Transshipment &amp; Local Delivery",cap_5_desc:"Transshipment optimization, last-mile delivery",
+            cap_6_title:"Data Platform &amp; Visualization",cap_6_desc:"Full-chain data connectivity, smart analytics enablement",
+            sm_title:"Front Warehouse + Overseas Warehouse Model",
+            sm_1_title:"Front Warehouse Service",sm_1_desc:"Stock is prepared once orders are confirmed, improving cash flow efficiency, supporting pre-sorting, pre-packing, pre-labeling, and pre-scanning.",
+            sm_1_item_1:"Sea, air, and cross-border land freight",sm_1_item_2:"Export FCL / truckload transport",sm_1_item_3:"Import/export clearance, door-to-door service",
+            sm_2_title:"Overseas Warehouse Service",sm_2_desc:"Covers FBA warehouses, retail stores, private addresses and other distribution scenarios, fully supported by digital systems.",
+            sm_2_item_1:"Overseas warehouse DC operations, distribution",sm_2_item_2:"Information management system, business data collection",sm_2_item_3:"Warehousing and other value-added services",
+            tl_title:"Logistics Timeline",
+            tl_1_title:"Seller Places Order",tl_2_title:"Domestic Transfer",tl_3_title:"International Transport",tl_3_time:"By route",
+            tl_4_title:"Customs Clearance",tl_5_title:"SAKADA Warehouse Sorting",tl_6_title:"Local Delivery",tl_6_time:"1-3 days",
+            va_title:"Value-Added Services",
+            va_1_title:"Quality Inspection",va_1_desc:"Professional QC team ensures cargo quality",
+            va_2_title:"Warehousing",va_2_desc:"Smart warehouse management, visible &amp; secure inventory",
+            va_3_title:"Repackaging",va_3_desc:"Custom packaging replacement to enhance customer experience",
+            va_4_title:"Relabeling",va_4_desc:"Label replacement/supplementation to meet platform requirements",
+            va_5_title:"Multi-Platform Integration",va_5_desc:"System integration with major platforms, real-time data sync",
+            va_6_title:"Return Handling",va_6_desc:"Compliant, safe, and environmentally friendly handling of defective products",
+            case_title:"Success Stories",
+            case_1_tag:"3C Electronics",case_1_title:"Global 3C Electronics Supply Chain Integration",
+            case_2_tag:"Home Goods",case_2_title:"Global Supply Chain Optimization for Home Goods",
+            case_3_tag:"Apparel &amp; Footwear",case_3_title:"Flexible Supply Chain Build for Apparel &amp; Footwear",
+            case_4_tag:"Cross-Border E-Commerce",case_4_title:"Full-Chain Supply Chain Solution for Cross-Border E-Commerce",
+            case_lbl_cost:"Cost Reduction",case_lbl_efficiency:"Efficiency Gain",case_lbl_accuracy:"Delivery Accuracy",
+            case_lbl_leadtime:"Turnover Improved",case_lbl_inventory:"Inventory Turnover",
+            case_lbl_leadtime2:"Lead Time Reduced",case_lbl_inventory2:"Inventory Accuracy",
+            case_lbl_orderrate:"Order Fulfillment",case_lbl_satisfaction:"Customer Satisfaction",
+            partner_title:"Partners",
+            cta_title:"Make Supply Chain Your Core Competitive Advantage",cta_desc:"Custom supply chain integration solutions to drive continuous business growth",cta_btn:"Consult Now",
+            cta_stat_1:"Years of Experience",cta_stat_2:"Countries Served",cta_stat_3:"Partners",cta_stat_4:"Customer Satisfaction",
+            footer_copyright:"&copy; SAKADA (Shenzhen) International Limited. All rights reserved."
+        },
+        zh: {
+            nav_home:"首页",nav_self:"自营海外仓",nav_customs:"自有清关",nav_ocean:"国际海运",nav_air:"航空货运专线",nav_dropship:"一件代发履约",nav_supplychain:"供应链集成方案",nav_about:"关于我们",nav_contact:"联系我们",
+            hero_title:"供应链集成方案",hero_subtitle:"定制化全流程供应链顶层设计",
+            hero_desc:"调整仓库货物节奏，实现全链路干线、仓储、转运信息深度数字化穿透",
+            feature1_title:"顶层规划",
+            feature2_title:"数据可视",
+            feature3_title:"全球网络",
+            feature4_title:"降本增效",
+            feature5_title:"风险管控",
+            feature6_title:"智能协同",
+            feat_1_title:"顶层设计",feat_1_desc:"全链路规划",
+            feat_2_title:"数据贯通",feat_2_desc:"精细履约可视",
+            feat_3_title:"降本增效",feat_3_desc:"优化成本结构",
+            feat_4_title:"敏捷响应",feat_4_desc:"快速灵活调整",
+            feat_5_title:"风险可控",feat_5_desc:"全链视野管理",
+            btn_quote:"获取定制方案",
+            stat_1_label:"行业解决方案经验",stat_2_label:"服务覆盖国家和地区",stat_3_label:"供应链合作伙伴",stat_4_label:"平均降本幅度",stat_5_label:"订单履约准确率",
+            process_title:"我们的供应链解决方案",
+            proc_1_title:"需求分析",proc_1_desc:"深入了解业务目标和供应链现状",
+            proc_2_title:"方案设计",proc_2_desc:"定制化供应链顶层设计方案",
+            proc_3_title:"资源整合",proc_3_desc:"整合全球优质资源渠道",
+            proc_4_title:"系统对接",proc_4_desc:"打通系统与数据实现信息畅通",
+            proc_5_title:"执行落地",proc_5_desc:"全链路执行与流程优化",
+            proc_6_title:"监控落地",proc_6_desc:"实时监控与持续优化",
+            proc_7_title:"价值提升",proc_7_desc:"数据驱动决策持续创造价值",
+            capability_title:"全链路供应链能力",
+            cap_1_title:"客户需求诊断与方案定制",cap_1_desc:"深入了解客户业务目标和供应链现状，定制化供应链顶层设计方案",
+            cap_2_title:"需求预测与库存规划",cap_2_desc:"基于销售趋势预测备货需求，优化库存结构配置",
+            cap_3_title:"国际运输与清关",cap_3_desc:"多式联运方案设计，国际物流优化",
+            cap_4_title:"仓储与库存管理",cap_4_desc:"全球仓网规划布局，安全库存优化",
+            cap_5_title:"转运与本地配送",cap_5_desc:"转运方案优化，最后一公里配送",
+            cap_6_title:"数据中台与可视化",cap_6_desc:"全链路数据贯通，智能分析赋能",
+            sm_title:"前置仓 + 海外仓服务模式",
+            sm_1_title:"前置仓服务",sm_1_desc:"售卖订单实际产生后备货，提高资金周转效率，支持预分拣、预包装、预贴标、预扫描。",
+            sm_1_item_1:"海运、空运、跨境陆运",sm_1_item_2:"出口陆运整箱/吨车运输",sm_1_item_3:"进出口报关、门到门服务",
+            sm_2_title:"海外仓服务",sm_2_desc:"覆盖FBA仓、门店、私人地址等多种分拨配送场景，信息化系统全程支持。",
+            sm_2_item_1:"海外仓DC业务、分拨配送",sm_2_item_2:"信息管理系统、业务数据收集",sm_2_item_3:"仓储及其他增值服务",
+            tl_title:"物流时效流程",
+            tl_1_title:"卖家下单",tl_2_title:"国内调拨中转",tl_3_title:"国际运输",tl_3_time:"按航线",
+            tl_4_title:"口岸清关",tl_5_title:"SAKADA仓分拨",tl_6_title:"本地配送签收",tl_6_time:"1-3天",
+            va_title:"增值服务",
+            va_1_title:"验货质检",va_1_desc:"专业质检团队，确保货物质量",
+            va_2_title:"仓储管理",va_2_desc:"智能仓储管理，库存可视安全高效",
+            va_3_title:"更换包装",va_3_desc:"定制化包装更换，提升客户体验",
+            va_4_title:"贴标换标",va_4_desc:"标签更换/补贴，满足平台要求",
+            va_5_title:"多平台对接",va_5_desc:"系统对接主流平台，数据实时同步",
+            va_6_title:"退货处理",va_6_desc:"不良品退货处理，安全合规",
+            case_title:"成功案例",
+            case_1_tag:"3C电子",case_1_title:"全球3C电子供应链整合方案",
+            case_2_tag:"家居用品",case_2_title:"家居用品全球供应链优化",
+            case_3_tag:"服装鞋帽",case_3_title:"服装鞋帽柔性供应链建设",
+            case_4_tag:"跨境电商",case_4_title:"跨境电商全链路供应链方案",
+            case_lbl_cost:"降低成本",case_lbl_efficiency:"提升效率",case_lbl_accuracy:"交付准确率",
+            case_lbl_leadtime:"流转周期提升",case_lbl_inventory:"库存周转率",
+            case_lbl_leadtime2:"交付周期缩短",case_lbl_inventory2:"库存精准率",
+            case_lbl_orderrate:"订单履约率",case_lbl_satisfaction:"客户满意度",
+            partner_title:"合作伙伴",
+            cta_title:"让供应链成为您的核心竞争力",cta_desc:"定制专属供应链集成方案，驱动业务持续增长",cta_btn:"立即咨询",
+            cta_stat_1:"行业经验",cta_stat_2:"服务国家",cta_stat_3:"合作伙伴",cta_stat_4:"客户满意度",
+            footer_copyright:"&copy;  坂瑱（深圳）电商物流有限公司 版权所有"
+        },
+        ja: {
+            nav_home:"ホーム",nav_self:"自営海外倉庫",nav_customs:"自社通関",nav_ocean:"国際海上輸送",nav_air:"航空貨物専用便",nav_dropship:"ワンストップ配送代行",nav_supplychain:"サプライチェーン統合",nav_about:"会社概要",nav_contact:"お問い合わせ",
+            hero_title:"サプライチェーン統合ソリューション",hero_subtitle:"カスタマイズされた全プロセスのサプライチェーントップレベル設計",
+            hero_desc:"工場の生産リズムを統合し、幹線輸送・倉庫・転送情報の深いデジタル化浸透を実現します。",
+            feature1_title:"トップレベルプランニング",
+            feature2_title:"データ可視化",
+            feature3_title:"グローバルネットワーク",
+            feature4_title:"コスト削減",
+            feature5_title:"リスク管理",
+            feature6_title:"スマート連携",
+            feat_1_title:"トップレベル設計",feat_1_desc:"全行程プランニング",
+            feat_2_title:"データ連携",feat_2_desc:"精密なフルフィルメント可視化",
+            feat_3_title:"コスト削減と効率化",feat_3_desc:"コスト構造の最適化",
+            feat_4_title:"アジャイル対応",feat_4_desc:"迅速で柔軟な調整",
+            feat_5_title:"リスク管理",feat_5_desc:"全行程のリスク可視化",
+            btn_quote:"カスタムプランを取得",
+            stat_1_label:"業界ソリューション経験年数",stat_2_label:"対応国・地域数",stat_3_label:"サプライチェーンパートナー数",stat_4_label:"平均コスト削減率",stat_5_label:"注文履行精度",
+            process_title:"当社のサプライチェーンソリューション",
+            proc_1_title:"ニーズ分析",proc_1_desc:"事業目標とサプライチェーン現状の深い理解",
+            proc_2_title:"ソリューション設計",proc_2_desc:"カスタマイズされたトップレベル設計",
+            proc_3_title:"リソース統合",proc_3_desc:"世界の優良リソースチャネルを統合",
+            proc_4_title:"システム連携",proc_4_desc:"システムとデータを接続し情報の円滑化を実現",
+            proc_5_title:"実行展開",proc_5_desc:"全行程の実行とプロセス最適化",
+            proc_6_title:"モニタリング",proc_6_desc:"リアルタイム監視と継続的最適化",
+            proc_7_title:"価値向上",proc_7_desc:"データドリブンな意思決定で継続的に価値を創出",
+            capability_title:"全行程サプライチェーン対応力",
+            cap_1_title:"ニーズ分析",cap_1_desc:"事業目標とサプライチェーン現状の深い理解",
+            cap_2_title:"需要予測と在庫計画",cap_2_desc:"売上トレンドに基づいて需要を予測し、在庫構成を最適化",
+            cap_3_title:"国際輸送と通関",cap_3_desc:"複合一貫輸送プラン設計、国際物流の最適化",
+            cap_4_title:"倉庫と在庫管理",cap_4_desc:"グローバル倉庫ネットワーク計画、安全在庫の最適化",
+            cap_5_title:"転送と現地配送",cap_5_desc:"転送プランの最適化、ラストワンマイル配送",
+            cap_6_title:"データプラットフォームと可視化",cap_6_desc:"全行程のデータ連携、スマート分析による価値創出",
+            sm_title:"前置倉庫 + 海外倉庫サービスモデル",
+            sm_1_title:"前置倉庫サービス",sm_1_desc:"注文確定後に発生する在庫準備で資金回転効率を向上、事前仕分け・梱包・ラベル貼付・スキャンに対応。",
+            sm_1_item_1:"海上・航空・越境陸上輸送",sm_1_item_2:"輸出FCL/トラック輸送",sm_1_item_3:"輸出入通関、ドア・ツー・ドアサービス",
+            sm_2_title:"海外倉庫サービス",sm_2_desc:"FBA倉庫、店舗、個人住所など多様な配送シナリオに対応、デジタルシステムで全行程サポート。",
+            sm_2_item_1:"海外倉庫DC業務、分配配送",sm_2_item_2:"情報管理システム、業務データ収集",sm_2_item_3:"倉庫管理及びその他付加価値サービス",
+            tl_title:"物流所要時間フロー",
+            tl_1_title:"出品者注文",tl_2_title:"国内中継輸送",tl_3_title:"国際輸送",tl_3_time:"路線による",
+            tl_4_title:"税関通関",tl_5_title:"SAKADA倉庫仕分け",tl_6_title:"現地配送受取",tl_6_time:"1-3日",
+            va_title:"付加価値サービス",
+            va_1_title:"検品",va_1_desc:"専門検品チームが貨物品質を保証",
+            va_2_title:"倉庫管理",va_2_desc:"スマート倉庫管理、在庫可視化で安全かつ高効率",
+            va_3_title:"梱包変更",va_3_desc:"カスタム梱包変更で顧客体験を向上",
+            va_4_title:"ラベル変更",va_4_desc:"ラベル変更/補充でプラットフォーム要件に対応",
+            va_5_title:"複数プラットフォーム連携",va_5_desc:"主要プラットフォームとシステム連携、データをリアルタイム同期",
+            va_6_title:"退货处理",va_6_desc:"不良品の返品処理、安全かつコンプライアンスに準拠",
+            case_title:"導入事例",
+            case_1_tag:"3C電子製品",case_1_title:"グローバル3C電子サプライチェーン統合ソリューション",
+            case_2_tag:"ホーム用品",case_2_title:"ホーム用品のグローバルサプライチェーン最適化",
+            case_3_tag:"アパレル・シューズ",case_3_title:"アパレル・シューズ向け柔軟なサプライチェーン構築",
+            case_4_tag:"越境EC",case_4_title:"越境EC向け全行程サプライチェーンソリューション",
+            case_lbl_cost:"コスト削減",case_lbl_efficiency:"効率向上",case_lbl_accuracy:"配送精度",
+            case_lbl_leadtime:"回転率向上",case_lbl_inventory:"在庫回転率",
+            case_lbl_leadtime2:"リードタイム短縮",case_lbl_inventory2:"在庫精度",
+            case_lbl_orderrate:"注文履行率",case_lbl_satisfaction:"顧客満足度",
+            partner_title:"パートナー企業",
+            cta_title:"サプライチェーンを貴社の中核競争力に",cta_desc:"専用のサプライチェーン統合ソリューションで事業の継続成長を推進",cta_btn:"今すぐ相談する",
+            cta_stat_1:"業界経験年数",cta_stat_2:"対応国数",cta_stat_3:"パートナー数",cta_stat_4:"顧客満足度",
+            footer_copyright:"&copy;  SAKADA (Shenzhen) International Limited. All rights reserved."
+        }
+    };
+
+    function switchLang(lang) {
+        currentLang = lang;
+        document.querySelectorAll('.lang-btn').forEach(function(btn){ btn.classList.remove('active'); });
+        document.querySelector(`[onclick="switchLang('${lang}')"]`).classList.add('active');
+        const data = i18nData[lang];
+        document.querySelectorAll('[data-i18n]').forEach(function(el){
+            const key = el.getAttribute('data-i18n');
+            if (data[key] !== undefined) el.innerHTML = data[key];
+        });
+        document.documentElement.lang = lang === 'ja' ? 'ja' : (lang === 'en' ? 'en' : 'zh');
+    }
+
+    function scrollPartners(dir) {
+        document.getElementById('partner-scroll').scrollBy({ left: dir * 170, behavior: 'smooth' });
+    }
+
+    switchLang('zh');
+</script>
+
+</body>
+</html>

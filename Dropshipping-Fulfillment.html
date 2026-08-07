@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>一件代发履约 | SAKADA International</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+    body { font-family:'Inter',sans-serif; color:#1A1A1A; background:#ffffff; overflow-x:hidden; }
+    .mono { font-family:'JetBrains Mono',monospace; }
+    .topbar { position:fixed; top:0; left:0; width:100%; z-index:50; background:rgba(255,255,255,0.92); backdrop-filter:blur(12px); border-bottom:1px solid #e8edf5; }
+    .nav-link { font-size:13px; font-weight:500; color:#5b6b85; transition:color .2s; white-space:nowrap; }
+    .nav-link:hover, .nav-link.active { color:#2575F0; }
+    .nav-cta { background:linear-gradient(135deg,#2575F0,#6BA3FF); color:#fff; font-size:13px; font-weight:700; padding:10px 22px; border-radius:6px; transition:all .25s; white-space:nowrap; }
+    .nav-cta:hover { transform:translateY(-2px); box-shadow:0 10px 20px -6px rgba(37,117,240,.5); }
+    .lang-btn { font-size:12px; font-weight:700; color:#8a97ad; padding:4px 8px; border-radius:4px; cursor:pointer; transition:all .2s; }
+    .lang-btn.active { color:#2575F0; background:rgba(37,117,240,0.08); }
+
+    /* ===== Hero ===== */
+    .ds-hero { position:relative; padding:170px 0 60px; background:linear-gradient(180deg,#fdf2f8 0%,#ffffff 85%); }
+    .pink-tag { display:inline-flex; align-items:center; gap:8px; background:rgba(236,72,153,0.1); border:1px solid rgba(236,72,153,0.3); color:#EC4899; font-size:12px; font-weight:700; letter-spacing:1px; padding:6px 14px; border-radius:999px; }
+    .pink-tag::before { content:''; width:6px; height:6px; border-radius:50%; background:#EC4899; }
+    .ds-illustration-wrap { position:relative; }
+    .ds-illustration-wrap img {
+    width:100%;
+    display:block;
+    -webkit-mask-image:radial-gradient(ellipse 75% 75% at center, #000 45%, transparent 92%);
+    mask-image:radial-gradient(ellipse 75% 75% at center, #000 45%, transparent 92%);
+    }
+    .float-card { position:absolute; background:#fff; border-radius:10px; padding:10px 14px; box-shadow:0 12px 28px -10px rgba(0,0,0,0.2); font-size:11px; display:flex; align-items:center; gap:8px; }
+    .float-card .num { width:20px; height:20px; border-radius:50%; background:#EC4899; color:#fff; font-size:10px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .float-card .title { font-weight:700; color:#1a1a1a; }
+    .float-card .sub { color:#94a3b8; font-size:10px; }
+
+    /* ===== Stats ===== */
+    .stats-bar { background:#fff; border:1px solid #e8edf5; border-radius:14px; box-shadow:0 20px 45px -20px rgba(37,90,180,0.25); margin-top:-24px; position:relative; z-index:10; }
+    .stat-icon-pink { width:42px; height:42px; border-radius:10px; background:rgba(236,72,153,0.08); color:#EC4899; display:flex; align-items:center; justify-content:center; font-size:17px; }
+
+    /* ===== Flow steps ===== */
+    .flow-step { background:#fff; border:1px solid #e8edf5; border-radius:12px; padding:24px 16px; text-align:center; transition:all .3s; }
+    .flow-step:hover { transform:translateY(-4px); box-shadow:0 16px 30px -14px rgba(236,72,153,.25); border-color:#fbcfe8; }
+    .flow-icon-pink { width:52px; height:52px; border-radius:12px; background:rgba(236,72,153,0.08); color:#EC4899; display:flex; align-items:center; justify-content:center; font-size:20px; margin:0 auto 14px; }
+    .flow-num { font-size:11px; font-weight:700; color:#e9a8c8; margin-bottom:6px; }
+    .flow-arrow-pink { color:#fbcfe8; font-size:18px; }
+
+    /* ===== Services ===== */
+    .ds-service-card { background:#fff; border:1px solid #e8edf5; border-radius:12px; padding:22px; transition:all .3s; }
+    .ds-service-card:hover { transform:translateY(-5px); border-color:#fbcfe8; box-shadow:0 18px 32px -16px rgba(236,72,153,.25); }
+    .ds-service-icon { width:42px; height:42px; border-radius:10px; background:rgba(236,72,153,0.08); color:#EC4899; display:flex; align-items:center; justify-content:center; font-size:17px; margin-bottom:12px; }
+    .platform-mini { width:26px; height:26px; border-radius:6px; background:#f7f9fd; display:flex; align-items:center; justify-content:center; font-size:11px; color:#5b6b85; }
+
+    /* ===== WMS/OMS visual section ===== */
+    .wms-mockup-wrap { position:relative; background:linear-gradient(135deg,#0a1428,#122448); border-radius:16px; padding:24px; overflow:hidden; }
+    .wms-order-row { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.08); font-size:11px; color:rgba(255,255,255,0.7); }
+    .wms-order-row:last-child { border-bottom:none; }
+    .wms-status-badge { font-size:9px; font-weight:700; padding:2px 8px; border-radius:999px; }
+    .wms-status-shipped { background:rgba(34,197,94,0.15); color:#4ade80; }
+    .wms-status-pending { background:rgba(236,72,153,0.15); color:#f472b6; }
+    .wms-feature-icon { width:36px; height:36px; border-radius:8px; background:rgba(236,72,153,0.08); color:#EC4899; display:flex; align-items:center; justify-content:center; font-size:15px; }
+    .wms-mockup-img-wrap { border-radius:16px; overflow:hidden; box-shadow:0 24px 48px -16px rgba(15,23,42,0.25); }
+    .wms-mockup-img-wrap img { width:100%; height:auto; display:block; }
+
+    /* ===== Platform logos ===== */
+    .platform-scroll-wrap { background:#fff; border:1px solid #e8edf5; border-radius:14px; padding:24px; }
+    .platform-badge { flex:0 0 auto; height:56px; padding:0 22px; background:#f7f9fd; border-radius:10px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; color:#334155; }
+
+    /* ===== CTA ===== */
+    .cta-band-pink { position:relative; border-radius:16px; overflow:hidden; background:linear-gradient(120deg,#7c3aed,#ec4899); }
+
+    footer { background:linear-gradient(135deg,#2575F0,#6BA3FF); }
+</style>
+</head>
+<body class="antialiased">
+
+<header class="topbar">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 h-[72px] flex items-center justify-between">
+        <a href="./index.html" class="flex items-center gap-3 text-xl font-extrabold text-slate-900 mr-8">SAKADA</a>
+        <nav class="hidden lg:flex items-center gap-6 xl:gap-8">
+            <a href="./index.html" class="nav-link" data-i18n="nav_home">Home</a>
+            <a href="./Overseas-Warehousing.html" class="nav-link" data-i18n="nav_self">Self-Operated Warehousing</a>
+            <a href="./Customs-Clearance.html" class="nav-link" data-i18n="nav_customs">Customs Clearance</a>
+            <a href="./Sea-Freight.html" class="nav-link" data-i18n="nav_ocean">Sea Freight</a>
+            <a href="./Air-Freight.html" class="nav-link" data-i18n="nav_air">Air Freight</a>
+            <a href="./Dropshipping-Fulfillment.html" class="nav-link active" data-i18n="nav_dropship">Dropshipping</a>
+            <a href="./Supply-Chain-Management.html" class="nav-link" data-i18n="nav_supplychain">Supply Chain</a>
+            <a href="./about.html" class="nav-link" data-i18n="nav_about">About Us</a>
+        </nav>
+        <div class="flex items-center gap-4 ml-6">
+            <div class="flex items-center gap-1 text-xs">
+                <span class="lang-btn" onclick="switchLang('en')">EN</span>
+                <span class="text-gray-300">|</span>
+                <span class="lang-btn active" onclick="switchLang('zh')">CN</span>
+                <span class="text-gray-300">|</span>
+                <span class="lang-btn" onclick="switchLang('ja')">JP</span>
+            </div>
+            <a href="./index.html#contact" class="nav-cta" data-i18n="nav_contact">Contact Us</a>
+        </div>
+    </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="ds-hero">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-14 items-center">
+        <div>
+            <span class="pink-tag mb-5" data-i18n="hero_tag">Fulfillment</span>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mt-5 mb-3" data-i18n="hero_title">一件代发履约</h1>
+            <p class="text-lg font-semibold text-slate-500 mb-5" data-i18n="hero_subtitle">智能履约 · 高效发货 · 全球送达</p>
+            <p class="text-sm text-slate-500 leading-relaxed max-w-lg mb-8" data-i18n="hero_desc">SAKADA为跨境电商卖家提供专业的一件代发服务，从订单处理、拣货打包到全球配送，让您专注销售，我们负责履约。</p>
+            <a href="./index.html#contact" class="inline-flex items-center gap-2 bg-gradient-to-br from-[#2575F0] to-[#6BA3FF] text-white text-sm font-bold px-7 py-3.5 rounded-md hover:opacity-90 transition-all">
+                <span data-i18n="btn_quote">获取专属方案</span> <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+        <div class="ds-illustration-wrap">
+            <img src="./一件代发背景图.png" alt="SAKADA Dropshipping Fulfillment">
+            <div class="float-card" style="top:6%; left:0%;"><div class="num">01</div><div><div class="title" data-i18n="float_1_title">订单同步</div><div class="sub" data-i18n="float_1_sub">多平台自动同步</div></div></div>
+            <div class="float-card" style="top:45%; left:-4%;"><div class="num">02</div><div><div class="title" data-i18n="float_2_title">智能拣货</div><div class="sub" data-i18n="float_2_sub">波次拣货/路径优化</div></div></div>
+            <div class="float-card" style="top:22%; right:2%;"><div class="num">03</div><div><div class="title" data-i18n="float_3_title">打包贴标</div><div class="sub" data-i18n="float_3_sub">标准包装/个性化定制</div></div></div>
+            <div class="float-card" style="bottom:8%; right:0%;"><div class="num">04</div><div><div class="title" data-i18n="float_4_title">本地配送</div><div class="sub" data-i18n="float_4_sub">多渠道发货/全程追踪</div></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+    <div class="stats-bar grid grid-cols-2 md:grid-cols-5 gap-6 px-8 py-8">
+        <div class="flex items-center gap-3"><div class="stat-icon-pink"><i class="fa-solid fa-truck-fast"></i></div><div><div class="text-xl font-extrabold text-slate-900 mono">100,000+</div><div class="text-xs text-slate-500" data-i18n="stat_1_label">日处理订单</div></div></div>
+        <div class="flex items-center gap-3"><div class="stat-icon-pink"><i class="fa-solid fa-shield-halved"></i></div><div><div class="text-xl font-extrabold text-slate-900 mono">99.9%</div><div class="text-xs text-slate-500" data-i18n="stat_2_label">发货准确率</div></div></div>
+        <div class="flex items-center gap-3"><div class="stat-icon-pink"><i class="fa-solid fa-clock"></i></div><div><div class="text-xl font-extrabold text-slate-900 mono">24H</div><div class="text-xs text-slate-500" data-i18n="stat_3_label">订单出库时效</div></div></div>
+        <div class="flex items-center gap-3"><div class="stat-icon-pink"><i class="fa-solid fa-earth-asia"></i></div><div><div class="text-xl font-extrabold text-slate-900 mono">20+</div><div class="text-xs text-slate-500" data-i18n="stat_4_label">覆盖国家和地区</div></div></div>
+        <div class="flex items-center gap-3"><div class="stat-icon-pink"><i class="fa-solid fa-heart"></i></div><div><div class="text-xl font-extrabold text-slate-900 mono">99.6%</div><div class="text-xs text-slate-500" data-i18n="stat_5_label">客户满意度</div></div></div>
+    </div>
+</div>
+
+<!-- ============ FLOW ============ -->
+<section class="py-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="text-center mb-14">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight" data-i18n="flow_title">一件代发流程</h2>
+            <div class="w-10 h-1 bg-[#EC4899] mx-auto mt-3 rounded-full"></div>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-6 gap-4 items-start">
+            <div class="flow-step"><div class="flow-num">01</div><div class="flow-icon-pink"><i class="fa-solid fa-store"></i></div><h3 class="text-sm font-bold text-slate-900 mb-1" data-i18n="flow_1_title">客户下单</h3><p class="text-xs text-slate-500" data-i18n="flow_1_desc">多平台订单自动导入</p></div>
+            <div class="flow-step"><div class="flow-num">02</div><div class="flow-icon-pink"><i class="fa-solid fa-computer"></i></div><h3 class="text-sm font-bold text-slate-900 mb-1" data-i18n="flow_2_title">订单处理</h3><p class="text-xs text-slate-500" data-i18n="flow_2_desc">智能审核 自动分配</p></div>
+            <div class="flow-step"><div class="flow-num">03</div><div class="flow-icon-pink"><i class="fa-solid fa-box"></i></div><h3 class="text-sm font-bold text-slate-900 mb-1" data-i18n="flow_3_title">拣货复核</h3><p class="text-xs text-slate-500" data-i18n="flow_3_desc">波次拣货 二次复核</p></div>
+            <div class="flow-step"><div class="flow-num">04</div><div class="flow-icon-pink"><i class="fa-solid fa-box-open"></i></div><h3 class="text-sm font-bold text-slate-900 mb-1" data-i18n="flow_4_title">打包贴标</h3><p class="text-xs text-slate-500" data-i18n="flow_4_desc">专业包装 贴标换标</p></div>
+            <div class="flow-step"><div class="flow-num">05</div><div class="flow-icon-pink"><i class="fa-solid fa-truck"></i></div><h3 class="text-sm font-bold text-slate-900 mb-1" data-i18n="flow_5_title">发货出库</h3><p class="text-xs text-slate-500" data-i18n="flow_5_desc">多渠道发货 全程跟踪</p></div>
+            <div class="flow-step"><div class="flow-num">06</div><div class="flow-icon-pink"><i class="fa-solid fa-user-check"></i></div><h3 class="text-sm font-bold text-slate-900 mb-1" data-i18n="flow_6_title">签收完成</h3><p class="text-xs text-slate-500" data-i18n="flow_6_desc">妥投签收 反馈追踪</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="py-24 bg-[#f7f9fd]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="text-center mb-14">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight" data-i18n="services_title">我们的服务</h2>
+            <div class="w-10 h-1 bg-[#EC4899] mx-auto mt-3 rounded-full"></div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+            <div class="ds-service-card">
+                <div class="ds-service-icon"><i class="fa-solid fa-plug"></i></div>
+                <h3 class="font-bold text-slate-900 mb-2" data-i18n="svc_1_title">平台对接</h3>
+                <p class="text-sm text-slate-500 leading-relaxed mb-4" data-i18n="svc_1_desc">支持主流电商平台API无缝对接</p>
+                <div class="flex gap-2"><div class="platform-mini"><i class="fa-brands fa-shopify"></i></div><div class="platform-mini"><i class="fa-brands fa-amazon"></i></div><div class="platform-mini"><i class="fa-brands fa-ebay"></i></div></div>
+            </div>
+            <div class="ds-service-card"><div class="ds-service-icon"><i class="fa-solid fa-warehouse"></i></div><h3 class="font-bold text-slate-900 mb-2" data-i18n="svc_2_title">智能仓储</h3><p class="text-sm text-slate-500 leading-relaxed" data-i18n="svc_2_desc">自动化仓储管理，精准高效</p></div>
+            <div class="ds-service-card"><div class="ds-service-icon"><i class="fa-solid fa-gift"></i></div><h3 class="font-bold text-slate-900 mb-2" data-i18n="svc_3_title">个性化服务</h3><p class="text-sm text-slate-500 leading-relaxed" data-i18n="svc_3_desc">定制包装、卡片、礼品等提升品牌体验</p></div>
+            <div class="ds-service-card"><div class="ds-service-icon"><i class="fa-solid fa-rotate"></i></div><h3 class="font-bold text-slate-900 mb-2" data-i18n="svc_4_title">换货服务</h3><p class="text-sm text-slate-500 leading-relaxed" data-i18n="svc_4_desc">本地退换货处理，快速响应</p></div>
+            <div class="ds-service-card"><div class="ds-service-icon"><i class="fa-solid fa-chart-line"></i></div><h3 class="font-bold text-slate-900 mb-2" data-i18n="svc_5_title">库存管理</h3><p class="text-sm text-slate-500 leading-relaxed" data-i18n="svc_5_desc">实时库存同步，安全预警</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ WMS/OMS VISUAL ============ -->
+<section class="py-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-14 items-center">
+        <div class="wms-mockup-img-wrap">
+     <img src="./WMS系统截图.png" alt="SAKADA WMS System">
+      </div>
+        <div>
+            <span class="pink-tag mb-4" data-i18n="wms_tag">SMART SYSTEM</span>
+            <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight mt-4 mb-2" data-i18n="wms_title">智能系统 全程可视</h2>
+            <p class="text-sm text-slate-500 leading-relaxed mb-8" data-i18n="wms_desc">自主研发的WMS和OMS系统，实现订单、库存、仓储、物流全链路数字化管理。</p>
+            <div class="grid grid-cols-2 gap-5">
+                <div class="flex items-start gap-3"><div class="wms-feature-icon"><i class="fa-solid fa-arrows-rotate"></i></div><div><div class="text-sm font-bold text-slate-900" data-i18n="wms_feat_1_title">订单自动同步</div><div class="text-xs text-slate-500 mt-1" data-i18n="wms_feat_1_desc">多平台订单实时同步</div></div></div>
+                <div class="flex items-start gap-3"><div class="wms-feature-icon"><i class="fa-solid fa-diagram-project"></i></div><div><div class="text-sm font-bold text-slate-900" data-i18n="wms_feat_2_title">智能分配策略</div><div class="text-xs text-slate-500 mt-1" data-i18n="wms_feat_2_desc">邻近仓库智能分配</div></div></div>
+                <div class="flex items-start gap-3"><div class="wms-feature-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div><div><div class="text-sm font-bold text-slate-900" data-i18n="wms_feat_3_title">库内精准管理</div><div class="text-xs text-slate-500 mt-1" data-i18n="wms_feat_3_desc">库存实时监控预警</div></div></div>
+                <div class="flex items-start gap-3"><div class="wms-feature-icon"><i class="fa-solid fa-route"></i></div><div><div class="text-sm font-bold text-slate-900" data-i18n="wms_feat_4_title">物流轨迹追踪</div><div class="text-xs text-slate-500 mt-1" data-i18n="wms_feat_4_desc">全程物流可视化</div></div></div>
+                <div class="flex items-start gap-3"><div class="wms-feature-icon"><i class="fa-solid fa-chart-pie"></i></div><div><div class="text-sm font-bold text-slate-900" data-i18n="wms_feat_5_title">数据报表分析</div><div class="text-xs text-slate-500 mt-1" data-i18n="wms_feat_5_desc">多维度数据分析</div></div></div>
+                <div class="flex items-start gap-3"><div class="wms-feature-icon"><i class="fa-solid fa-code"></i></div><div><div class="text-sm font-bold text-slate-900" data-i18n="wms_feat_6_title">API开放对接</div><div class="text-xs text-slate-500 mt-1" data-i18n="wms_feat_6_desc">系统灵活集成对接</div></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ PLATFORMS & LOGISTICS ============ -->
+<section class="py-24 bg-[#f7f9fd]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="text-center mb-12">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight" data-i18n="platform_title">对接平台 &amp; 物流渠道</h2>
+            <div class="w-10 h-1 bg-[#EC4899] mx-auto mt-3 rounded-full"></div>
+        </div>
+        <!-- 以下均用图标/文字占位代表合作平台与快递渠道，避免复刻各平台官方商标；如已获授权，可将 platform-badge 内容换成 <img src="./xxx-logo.png" class="h-6"> -->
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="platform-scroll-wrap">
+                <div class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4" data-i18n="platform_col_1">电商平台</div>
+                <div class="flex flex-wrap gap-3">
+                    <div class="platform-badge"><i class="fa-brands fa-shopify mr-2"></i>Shopify</div>
+                    <div class="platform-badge"><i class="fa-brands fa-amazon mr-2"></i>Amazon</div>
+                    <div class="platform-badge"><i class="fa-brands fa-ebay mr-2"></i>eBay</div>
+                    <div class="platform-badge"><i class="fa-brands fa-Yahoo mr-2"></i>Yahoo</div>
+                    <div class="platform-badge"><i class="fa-brands fa-Rakuten mr-2"></i>Rakuten</div>
+                    <div class="platform-badge"><i class="fa-brands fa-Mercado Libre mr-2"></i>Mercado Libre</div>
+                </div>
+            </div>
+            <div class="platform-scroll-wrap">
+                <div class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4" data-i18n="platform_col_2">物流渠道</div>
+                <div class="flex flex-wrap gap-3">
+                    <div class="platform-badge">DHL</div>
+                    <div class="platform-badge">FedEx</div>
+                    <div class="platform-badge">UPS</div>
+                    <div class="platform-badge">USPS</div>
+                    <div class="platform-badge">SAGAWA</div>
+                    <div class="platform-badge">YAMATO</div>
+                    <div class="platform-badge">J&T Express</div>
+                    <div class="platform-badge">Brazil Post</div>
+                    <div class="platform-badge">Japan Post</div>
+                </div>
+            </div>
+            <div class="platform-scroll-wrap">
+                <div class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4" data-i18n="platform_col_3">系统对接</div>
+                <div class="flex flex-wrap gap-3">
+                    <div class="platform-badge">TMS</div>
+                    <div class="platform-badge">OMS</div>
+                    <div class="platform-badge">WMS</div>
+                    <div class="platform-badge">FMS</div>
+                    <div class="platform-badge">领星ERP</div>
+                    <div class="platform-badge">店小秘ERP</div>
+                    <div class="platform-badge">塞狐ERP</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="py-20">
+    <div class="max-w-6xl mx-auto px-6 lg:px-10">
+        <div class="cta-band-pink flex flex-col md:flex-row items-center justify-between gap-6 px-10 py-12 text-white">
+            <div>
+                <h3 class="text-2xl font-extrabold mb-1" data-i18n="cta_title">让履约更简单，让生意更轻松</h3>
+                <p class="text-sm text-white/80" data-i18n="cta_desc">专业的一件代发服务，助力您的业务全球增长</p>
+            </div>
+            <a href="./index.html#contact" class="inline-flex items-center gap-2 bg-white text-[#EC4899] text-sm font-bold px-7 py-3.5 rounded-md hover:opacity-90 transition-all shrink-0">
+                <span data-i18n="cta_btn">立即咨询</span> <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer class="text-white/80 py-10 text-sm">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="text-white font-extrabold">SAKADA<span class="text-pink-200">.</span></div>
+        <p data-i18n="footer_copyright">&copy;  SAKADA (Shenzhen) International Limited. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    let currentLang = 'zh';
+
+    const i18nData = {
+        en: {
+            nav_home:"Home",nav_self:"Self-Operated Warehousing",nav_customs:"Customs Clearance",nav_ocean:"Sea Freight",nav_air:"Air Freight",nav_dropship:"Dropshipping",nav_supplychain:"Supply Chain",nav_about:"About Us",nav_contact:"Contact Us",
+            hero_tag:"Fulfillment",hero_title:"Dropshipping Fulfillment",hero_subtitle:"Smart Fulfillment · Fast Shipping · Global Delivery",
+            hero_desc:"SAKADA provides professional dropshipping fulfillment for cross-border e-commerce sellers — from order processing and picking/packing to global delivery, so you can focus on sales while we handle fulfillment.",
+            float_1_title:"Order Sync",float_1_sub:"Auto-sync across platforms",
+            float_2_title:"Smart Picking",float_2_sub:"Wave picking / route optimization",
+            float_3_title:"Pack &amp; Label",float_3_sub:"Standard / custom packaging",
+            float_4_title:"Local Delivery",float_4_sub:"Multi-channel shipping / full tracking",
+            btn_quote:"Get a Custom Plan",
+            stat_1_label:"Orders Processed Daily",stat_2_label:"Shipping Accuracy",stat_3_label:"Order Dispatch Time",stat_4_label:"Countries &amp; Regions Covered",stat_5_label:"Customer Satisfaction",
+            flow_title:"Dropshipping Fulfillment Process",
+            flow_1_title:"Customer Orders",flow_1_desc:"Auto-import from multiple platforms",
+            flow_2_title:"Order Processing",flow_2_desc:"Smart review, auto-assignment",
+            flow_3_title:"Pick &amp; Verify",flow_3_desc:"Wave picking, double-check",
+            flow_4_title:"Pack &amp; Label",flow_4_desc:"Professional packaging, relabeling",
+            flow_5_title:"Ship Out",flow_5_desc:"Multi-channel shipping, full tracking",
+            flow_6_title:"Delivery Confirmed",flow_6_desc:"Proof of delivery, feedback tracking",
+            services_title:"Our Services",
+            svc_1_title:"Platform Integration",svc_1_desc:"Seamless API integration with major e-commerce platforms",
+            svc_2_title:"Smart Warehousing",svc_2_desc:"Automated warehouse management, precise and efficient",
+            svc_3_title:"Personalized Service",svc_3_desc:"Custom packaging, cards, gifts to enhance brand experience",
+            svc_4_title:"Exchange Service",svc_4_desc:"Local returns/exchange handling, fast response",
+            svc_5_title:"Inventory Management",svc_5_desc:"Real-time inventory sync with safety alerts",
+            wms_panel_title:"SAKADA WMS",wms_panel_today:"Today's Overview",
+            wms_stat_1:"Orders Processed",wms_stat_2:"Shipping Accuracy",wms_stat_3:"Avg. Ship Time",
+            wms_order_list_title:"Order Queue",
+            wms_tag:"SMART SYSTEM",wms_title:"Smart System, Full Visibility",
+            wms_desc:"Our self-developed WMS and OMS systems enable full digital management of orders, inventory, warehousing, and logistics.",
+            wms_feat_1_title:"Auto Order Sync",wms_feat_1_desc:"Real-time sync across platforms",
+            wms_feat_2_title:"Smart Allocation",wms_feat_2_desc:"Nearest-warehouse smart routing",
+            wms_feat_3_title:"Precise Inventory Control",wms_feat_3_desc:"Real-time monitoring &amp; alerts",
+            wms_feat_4_title:"Logistics Tracking",wms_feat_4_desc:"Full-journey visibility",
+            wms_feat_5_title:"Data Reporting",wms_feat_5_desc:"Multi-dimensional analytics",
+            wms_feat_6_title:"Open API",wms_feat_6_desc:"Flexible system integration",
+            platform_title:"Connected Platforms &amp; Logistics Channels",
+            platform_col_1:"E-Commerce Platforms",platform_col_2:"Logistics Channels",platform_col_3:"System Integration",
+            cta_title:"Making Fulfillment Simple, Business Effortless",cta_desc:"Professional dropshipping fulfillment to power your global growth",cta_btn:"Consult Now",
+            footer_copyright:"&copy;  SAKADA (Shenzhen) International Limited. All rights reserved."
+        },
+        zh: {
+            nav_home:"首页",nav_self:"自营海外仓",nav_customs:"自有清关",nav_ocean:"国际海运",nav_air:"航空货运专线",nav_dropship:"一件代发履约",nav_supplychain:"供应链集成方案",nav_about:"关于我们",nav_contact:"联系我们",
+            hero_tag:"Fulfillment",hero_title:"一件代发履约",hero_subtitle:"智能履约 · 高效发货 · 全球送达",
+            hero_desc:"SAKADA为跨境电商卖家提供专业的一件代发服务，从订单处理、拣货打包到全球配送，让您专注销售，我们负责履约。",
+            float_1_title:"订单同步",float_1_sub:"多平台自动同步",
+            float_2_title:"智能拣货",float_2_sub:"波次拣货/路径优化",
+            float_3_title:"打包贴标",float_3_sub:"标准包装/个性化定制",
+            float_4_title:"本地配送",float_4_sub:"多渠道发货/全程追踪",
+            btn_quote:"获取专属方案",
+            stat_1_label:"日处理订单",stat_2_label:"发货准确率",stat_3_label:"订单出库时效",stat_4_label:"覆盖国家和地区",stat_5_label:"客户满意度",
+            flow_title:"一件代发流程",
+            flow_1_title:"客户下单",flow_1_desc:"多平台订单自动导入",
+            flow_2_title:"订单处理",flow_2_desc:"智能审核 自动分配",
+            flow_3_title:"拣货复核",flow_3_desc:"波次拣货 二次复核",
+            flow_4_title:"打包贴标",flow_4_desc:"专业包装 贴标换标",
+            flow_5_title:"发货出库",flow_5_desc:"多渠道发货 全程跟踪",
+            flow_6_title:"签收完成",flow_6_desc:"妥投签收 反馈追踪",
+            services_title:"我们的服务",
+            svc_1_title:"平台对接",svc_1_desc:"支持主流电商平台API无缝对接",
+            svc_2_title:"智能仓储",svc_2_desc:"自动化仓储管理，精准高效",
+            svc_3_title:"个性化服务",svc_3_desc:"定制包装、卡片、礼品等提升品牌体验",
+            svc_4_title:"换货服务",svc_4_desc:"本地退换货处理，快速响应",
+            svc_5_title:"库存管理",svc_5_desc:"实时库存同步，安全预警",
+            wms_panel_title:"SAKADA WMS",wms_panel_today:"今日概览",
+            wms_stat_1:"订单处理量",wms_stat_2:"发货准确率",wms_stat_3:"平均发货时效",
+            wms_order_list_title:"订单队列",
+            wms_tag:"智能系统",wms_title:"智能系统 全程可视",
+            wms_desc:"自主研发的WMS和OMS系统，实现订单、库存、仓储、物流全链路数字化管理。",
+            wms_feat_1_title:"订单自动同步",wms_feat_1_desc:"多平台订单实时同步",
+            wms_feat_2_title:"智能分配策略",wms_feat_2_desc:"邻近仓库智能分配",
+            wms_feat_3_title:"库内精准管理",wms_feat_3_desc:"库存实时监控预警",
+            wms_feat_4_title:"物流轨迹追踪",wms_feat_4_desc:"全程物流可视化",
+            wms_feat_5_title:"数据报表分析",wms_feat_5_desc:"多维度数据分析",
+            wms_feat_6_title:"API开放对接",wms_feat_6_desc:"系统灵活集成对接",
+            platform_title:"对接平台 &amp; 物流渠道",
+            platform_col_1:"电商平台",platform_col_2:"物流渠道",platform_col_3:"系统对接",
+            cta_title:"让履约更简单，让生意更轻松",cta_desc:"专业的一件代发服务，助力您的业务全球增长",cta_btn:"立即咨询",
+            footer_copyright:"&copy;  坂瑱（深圳）电商物流有限公司 版权所有"
+        },
+        ja: {
+            nav_home:"ホーム",nav_self:"自営海外倉庫",nav_customs:"自社通関",nav_ocean:"国際海上輸送",nav_air:"航空貨物専用便",nav_dropship:"ワンストップ配送代行",nav_supplychain:"サプライチェーン統合",nav_about:"会社概要",nav_contact:"お問い合わせ",
+            hero_tag:"Fulfillment",hero_title:"ワンストップ配送代行",hero_subtitle:"スマートフルフィルメント · 迅速な発送 · 世界へお届け",
+            hero_desc:"SAKADAは越境ECセラー向けに専門的なワンストップ配送代行サービスを提供します。注文処理、ピッキング・梱包からグローバル配送まで、販売に専念していただけるようフルフィルメントを一括対応します。",
+            float_1_title:"注文同期",float_1_sub:"複数プラットフォーム自動同期",
+            float_2_title:"スマートピッキング",float_2_sub:"ウェーブピッキング/経路最適化",
+            float_3_title:"梱包・ラベル貼付",float_3_sub:"標準梱包/カスタム対応",
+            float_4_title:"地域配送",float_4_sub:"複数チャネル発送/全行程追跡",
+            btn_quote:"専用プランを取得",
+            stat_1_label:"1日あたりの処理件数",stat_2_label:"発送精度",stat_3_label:"出荷所要時間",stat_4_label:"対応国・地域数",stat_5_label:"顧客満足度",
+            flow_title:"ワンストップ配送代行の流れ",
+            flow_1_title:"顧客注文",flow_1_desc:"複数プラットフォームから自動取込",
+            flow_2_title:"注文処理",flow_2_desc:"スマート審査、自動割当",
+            flow_3_title:"ピッキング・検品",flow_3_desc:"ウェーブピッキング、二重チェック",
+            flow_4_title:"梱包・ラベル貼付",flow_4_desc:"専門梱包、ラベル変更",
+            flow_5_title:"出荷",flow_5_desc:"複数チャネル発送、全行程追跡",
+            flow_6_title:"受取完了",flow_6_desc:"受領確認、フィードバック追跡",
+            services_title:"サービス内容",
+            svc_1_title:"プラットフォーム連携",svc_1_desc:"主要ECプラットフォームとのシームレスなAPI連携",
+            svc_2_title:"スマート倉庫管理",svc_2_desc:"自動化倉庫管理、精密かつ高効率",
+            svc_3_title:"パーソナライズサービス",svc_3_desc:"カスタム梱包、カード、ギフト等でブランド体験を向上",
+            svc_4_title:"交換サービス",svc_4_desc:"現地での返品・交換対応、迅速な対応",
+            svc_5_title:"在庫管理",svc_5_desc:"リアルタイム在庫同期、安全アラート",
+            wms_panel_title:"SAKADA WMS",wms_panel_today:"本日の概要",
+            wms_stat_1:"注文処理数",wms_stat_2:"発送精度",wms_stat_3:"平均出荷時間",
+            wms_order_list_title:"注文キュー",
+            wms_tag:"スマートシステム",wms_title:"スマートシステムで全行程可視化",
+            wms_desc:"自社開発のWMSおよびOMSシステムにより、注文・在庫・倉庫・物流の全プロセスをデジタル管理します。",
+            wms_feat_1_title:"注文自動同期",wms_feat_1_desc:"複数プラットフォームとリアルタイム同期",
+            wms_feat_2_title:"スマート分配戦略",wms_feat_2_desc:"最寄倉庫へのスマート割当",
+            wms_feat_3_title:"精密な在庫管理",wms_feat_3_desc:"リアルタイム監視とアラート",
+            wms_feat_4_title:"物流追跡",wms_feat_4_desc:"全行程の可視化",
+            wms_feat_5_title:"データレポート分析",wms_feat_5_desc:"多角的なデータ分析",
+            wms_feat_6_title:"API開放連携",wms_feat_6_desc:"柔軟なシステム統合",
+            platform_title:"連携プラットフォーム &amp; 物流チャネル",
+            platform_col_1:"ECプラットフォーム",platform_col_2:"物流チャネル",platform_col_3:"システム連携",
+            cta_title:"フルフィルメントをシンプルに、ビジネスをもっと楽に",cta_desc:"専門的なワンストップ配送代行サービスで、グローバル成長をサポートします",cta_btn:"今すぐ相談する",
+            footer_copyright:"&copy;  SAKADA (Shenzhen) International Limited. All rights reserved."
+        }
+    };
+
+    function switchLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('.lang-btn').forEach(function(btn){ btn.classList.remove('active'); });
+    document.querySelector(`[onclick="switchLang('${lang}')"]`).classList.add('active');
+    const data = i18nData[lang];
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+        const key = el.getAttribute('data-i18n');
+        if (data[key] !== undefined) el.innerHTML = data[key];
+    });
+    document.documentElement.lang = lang === 'ja' ? 'ja' : (lang === 'en' ? 'en' : 'zh');
+}
+
+    
+
+    switchLang('zh');
+</script>
+
+</body>
+</html>
