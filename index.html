@@ -1067,35 +1067,37 @@
         // 地区分组定义（三语）
         var regionGroups = {
             zh: [
-                { label:"美中仓库", keys:["IL001","IL002","GA01","TX001"] },
-                { label:"美西仓库", keys:["CA004","CA007a","CA001","CA007b","CA002","CA003","CA005"] },
-                { label:"美东仓库", keys:["NJ001","NJ002","NJ003","NJ004","NJ005"] },
-                { label:"加拿大仓库", keys:["CA_MTL","CA_TOR1","CA_CAL","CA_VAN","CA_TOR2"] },
-                { label:"日本东京仓", keys:["JP_TKY1","JP_CHIBA1","JP_CHIBA2","JP_TKY2"] },
-                { label:"日本大阪仓", keys:["JP_OSAKA1","JP_OSAKA2"] },
-                { label:"巴西仓库", keys:["BR_SP"] },
-                { label:"泰国仓库", keys:["TH_BKK"] }
+                 { label:"日本东京仓", keys:["JP_TKY1","JP_CHIBA1","JP_CHIBA2","JP_TKY2"] },
+                 { label:"日本大阪仓", keys:["JP_OSAKA1","JP_OSAKA2"] },
+                 { label:"巴西仓库", keys:["BR_SP"] },
+                 { label:"泰国仓库", keys:["TH_BKK"] },
+                 { label:"美中仓库", keys:["IL001","IL002","GA01","TX001"] },
+                 { label:"美西仓库", keys:["CA004","CA007a","CA001","CA007b","CA002","CA003","CA005"] },
+                 { label:"美东仓库", keys:["NJ001","NJ002","NJ003","NJ004","NJ005"] },
+                 { label:"加拿大仓库", keys:["CA_MTL","CA_TOR1","CA_CAL","CA_VAN","CA_TOR2"] },
             ],
             en: [
-                { label:"Midwest USA", keys:["IL001","IL002","GA01","TX001"] },
-                { label:"West Coast USA", keys:["CA004","CA007a","CA001","CA007b","CA002","CA003","CA005"] },
-                { label:"East Coast USA", keys:["NJ001","NJ002","NJ003","NJ004","NJ005"] },
-                { label:"Canada", keys:["CA_MTL","CA_TOR1","CA_CAL","CA_VAN","CA_TOR2"] },
-                { label:"Tokyo Japan", keys:["JP_TKY1","JP_CHIBA1","JP_CHIBA2","JP_TKY2"] },
-                { label:"Osaka Japan", keys:["JP_OSAKA1","JP_OSAKA2"] },
-                { label:"Brazil", keys:["BR_SP"] },
-                { label:"Thailand", keys:["TH_BKK"] }
+                 { label:"Tokyo Japan", keys:["JP_TKY1","JP_CHIBA1","JP_CHIBA2","JP_TKY2"] },
+                 { label:"Osaka Japan", keys:["JP_OSAKA1","JP_OSAKA2"] },
+                 { label:"Brazil", keys:["BR_SP"] },
+                 { label:"Thailand", keys:["TH_BKK"] },
+                 { label:"Midwest USA", keys:["IL001","IL002","GA01","TX001"] },
+                 { label:"West Coast USA", keys:["CA004","CA007a","CA001","CA007b","CA002","CA003","CA005"] },
+                 { label:"East Coast USA", keys:["NJ001","NJ002","NJ003","NJ004","NJ005"] },
+                 { label:"Canada", keys:["CA_MTL","CA_TOR1","CA_CAL","CA_VAN","CA_TOR2"] },
+                
             ],
-            ja: [
-                { label:"米国中西部", keys:["IL001","IL002","GA01","TX001"] },
-                { label:"米国西海岸", keys:["CA004","CA007a","CA001","CA007b","CA002","CA003","CA005"] },
-                { label:"米国東海岸", keys:["NJ001","NJ002","NJ003","NJ004","NJ005"] },
-                { label:"カナダ", keys:["CA_MTL","CA_TOR1","CA_CAL","CA_VAN","CA_TOR2"] },
-                { label:"日本東京", keys:["JP_TKY1","JP_CHIBA1","JP_CHIBA2","JP_TKY2"] },
-                { label:"日本大阪", keys:["JP_OSAKA1","JP_OSAKA2"] },
-                { label:"ブラジル", keys:["BR_SP"] },
-                { label:"タイ", keys:["TH_BKK"] }
-            ]
+            ja:  [
+                 { label:"日本東京", keys:["JP_TKY1","JP_CHIBA1","JP_CHIBA2","JP_TKY2"] },
+                 { label:"日本大阪", keys:["JP_OSAKA1","JP_OSAKA2"] },
+                 { label:"ブラジル", keys:["BR_SP"] },
+                 { label:"タイ", keys:["TH_BKK"] },
+                 { label:"米国中西部", keys:["IL001","IL002","GA01","TX001"] },
+                 { label:"米国西海岸", keys:["CA004","CA007a","CA001","CA007b","CA002","CA003","CA005"] },
+                 { label:"米国東海岸", keys:["NJ001","NJ002","NJ003","NJ004","NJ005"] },
+                 { label:"カナダ", keys:["CA_MTL","CA_TOR1","CA_CAL","CA_VAN","CA_TOR2"] },
+  
+            ],
         };
 
         var expandedGroups = {};
@@ -1248,6 +1250,13 @@
 
    // Fix: remove extra closing brace above. Corrected object termination
 
+ // 预加载所有仓点实景图片，避免用户切换节点时才现下载导致卡顿
+   Object.values(GLOBE_NODES_FULL).forEach(function(node) {
+       if (node.img) {
+           var preloadImg = new Image();
+           preloadImg.src = node.img;
+       }
+   });
 
         /* ── helpers ── */
         function gLatLng(lat, lng, r) {
