@@ -1568,7 +1568,7 @@
                 fromPos: gCamera.position.clone(),
                 toPos:   target,
                 startT:  performance.now(),
-                dur:     1400
+                dur:     700
             };
 
             /* lock ship to this route */
@@ -1642,7 +1642,7 @@
                  var normal = worldPos.clone().normalize();
                  var viewDir = gCamera.position.clone().sub(worldPos).normalize();
                  var facing = normal.dot(viewDir);
-             if (facing > 0.15) {
+             if (facing > 0.02) {
                  var projected = worldPos.clone().project(gCamera);
                  var box = document.getElementById('globe-container').getBoundingClientRect();
                  popup.style.left = ((projected.x * 0.5 + 0.5) * box.width) + 'px';
