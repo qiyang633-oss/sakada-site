@@ -360,6 +360,23 @@
 </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+            
+             <a href="american-warehouse.html" class="wh-card-new">
+                <div class="wh-card-photo" style="background-image:url('./美国仓库实景.png');">
+                    <span class="wh-card-code">US</span>
+                </div>
+                <div class="wh-card-body">
+                    <div>
+                        <div class="wh-card-label" data-i18n="wh_2_country">UNITED STATES NETWORK</div>
+                        <div class="wh-card-title" data-i18n="wh_2_title">United States</div>
+                        <div class="wh-card-city" data-i18n="wh_2_city">East / West Coast</div>
+                    </div>
+                    <span class="wh-card-link">
+                        <span data-i18n="wh_btn">查看仓库</span>
+                        <i class="fa-solid fa-arrow-right" style="font-size:11px;"></i>
+                    </span>
+                </div>
+            </a>
 
             <a href="japan-warehouse.html" class="wh-card-new">
                 <div class="wh-card-photo" style="background-image:url('./日本仓库实景.png');">
@@ -378,22 +395,7 @@
                 </div>
             </a>
 
-            <a href="american-warehouse.html" class="wh-card-new">
-                <div class="wh-card-photo" style="background-image:url('./美国仓库实景.png');">
-                    <span class="wh-card-code">US</span>
-                </div>
-                <div class="wh-card-body">
-                    <div>
-                        <div class="wh-card-label" data-i18n="wh_2_country">UNITED STATES NETWORK</div>
-                        <div class="wh-card-title" data-i18n="wh_2_title">United States</div>
-                        <div class="wh-card-city" data-i18n="wh_2_city">East / West Coast</div>
-                    </div>
-                    <span class="wh-card-link">
-                        <span data-i18n="wh_btn">查看仓库</span>
-                        <i class="fa-solid fa-arrow-right" style="font-size:11px;"></i>
-                    </span>
-                </div>
-            </a>
+           
 
             <a href="canada-warehouse.html" class="wh-card-new">
                 <div class="wh-card-photo" style="background-image:url('./加拿大仓库实景.png');">
@@ -1067,35 +1069,38 @@
         // 地区分组定义（三语）
         var regionGroups = {
             zh: [
-                 { label:"日本东京仓", keys:["JP_TKY1","JP_CHIBA1","JP_CHIBA2","JP_TKY2"] },
-                 { label:"日本大阪仓", keys:["JP_OSAKA1","JP_OSAKA2"] },
-                 { label:"巴西仓库", keys:["BR_SP"] },
-                 { label:"泰国仓库", keys:["TH_BKK"] },
                  { label:"美中仓库", keys:["IL001","IL002","GA01","TX001"] },
                  { label:"美西仓库", keys:["CA004","CA007a","CA001","CA007b","CA002","CA003","CA005"] },
                  { label:"美东仓库", keys:["NJ001","NJ002","NJ003","NJ004","NJ005"] },
                  { label:"加拿大仓库", keys:["CA_MTL","CA_TOR1","CA_CAL","CA_VAN","CA_TOR2"] },
+                 { label:"日本东京仓", keys:["JP_TKY1","JP_CHIBA1","JP_CHIBA2","JP_TKY2"] },
+                 { label:"日本大阪仓", keys:["JP_OSAKA1","JP_OSAKA2"] },
+                 { label:"巴西仓库", keys:["BR_SP"] },
+                 { label:"泰国仓库", keys:["TH_BKK"] },
+                
             ],
             en: [
-                 { label:"Tokyo Japan", keys:["JP_TKY1","JP_CHIBA1","JP_CHIBA2","JP_TKY2"] },
-                 { label:"Osaka Japan", keys:["JP_OSAKA1","JP_OSAKA2"] },
-                 { label:"Brazil", keys:["BR_SP"] },
-                 { label:"Thailand", keys:["TH_BKK"] },
                  { label:"Midwest USA", keys:["IL001","IL002","GA01","TX001"] },
                  { label:"West Coast USA", keys:["CA004","CA007a","CA001","CA007b","CA002","CA003","CA005"] },
                  { label:"East Coast USA", keys:["NJ001","NJ002","NJ003","NJ004","NJ005"] },
                  { label:"Canada", keys:["CA_MTL","CA_TOR1","CA_CAL","CA_VAN","CA_TOR2"] },
+                 { label:"Tokyo Japan", keys:["JP_TKY1","JP_CHIBA1","JP_CHIBA2","JP_TKY2"] },
+                 { label:"Osaka Japan", keys:["JP_OSAKA1","JP_OSAKA2"] },
+                 { label:"Brazil", keys:["BR_SP"] },
+                 { label:"Thailand", keys:["TH_BKK"] },
+               
                 
             ],
             ja:  [
-                 { label:"日本東京", keys:["JP_TKY1","JP_CHIBA1","JP_CHIBA2","JP_TKY2"] },
-                 { label:"日本大阪", keys:["JP_OSAKA1","JP_OSAKA2"] },
-                 { label:"ブラジル", keys:["BR_SP"] },
-                 { label:"タイ", keys:["TH_BKK"] },
                  { label:"米国中西部", keys:["IL001","IL002","GA01","TX001"] },
                  { label:"米国西海岸", keys:["CA004","CA007a","CA001","CA007b","CA002","CA003","CA005"] },
                  { label:"米国東海岸", keys:["NJ001","NJ002","NJ003","NJ004","NJ005"] },
                  { label:"カナダ", keys:["CA_MTL","CA_TOR1","CA_CAL","CA_VAN","CA_TOR2"] },
+                 { label:"日本東京", keys:["JP_TKY1","JP_CHIBA1","JP_CHIBA2","JP_TKY2"] },
+                 { label:"日本大阪", keys:["JP_OSAKA1","JP_OSAKA2"] },
+                 { label:"ブラジル", keys:["BR_SP"] },
+                 { label:"タイ", keys:["TH_BKK"] },
+                
   
             ],
         };
@@ -1250,7 +1255,7 @@
 
    // Fix: remove extra closing brace above. Corrected object termination
 
- // 预加载所有仓点实景图片，避免用户切换节点时才现下载导致卡顿
+   // 预加载所有仓点实景图片，避免用户切换节点时才现下载导致卡顿
    Object.values(GLOBE_NODES_FULL).forEach(function(node) {
        if (node.img) {
            var preloadImg = new Image();
